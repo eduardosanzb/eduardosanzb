@@ -1,19 +1,16 @@
 #!/usr/bin/env node
-
+'use strict';
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
+const importJsx = require('import-jsx');
+const ui = importJsx('./components')
+const {h, render} = require('ink');
 
-const colorLetter = color => msg => console.log(chalk[color](msg));
-const bigColotLetter = color => msg => color.log(colorLetter(color)(msg))
-const yellow = text => console.log(
-  chalk
-  .yellow(
-    figlet.textSync(text, { horizontalLayout: 'default', kernig: 'fitted'})));
-
+const log = console.log;
 clear();
 
-const red = colorLetter('red');
+render(h(ui))
 
-red('hello')
-bigColotLetter('hi')
+
+
