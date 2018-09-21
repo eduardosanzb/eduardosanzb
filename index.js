@@ -8,8 +8,8 @@ const ui = importJsx('./components')
 const {h, render} = require('ink');
 
 const log = console.log;
-clear();
 
+clear();
 render(h(ui))
 
 

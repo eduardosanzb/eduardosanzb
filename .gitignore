@@ -1,2 +1,4 @@
-node-modules/
+.DS_Store
+node-modules
 package-lock.json
+cool-jenkins.png
