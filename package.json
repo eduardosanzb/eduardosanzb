@@ -39,7 +39,7 @@
     "ink": "^0.5.0",
     "ink-select-input": "^1.1.0",
     "inquirer": "^5.2.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "node-fetch": "^2.2.0",
     "opn": "^5.3.0",

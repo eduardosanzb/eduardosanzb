@@ -12,5 +12,3 @@ const log = console.log;
 clear();
 render(h(ui))
 
-
-
