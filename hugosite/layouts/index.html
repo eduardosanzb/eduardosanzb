@@ -1,0 +1,70 @@
+{{ define "main" }}
+<!-- 
+  The homepage template includes:
+  - A hero section with your main message
+  - Featured work section
+  - Recent blog posts
+  Each section uses the site-container class for consistent spacing
+-->
+<div class="space-y-32 dark:bg-gray-900">
+  <!-- Hero Section -->
+  <section class="pt-20 pb-16">
+    <div class="site-container">
+      <h1 class="heading-1 max-w-4xl dark:text-white">
+        Software Engineer & Technical Leader
+      </h1>
+      <p class="mt-6 text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+        With over 8 years of experience building high-quality cloud solutions. 
+        Specializing in API Gateways, DevOps practices, and technical leadership.
+      </p>
+      <div class="mt-8">
+        <a href="/work" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition-colors">
+          View My Work
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section>
+    <div class="site-container">
+      <h2 class="heading-2 mb-12 dark:text-white">Selected Work</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ range first 3 (where .Site.RegularPages "Section" "work") }}
+        <article class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+          <h3 class="text-xl font-medium mb-2 dark:text-white">
+            <a href="{{ .Permalink }}" class="hover:text-primary-600 transition-colors">
+              {{ .Title }}
+            </a>
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">{{ .Description }}</p>
+          <a href="{{ .Permalink }}" class="text-primary-600 hover:text-primary-700">
+            Read case study →
+          </a>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Blog Posts -->
+  <section>
+    <div class="site-container">
+      <h2 class="heading-2 mb-12 dark:text-white">Recent Writing</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
+        <article>
+          <time class="text-sm text-gray-500 dark:text-gray-400">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <h3 class="mt-2 text-xl font-medium dark:text-white">
+            <a href="{{ .Permalink }}" class="hover:text-primary-600 transition-colors">
+              {{ .Title }}
+            </a>
+          </h3>
+          <p class="mt-3 text-gray-600 dark:text-gray-300">{{ .Description }}</p>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</div>
+{{ end }}

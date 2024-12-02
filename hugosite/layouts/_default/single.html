@@ -1,0 +1,23 @@
+{{ define "main" }}
+<article class="py-16">
+  <div class="site-container">
+    <!-- Article header -->
+    <header class="mb-16">
+      <h1 class="heading-1">{{ .Title }}</h1>
+      {{ with .Date }}
+      <time datetime="{{ .Format "2006-01-02" }}" class="block mt-4 text-gray-500">
+        {{ .Format "January 2, 2006" }}
+      </time>
+      {{ end }}
+      {{ with .Description }}
+      <p class="mt-6 text-xl text-gray-600">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <!-- Article content -->
+    <div class="prose prose-lg max-w-none">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}
