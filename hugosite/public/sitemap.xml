@@ -11,7 +11,11 @@
     <loc>http://localhost:1313/work/</loc>
     <lastmod>2024-02-12T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/about/</loc>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/pages/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
   </url>
