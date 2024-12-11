@@ -1,0 +1,33 @@
+# baseURL = "https://eduardosanzb.dev"
+baseURL = "https://new.eduardosanzb.dev/"
+languageCode = "en-us"
+title = "Eduardo Sanchez | Software Engineer & Technical Leader"
+
+# Enable syntax highlighting
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  description = "Personal website of Eduardo Sanchez - Software Engineer & Technical Leader"
+  author = "Eduardo Sanchez"
+  github = "https://github.com/eduardosanzb"
+  linkedin = "https://linkedin.com/in/eduardosanzb"
+  email = "eduardosanzb@gmail.com"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Work"
+    url = "/work/"
+    weight = 2
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 3
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4

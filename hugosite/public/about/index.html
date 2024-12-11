@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>About | Eduardo Sanchez | Software Engineer &amp; Technical Leader</title>
+    
+    
+    <meta name="description" content="Personal website of Eduardo Sanchez - Software Engineer &amp; Technical Leader">
+    
+    
+    
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href="/css/main.css">
+    
+</head>
+
+  <body class="min-h-screen bg-white dark:bg-gray-900">
+    
+<header class="sticky top-0 z-50 border-b border-gray-100 bg-white dark:bg-gray-900 dark:border-gray-800">
+  <div class="site-container">
+    <nav class="flex justify-between items-center h-16">
+      
+      <a href="/"
+        class="text-xl font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+        Eduardo Sanchez | Software Engineer &amp; Technical Leader
+      </a>
+
+      
+      <div class="hidden md:flex items-center space-x-8">
+        
+        <a href="/" class="nav-link dark:text-gray-300 dark:hover:text-white">
+          Home
+        </a>
+        
+        <a href="/work/" class="nav-link dark:text-gray-300 dark:hover:text-white">
+          Work
+        </a>
+        
+        <a href="/blog/" class="nav-link dark:text-gray-300 dark:hover:text-white">
+          Blog
+        </a>
+        
+        <a href="/about/" class="nav-link dark:text-gray-300 dark:hover:text-white">
+          About
+        </a>
+        
+
+        
+        <button id="theme-toggle" class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-icon" class="w-6 h-6 block dark:hidden text-gray-800" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+
+      
+      <button class="md:hidden p-2" aria-label="Menu">
+        <svg class="w-6 h-6 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  function changeTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', theme)
+  }
+
+
+  if (!localStorage.theme &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    changeTheme('dark')
+  } else {
+    changeTheme(localStorage.theme)
+  }
+
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', ({ matches }) => {
+      if (matches) {
+        changeTheme('dark')
+      } else {
+        changeTheme('light')
+      }
+    })
+
+  addEventListener('storage', () => {
+    if (localStorage.theme === 'dark') {
+      changeTheme('dark')
+    } else {
+      changeTheme('light')
+    }
+  })
+
+  
+  
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    if (document.documentElement.classList.contains('dark')) {
+      changeTheme('light')
+    } else {
+      changeTheme('dark')
+    }
+  })
+</script>
+    
+    <main id="main-content">
+      
+<article class="py-16">
+  <div class="site-container">
+    
+    <header class="mb-16">
+      <h1 class="heading-1">About</h1>
+      
+      
+    </header>
+
+    
+    <div class="prose prose-lg max-w-none">
+      <h2 id="contra-vagos">Contra vagos</h2>
+<p>Lorem <em>markdownum notam si</em> lintea meque certa <a href="#cohibentem-iuvenaliter">en meumque
+illis</a>, diu fatigant, nec praedae concustodita arcet.
+<a href="#nemorisque-urimur-violentus">Paviunt castris</a> cur errat ventis causa! Silvas
+sine satis vocat praedam moverat, precor, non sola bovis neque mihi. Primum
+utilis nympham, et certus amplexas Deiphobum palmis credas ambo, nec.</p>
+<blockquote>
+<p>Excidit gente, si orat suo quaeque dura Calydon nata? Pars auro post stetit
+adfusique imis amplexus. Agmina per fabricator
+mittere Erymanthon habetque tot.</p>
+</blockquote>
+<p><strong>Cineres Nile ipsa</strong> origine discurrunt adest Unde, et quem clausus, imo,
+virens quoque tales, potuit. Ingentes insilit corpore nutricis praebebat roganti
+licuit. Denique a vestros adulantum in bella lina parte et arte generi di igitur
+quis, digitis pedes. Cum resonant tamen, namque in anxia. Non nostri trahens
+ancora.</p>
+<h2 id="ducem-oculos-pallor-tale-quoque">Ducem oculos pallor tale quoque</h2>
+<p>Pectora de Hebe veste mansit nemorisque oppugnare deos, interea eo calescit
+<strong>invita insidiae</strong> Amymonen, semper respiciens vocato, illis! Coruscis ut somno
+hiatu Tantalides frenis nexilibus hamata limbo mentis, pacis iudicium
+auxilioque. Genus dolori, me ira hae inpediunt tellus, nascendi Boreas!
+Tangentiaque tecto et secuta recursus quo matrisque, moenia sedulitas Cyllenius
+in duxere plenaque: <strong>hos</strong>.</p>
+<ol>
+<li>Olim pulvere</li>
+<li>Verus ego ovantem mihi</li>
+<li>Tenuit erat semina superari</li>
+<li>Dabis natis hoc genu in quidem dumque</li>
+</ol>
+<p>Per tenuata <a href="#inmeritae-discordemque-iterum">potiora</a> dedit caelo admota
+iniustus decipere do loca multa non parat. Ingratos his ut inde credite sensit
+sorte. Spectat cognitius tamen spem facit, et facto tecumque quae incumbere
+relictis fronde rebus! Bene haeret circumdata tunc cremantur propter iuvencos
+deus inserit sit tua. Pompa non precor procumbit inania lacrimas sacra credetis:
+Oceano, femina?</p>
+<p>Bacchantum neque. Humum ut violasse quam inmotos! Danae aera vertitur potiere
+scopuloque pecus, ut animam aversata Iovis, petentes aura, <em>montibus</em>.</p>
+
+    </div>
+  </div>
+</article>
+
+    </main>
+
+    <footer class="border-t border-gray-100 py-12 mt-32">
+  <div class="site-container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">About</h3>
+        <p class="mt-4 text-base text-gray-600">
+          Personal website of Eduardo Sanchez - Software Engineer &amp; Technical Leader
+        </p>
+      </div>
+
+      
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Connect</h3>
+        <ul class="mt-4 space-y-2">
+          
+          <li>
+            <a href="https://github.com/eduardosanzb" class="nav-link">GitHub</a>
+          </li>
+          
+          
+          <li>
+            <a href="https://linkedin.com/in/eduardosanzb" class="nav-link">LinkedIn</a>
+          </li>
+          
+          
+          <li>
+            <a href="mailto:eduardosanzb@gmail.com" class="nav-link">Email</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+    
+    <div class="mt-8 pt-8 border-t border-gray-100">
+      <p class="text-base text-gray-600">
+        © 2024 Eduardo Sanchez | Software Engineer &amp; Technical Leader. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
