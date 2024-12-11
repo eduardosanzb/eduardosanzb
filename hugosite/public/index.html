@@ -115,12 +115,7 @@
     }
   })
 
-  const themeToggle = document.querySelector("header");
-  if (!themeToggle) {
-    console.log("Theme toggle element not found!");
-  }
-
-
+  
   
   document.getElementById('theme-toggle').addEventListener('click', function () {
     if (document.documentElement.classList.contains('dark')) {
@@ -210,7 +205,7 @@ hello</p>
       id="my-cal-inline"
     ></div>
     <script type="text/javascript">
-      let scriptBody
+      let scriptBody;
       function cally(C, A, L) {
         let p = function (a, ar) {
           a.q.push(ar);
@@ -224,7 +219,7 @@ hello</p>
             if (!cal.loaded) {
               cal.ns = {};
               cal.q = cal.q || [];
-              scriptBody = d.createElement("script")
+              scriptBody = d.createElement("script");
               d.head.appendChild(scriptBody).src = A;
               cal.loaded = true;
             }
@@ -262,36 +257,12 @@ hello</p>
       cally(window, "https://app.cal.com/embed/embed.js", "init");
       initCal();
 
-      document
-        .getElementById("theme-toggle")
-        .addEventListener("click", function (e) {
-          console.log(e);
-          const calInlineDiv = document.getElementById("my-cal-inline");
-          if (calInlineDiv) {
-            calInlineDiv.remove(); 
-            Cal.loaded=false
-            
-            cally(window, "https://app.cal.com/embed/embed.js", "init");
-            const newCalInlineDiv = document.createElement("div");
-            newCalInlineDiv.id = "my-cal-inline";
-            newCalInlineDiv.style.width = "100%";
-            newCalInlineDiv.style.height = "100%";
-            newCalInlineDiv.style.overflow = "scroll";
-            const calSection = document.getElementById("cal-section");
-            calSection.appendChild(newCalInlineDiv); 
-          }
-          initCal();
-
-          console.log({
-            theme: localStorage.getItem("theme"),
-          });
-        });
-
-      window.addEventListener("storage", (e) => {
-        console.log(e);
+      function refreshCal() {
         const calInlineDiv = document.getElementById("my-cal-inline");
         if (calInlineDiv) {
           calInlineDiv.remove(); 
+          Cal.loaded = false;
+          cally(window, "https://app.cal.com/embed/embed.js", "init");
           const newCalInlineDiv = document.createElement("div");
           newCalInlineDiv.id = "my-cal-inline";
           newCalInlineDiv.style.width = "100%";
@@ -300,13 +271,19 @@ hello</p>
           const calSection = document.getElementById("cal-section");
           calSection.appendChild(newCalInlineDiv); 
         }
-        cally(window, "https://app.cal.com/embed/embed.js", "init");
         initCal();
+      }
 
-        console.log({
-          theme: localStorage.getItem("theme"),
-        });
-      });
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", refreshCal);
+
+      addEventListener("storage", refreshCal);
+
+      matchMedia("(prefers-color-scheme: dark)").addEventListener(
+        "change",
+        refreshCal
+      );
     </script>
     
   </section>
