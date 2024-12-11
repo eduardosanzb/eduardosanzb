@@ -1,7 +1,6 @@
 baseURL = "https://eduardosanzb.dev"
 languageCode = "en-us"
 title = "Eduardo Sanchez | Software Engineer & Technical Leader"
-theme = "hugo-winston-theme"
 
 # Enable syntax highlighting
 pygmentsCodeFences = true

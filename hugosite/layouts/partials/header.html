@@ -8,25 +8,30 @@
   <div class="site-container">
     <nav class="flex justify-between items-center h-16">
       <!-- Site title/logo -->
-      <a href="/" class="text-xl font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+      <a href="/"
+        class="text-xl font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
         {{ .Site.Title }}
       </a>
 
       <!-- Navigation links -->
       <div class="hidden md:flex items-center space-x-8">
         {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" class="nav-link dark:text-gray-300 dark:hover:text-white">
-            {{ .Name }}
-          </a>
+        <a href="{{ .URL }}" class="nav-link dark:text-gray-300 dark:hover:text-white">
+          {{ .Name }}
+        </a>
         {{ end }}
-        
+
         <!-- Dark Mode Toggle -->
         <button id="theme-toggle" class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-          <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
-          <svg id="moon-icon" class="w-6 h-6 block dark:hidden text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          <svg id="moon-icon" class="w-6 h-6 block dark:hidden text-gray-800" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
       </div>
@@ -34,7 +39,7 @@
       <!-- Mobile menu button - we'll add functionality later -->
       <button class="md:hidden p-2" aria-label="Menu">
         <svg class="w-6 h-6 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </nav>
@@ -42,21 +47,52 @@
 </header>
 
 <script>
-  // Check for saved theme preference, otherwise use system preference
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
+  function changeTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', theme)
   }
 
-  // Toggle theme
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark')
-      localStorage.theme = 'light'
+
+  if (!localStorage.theme &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    changeTheme('dark')
+  } else {
+    changeTheme(localStorage.theme)
+  }
+
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', ({ matches }) => {
+      if (matches) {
+        changeTheme('dark')
+      } else {
+        changeTheme('light')
+      }
+    })
+
+  addEventListener('storage', () => {
+    if (localStorage.theme === 'dark') {
+      changeTheme('dark')
     } else {
-      document.documentElement.classList.add('dark')
-      localStorage.theme = 'dark'
+      changeTheme('light')
+    }
+  })
+
+  const themeToggle = document.querySelector("header");
+  if (!themeToggle) {
+    console.log("Theme toggle element not found!");
+  }
+
+
+  // Toggle theme
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    if (document.documentElement.classList.contains('dark')) {
+      changeTheme('ligth')
+    } else {
+      changeTheme('dark')
     }
   })
 </script>

@@ -14,7 +14,7 @@
     
     <!-- Styles -->
     {{ $styles := resources.Get "css/main.css" }}
-    {{ $styles = $styles | resources.PostCSS }}
+    {{ $styles = $styles | css.PostCSS }}
     
     {{ if hugo.IsProduction }}
         {{ $styles = $styles | minify | fingerprint }}
