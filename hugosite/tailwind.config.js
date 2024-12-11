@@ -16,6 +16,9 @@ module.exports = {
           700: '#0369a1',
         },
       },
+      fontFamily: {
+        sans: 'Helvetica'
+      },
       typography: {
         DEFAULT: {
           css: {
