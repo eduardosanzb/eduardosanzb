@@ -5,7 +5,10 @@ on:
     branches: [main, hugo]
     paths:
       - 'hugosite/**'
+<<<<<<< Updated upstream
   workflow_dispatch:
+=======
+>>>>>>> Stashed changes
 
 jobs:
   deploy:
