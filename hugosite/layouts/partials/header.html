@@ -4,7 +4,7 @@
   - Flexible navigation menu that can be easily styled
   - Mobile-friendly spacing
 -->
-<header class="border-b border-gray-100 bg-white dark:bg-gray-900 dark:border-gray-800">
+<header class="sticky top-0 z-50 border-b border-gray-100 bg-white dark:bg-gray-900 dark:border-gray-800">
   <div class="site-container">
     <nav class="flex justify-between items-center h-16">
       <!-- Site title/logo -->
@@ -85,7 +85,7 @@
   // Toggle theme
   document.getElementById('theme-toggle').addEventListener('click', function () {
     if (document.documentElement.classList.contains('dark')) {
-      changeTheme('ligth')
+      changeTheme('light')
     } else {
       changeTheme('dark')
     }

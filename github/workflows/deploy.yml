@@ -2,33 +2,54 @@ name: Deploy Hugo Site to Cloudflare Pages
 
 on:
   push:
-    branches:
-      - main  
-      - hugo
+    branches: [main, hugo]
+    paths:
+      - 'hugosite/**'
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hugosite
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          node-version: '16'  # Specify the Node.js version you need
+          submodules: recursive
 
-      - name: Install Wrangler
-        run: npm install -g wrangler
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'hugosite/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build Hugo site
+        env:
+          HUGO_ENV: production
         run: |
-          hugo --minify  # Adjust this command if you have specific build options
-          # We also need to optimize for prod
+          hugo --minify --gc
+
+      - name: Install Wrangler
+        run: npm install -g wrangler@latest
 
       - name: Deploy to Cloudflare Pages
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}  # Set this in your GitHub repository secrets
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          wrangler publish ./public  # Adjust the path if your output directory is different
+          wrangler pages deploy public \
+            --project-name=${{ vars.CF_PAGES_PROJECT }} \
+            --branch=${GITHUB_REF##*/}

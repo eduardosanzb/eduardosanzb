@@ -1,4 +1,5 @@
-baseURL = "https://eduardosanzb.dev"
+# baseURL = "https://eduardosanzb.dev"
+baseURL = "https://new.eduardosanzb.dev/"
 languageCode = "en-us"
 title = "Eduardo Sanchez | Software Engineer & Technical Leader"
 

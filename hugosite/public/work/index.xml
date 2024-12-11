@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Works on Eduardo Sanchez | Software Engineer &amp; Technical Leader</title>
-    <link>https://eduardosanzb.dev/work/</link>
+    <link>http://localhost:1313/work/</link>
     <description>Recent content in Works on Eduardo Sanchez | Software Engineer &amp; Technical Leader</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 12 Feb 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://eduardosanzb.dev/work/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/work/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unity Technologies</title>
-      <link>https://eduardosanzb.dev/work/unity-technologies/</link>
+      <link>http://localhost:1313/work/unity-technologies/</link>
       <pubDate>Mon, 12 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>https://eduardosanzb.dev/work/unity-technologies/</guid>
+      <guid>http://localhost:1313/work/unity-technologies/</guid>
       <description>&lt;h1 id=&#34;unity-technologies&#34;&gt;Unity Technologies&lt;/h1&gt;&#xA;&lt;p&gt;As a Senior Software Engineer Level 6, I worked in the Services Foundation team, responsible for providing a self-service API Gateway.&lt;/p&gt;&#xA;&lt;h2 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Led the research and implementation of a new API Gateway&lt;/li&gt;&#xA;&lt;li&gt;Achieved €70k annual cost savings through optimization&lt;/li&gt;&#xA;&lt;li&gt;Designed and built foundation for an Authorization gRPC service&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
