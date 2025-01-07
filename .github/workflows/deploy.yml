@@ -52,4 +52,4 @@ jobs:
         run: |
           wrangler pages deploy public \
             --project-name=${{ vars.CF_PAGES_PROJECT }} \
-            --branch=${GITHUB_REF##*/}
+            --branch=${GITHUB_REF}
