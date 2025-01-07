@@ -2,7 +2,7 @@ name: Deploy Hugo Site to Cloudflare Pages
 
 on:
   push:
-    branches: [main, hugo]
+    branches: [master, hugo]
     paths:
       - 'hugosite/**'
   workflow_dispatch:
