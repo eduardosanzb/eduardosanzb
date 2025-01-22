@@ -1,7 +1,7 @@
 # baseURL = "https://eduardosanzb.dev"
 baseURL = "https://new.eduardosanzb.dev/"
 languageCode = "en-us"
-title = "Eduardo Sanchez | Software Engineer & Technical Leader"
+title = "EDUARDO BAUTISTA"
 
 # Enable syntax highlighting
 pygmentsCodeFences = true
@@ -15,19 +15,41 @@ pygmentsUseClasses = true
   email = "eduardosanzb@gmail.com"
 
 [menu]
+  # [[menu.main]]
+  #   name = "Personal"
+  #   pageRef = "/"
+  #   weight = 1
   [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
-    name = "Work"
-    url = "/work/"
+    hidden = true
+    name = "CV"
+    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf"
     weight = 2
+    [menu.main.params]
+      icon = 'download'
+      download = true
+  [[menu.main]]
+    name = "Case-Studies"
+    pageRef = "/case-studies/"
+    weight = 3
   [[menu.main]]
     name = "Blog"
     url = "/blog/"
-    weight = 3
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
     weight = 4
+  [[menu.main]]
+    name = "Contact"
+    pageRef = "/contact/"
+    weight = 5
+  [[menu.main]]
+    name = "Linkedin"
+    url = "https://linkedin.com/in/eduardosanzb"
+    weight = 6
+    [menu.main.params]
+      rel = 'external'
+      icon = 'linkedin'
+  [[menu.main]]
+    name = "github"
+    url = "https://github.com/eduardosanzb/"
+    weight = 7
+    [menu.main.params]
+      rel = 'external'
+      icon = 'github'

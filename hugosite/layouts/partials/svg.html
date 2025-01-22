@@ -1,0 +1,14 @@
+{{ $svg := . }}
+{{ $class := print $svg "-icon-lol" }}
+{{ $match := "<svg (.*)?>(.*)</svg>" }}
+
+{{ $replaceWith := printf `<svg class="%s" ${1}>${2}</svg>` $class }}
+
+{{ $svgg := resources.Get (print "ionicons/" . ".svg") }}
+hola
+<!-- <span class="inline-svg"> -->
+<!--   {{ $svgg | safeHTML }} -->
+<!-- </span> -->
+
+{{ return (replaceRE $match $replaceWith (printf "/assets/svg/%s.svg" $svg | readFile) | safeHTML) }}
+

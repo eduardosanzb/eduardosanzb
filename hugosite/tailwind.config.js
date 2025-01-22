@@ -1,23 +1,56 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    /* Relevant files from blog + theme */
     "./layouts/**/*.html",
-    "./content/**/*.{md,html}"
+    "./content/**/*.{md,html}",
+
   ],
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        'primary': {
+        primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
           500: '#0ea5e9',
           600: '#0284c7',
           700: '#0369a1',
         },
+        dark: '#080808',
+        light: '#f8f8f8',
+        banner: '#DFFF9D'
+
       },
       fontFamily: {
-        sans: 'Helvetica'
+        sans: [
+          '"InterVariable", sans-serif',
+          {
+            fontFeatureSettings: "'liga' 1, 'calt' 1",
+            // fontVariationSettings: '"opsz" 32'
+          },
+        ],
+
+      },
+      animation: {
+        marquee: 'marquee 20s linear infinite forwards',
+      },
+      keyframes:{
+        marquee: {
+          'to': { transform: 'translateX(-50%)' },
+        },
+      },
+      fontWeight: {
+        thin: 100,
+        extralight: 200,
+      },
+      letterSpacing: {
+        tightest: '-.075em',
+      },
+      backgroundImage: {
+        'hero-pattern': "url('/images/hero-pattern.svg')",
+        'footer-texture': "url('/images/footer-texture.png')",
+        'hero': "url('/images/hero_1x.webp')",
       },
       typography: {
         DEFAULT: {

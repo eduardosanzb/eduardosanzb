@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-<<<<<<< Updated upstream
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-02-12T00:00:00+00:00</lastmod>
   </url><url>
@@ -19,12 +18,5 @@
     <loc>http://localhost:1313/pages/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-=======
-    <loc>//localhost:1313/</loc>
-  </url><url>
-    <loc>//localhost:1313/categories/</loc>
-  </url><url>
-    <loc>//localhost:1313/tags/</loc>
->>>>>>> Stashed changes
   </url>
 </urlset>

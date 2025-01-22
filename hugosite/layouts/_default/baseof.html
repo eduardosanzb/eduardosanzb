@@ -1,13 +1,128 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
-  {{ partial "head.html" . }}
-  <body class="min-h-screen bg-white dark:bg-gray-900">
-    {{ partial "header.html" . }}
-    
-    <main id="main-content">
-      {{ block "main" . }}{{ end }}
-    </main>
+{{ partial "head.html" . }}
 
-    {{ partial "footer.html" . }}
-  </body>
+<body class="min-h-screen">
+  <!--
+    we do not render the header here, because we want to render it in the main content
+  -->
+  <div id="secondary-element" class="hidden sticky top-0 z-50">
+    {{ partial "header.html" (dict "context" . "first" "false") }}
+  </div>
+
+  <main id="main-content" class="overflow-hidden">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+</body>
+
+<script>
+  /**
+   * This script will observe the header and show/hide the secondary header
+   * based on the visibility of the primary header
+   */
+  function observeHeader() {
+    const primaryElement = document.getElementById('first-header');
+    const secondaryElement = document.getElementById('secondary-element');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          secondaryElement.classList.remove('hidden');
+        } else {
+          secondaryElement.classList.add('hidden');
+        }
+      });
+    }, {
+      // Configure the observer options
+      threshold: 0, // Trigger as soon as even 1px is out of viewport
+      rootMargin: '0px' // No margin around the viewport
+    });
+
+    // Start observing the primary element
+    observer.observe(primaryElement);
+  }
+
+  /**
+   * This script will observe the sections and based on the bacground color of the visible section
+   * will adapt the header
+   */
+  function observeSections() {
+    const sections = document.querySelectorAll('section');
+    console.log(sections);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        console.log(entry);
+          const bgColor = window.getComputedStyle(entry.target).backgroundColor;
+          const header = document.getElementById('first-header');
+          const otherHeader = document.getElementById('secondary-element');
+          console.log(bgColor);
+        }
+      });
+    }, {
+      // Configure the observer options
+      threshold: 0.8, // Trigger when 100% of the element is out of viewport
+      rootMargin: '0px' // No margin around the viewport
+    });
+
+    // Start observing the primary element
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  }
+
+
+  if (document.readyState === "loading") {
+    document.addEventListener('DOMContentLoaded', e => {
+      observeHeader();
+      observeSections();
+    });
+  } else {
+    observeHeader();
+      observeSections();
+  }
+
+</script>
+<script>
+  // This needs to wait for the main.js to load; so we can use the dark mode toggle
+  setTimeout(() => {
+    if (!localStorage.theme &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      window.changeTheme('dark')
+    } else {
+      window.changeTheme(localStorage.theme)
+    }
+  }, 100)
+
+  // TODO: Move all this listeners to main.js
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', ({matches}) => {
+      if (matches) {
+        window.changeTheme('dark')
+      } else {
+        window.changeTheme('light')
+      }
+    })
+
+  addEventListener('storage', () => {
+    if (localStorage.theme === 'dark') {
+      window.changeTheme('dark')
+    } else {
+      window.changeTheme('light')
+    }
+  })
+
+
+  // Toggle theme
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    if (document.documentElement.classList.contains('dark')) {
+      window.changeTheme('light')
+    } else {
+      window.changeTheme('dark')
+    }
+  })
+</script>
 </html>

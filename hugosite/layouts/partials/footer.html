@@ -1,17 +1,15 @@
 <footer class="border-t border-gray-100 py-12 mt-32">
   <div class="site-container">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- About section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">About</h3>
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">About</h3>
         <p class="mt-4 text-base text-gray-600">
           {{ .Site.Params.description }}
         </p>
       </div>
 
-      <!-- Social Links -->
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">Connect</h3>
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Connect</h3>
         <ul class="mt-4 space-y-2">
           {{ with .Site.Params.github }}
           <li>
