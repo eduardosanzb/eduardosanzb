@@ -17,9 +17,13 @@ module.exports = {
           600: '#0284c7',
           700: '#0369a1',
         },
+        green:{
+          ...require('tailwindcss/colors').green,
+        },
         dark: '#080808',
         light: '#f8f8f8',
-        banner: '#DFFF9D'
+        banner: '#DFFF9D',
+        pulse: '#1DFAA7',
 
       },
       fontFamily: {
