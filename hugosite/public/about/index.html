@@ -44,8 +44,11 @@
 
 <body class="min-h-screen">
   
-  <div id="secondary-element" class="hidden sticky top-0 z-50">
-    <header class="backdrop-blur-xl">
+
+  <div id="secondary-element" class="hidden sticky top-0 z-50 *:text-white  *:dark:text-white">
+    <header class="
+  backdrop-blur-xl
+  ">
 
   
   
@@ -454,13 +457,15 @@ scopuloque pecus, ut animam aversata Iovis, petentes aura, <em>montibus</em>.</p
   function observeHeader() {
     const primaryElement = document.getElementById('first-header');
     const secondaryElement = document.getElementById('secondary-element');
+    console.log("headers");
+    console.log(primaryElement, secondaryElement);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) {
-          secondaryElement.classList.remove('hidden');
+          secondaryElement?.classList.remove('hidden');
         } else {
-          secondaryElement.classList.add('hidden');
+          secondaryElement?.classList.add('hidden');
         }
       });
     }, {
@@ -475,6 +480,11 @@ scopuloque pecus, ut animam aversata Iovis, petentes aura, <em>montibus</em>.</p
 
   
 
+    const colors = {
+      'rgb(248, 248, 248)': 'dark',
+      'rgb(8, 8, 8)': 'light',
+    };
+
   function observeSections() {
     const sections = document.querySelectorAll('section');
     console.log(sections);
@@ -484,9 +494,11 @@ scopuloque pecus, ut animam aversata Iovis, petentes aura, <em>montibus</em>.</p
         if (entry.isIntersecting) {
         console.log(entry);
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
-          const header = document.getElementById('first-header');
           const otherHeader = document.getElementById('secondary-element');
-          console.log(bgColor);
+          console.log(bgColor, colors[bgColor]);
+          if (colors[bgColor]) {
+            otherHeader.classList.add(`*:text-${colors[bgColor]} *:dark:text-${colors[bgColor]}`);
+          }
         }
       });
     }, {
