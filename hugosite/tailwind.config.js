@@ -6,6 +6,10 @@ module.exports = {
     "./content/**/*.{md,html}",
 
   ],
+  safelist: [
+    'force-dark',
+    'force-light',
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -16,6 +20,9 @@ module.exports = {
           500: '#0ea5e9',
           600: '#0284c7',
           700: '#0369a1',
+        },
+        red: {
+          ...require('tailwindcss/colors').red,
         },
         green:{
           ...require('tailwindcss/colors').green,

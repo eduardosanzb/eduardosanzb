@@ -243,6 +243,7 @@ setTimeout(() => {
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches }) => {
+    console.log("matches", matches);
     if (matches) {
       window.changeTheme("dark");
     } else {
