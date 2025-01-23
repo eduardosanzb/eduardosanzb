@@ -42,7 +42,12 @@
         class="
         flex
         nav-link
-        text-white
+        font-light
+        text-xl
+        text-dark
+        dark:text-white
+        group-[.force-light]:text-dark
+        group-[.force-dark]:text-white
         "
       >
         {{if  isset .Params "icon"}}

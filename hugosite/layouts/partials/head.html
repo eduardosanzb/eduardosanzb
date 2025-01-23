@@ -36,8 +36,4 @@
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
   {{ end }}
 
-  <!-- Scripts -->
-  {{ $js := resources.Get "js/main.js" }}
-  {{ $js = $js | minify | fingerprint }}
-  <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 </head>

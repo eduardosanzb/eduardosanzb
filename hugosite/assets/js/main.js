@@ -1,14 +1,15 @@
 /* global Cal */
+// TODO: tidy it up and split
 
 let scriptBody;
-function cally(C, A, L) {
-  let p = function(a, ar) {
+function setupCalScript(C, A, L) {
+  let p = function (a, ar) {
     a.q.push(ar);
   };
   let d = C.document;
   C.Cal =
     C.Cal ||
-    function() {
+    function () {
       let cal = C.Cal;
       let ar = arguments;
       if (!cal.loaded) {
@@ -19,7 +20,7 @@ function cally(C, A, L) {
         cal.loaded = true;
       }
       if (ar[0] === L) {
-        const api = function() {
+        const api = function () {
           p(api, arguments);
         };
         const namespace = ar[1];
@@ -37,57 +38,222 @@ function cally(C, A, L) {
 
 function initCal() {
   Cal("init", "15min", { origin: "https://cal.com" });
-  Cal.ns["15min"]("ui", {
-    hideEventTypeDetails: false,
-    layout: "month_view",
-    theme: localStorage.theme,
-  });
+
+  const layout = "month_view";
   Cal.ns["15min"]("inline", {
     elementOrSelector: "#my-cal-inline",
-    config: { layout: "month_view", theme: localStorage.theme },
+    config: { layout, theme: localStorage.theme },
     calLink: "eduardosanzb/15min",
+  });
+  Cal.ns["15min"]("ui", {
+    theme: localStorage?.theme?? "dark",
+
+    cssVarsPerTheme: {
+      light: { "cal-brand": "#f8f8ff" },
+      dark: { "cal-brand": "#080808" },
+    },
+
+    hideEventTypeDetails: false,
+    layout,
   });
 }
 
-cally(window, "https://app.cal.com/embed/embed.js", "init");
-initCal();
+function createCalInlineDiv() {
+  const newCalInlineDiv = document.createElement("div");
+  newCalInlineDiv.id = "my-cal-inline";
+  newCalInlineDiv.style.width = "100%";
+  newCalInlineDiv.style.height = "100%";
+  newCalInlineDiv.style.overflow = "scroll";
+  const calSection = document.getElementById("cal-section");
+  calSection?.appendChild(newCalInlineDiv); // Append to cal-section
+}
 
 function refreshCal() {
   const calInlineDiv = document.getElementById("my-cal-inline");
   if (calInlineDiv) {
     calInlineDiv.remove(); // Remove existing calendar
-    Cal.loaded = false; // This will reset the Cal and will force the redraw
-
-    const newCalInlineDiv = document.createElement("div");
-    newCalInlineDiv.id = "my-cal-inline";
-    newCalInlineDiv.style.width = "100%";
-    newCalInlineDiv.style.height = "100%";
-    newCalInlineDiv.style.overflow = "scroll";
-    const calSection = document.getElementById("cal-section");
-    calSection.appendChild(newCalInlineDiv); // Append to cal-section
   }
+
+  Cal.loaded = false; // This will reset the Cal and will force the redraw
+  createCalInlineDiv();
   initCal();
 }
 
-document
-  .getElementById("theme-toggle")
-  .addEventListener("click", refreshCal);
+function changeTheme(theme) {
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+  localStorage.setItem("theme", theme);
+}
+
+window.changeTheme = changeTheme;
+
+/**
+ * This script will observe the header and show/hide the secondary header
+ * based on the visibility of the primary header
+ */
+function observeHeader() {
+  const primaryElement = document.getElementById("first-header");
+  const secondaryElement = document.getElementById("secondary-element");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          secondaryElement?.classList.remove("hidden");
+        } else {
+          secondaryElement?.classList.add("hidden");
+        }
+      });
+    },
+    {
+      // Configure the observer options
+      threshold: 0, // Trigger as soon as even 1px is out of viewport
+      rootMargin: "0px", // No margin around the viewport
+    },
+  );
+
+  // Start observing the primary element
+  observer.observe(primaryElement);
+}
+
+/**
+ * This script will observe the sections and based on the bacground color of the visible section
+ * will adapt the header
+ */
+let finalDecision = ["force-light", "force-dark"];
+function toggleHeader(remove, add) {
+  const otherHeader = document.getElementById("secondary-element");
+  otherHeader.classList.remove(remove);
+  otherHeader.classList.add(add);
+  finalDecision = [remove, add];
+}
+
+function observeSections() {
+  const colors = {
+    // When the background of the next section is dark
+    // I want to force the dark theme to the header
+
+    // dark: [remove, add]
+    "rgb(8, 8, 8)": ["force-light", "force-dark"],
+    // ligth
+    "rgb(248, 248, 248)": ["force-dark", "force-light"],
+  };
+
+  const sections = document.querySelectorAll("section");
+  let scrollDirection = "down";
+
+  const previousY = new Map();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const currY = entry.boundingClientRect.y;
+        const prevY = previousY.get(entry.target);
+
+        if (currY < prevY) {
+          scrollDirection = "down";
+        }
+        if (currY > prevY) {
+          scrollDirection = "up";
+        }
+
+        if (entry.isIntersecting) {
+          const percentage = entry.intersectionRatio * 100;
+          const bgColor = window.getComputedStyle(entry.target).backgroundColor;
+          const [remove, add] = colors[bgColor];
+
+          // when going down the important one is the bigger one
+          if (scrollDirection === "down") {
+            if (percentage > 95) {
+              toggleHeader(remove, add);
+            }
+          }
+
+          // when going down the important one is the smaller one
+          if (scrollDirection === "up") {
+            if (percentage < 20) {
+              toggleHeader(remove, add);
+            }
+          }
+        }
+
+        previousY.set(entry.target, currY);
+      });
+    },
+    {
+      // Configure the observer options
+      threshold: [
+        0, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1,
+      ], // Trigger as soon as even 1px is out of viewport
+      rootMargin: "0px", // No margin around the viewport
+    },
+  );
+
+  // Start observing the primary element
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+}
+
+setupCalScript(window, "https://app.cal.com/embed/embed.js", "init");
+initCal();
+
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  refreshCal();
+  toggleHeader(...finalDecision.reverse());
+  if (document.documentElement.classList.contains("dark")) {
+    window.changeTheme("light");
+  } else {
+    window.changeTheme("dark");
+  }
+});
 
 addEventListener("storage", refreshCal);
 
 matchMedia("(prefers-color-scheme: dark)").addEventListener(
   "change",
-  refreshCal
+  refreshCal,
 );
 
-
-function changeTheme(theme) {
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
-  }
-  localStorage.setItem('theme', theme)
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", (e) => {
+    observeHeader();
+    observeSections();
+  });
+} else {
+  observeHeader();
+  observeSections();
 }
 
-window.changeTheme = changeTheme
+// This needs to wait for the main.js to load; so we can use the dark mode toggle
+setTimeout(() => {
+  if (
+    !localStorage.theme &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    window.changeTheme("dark");
+  } else {
+    window.changeTheme(localStorage.theme);
+  }
+}, 1000);
+
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", ({ matches }) => {
+    if (matches) {
+      window.changeTheme("dark");
+    } else {
+      window.changeTheme("light");
+    }
+  });
+
+addEventListener("storage", () => {
+  if (localStorage.theme === "dark") {
+    window.changeTheme("dark");
+  } else {
+    window.changeTheme("light");
+  }
+});
