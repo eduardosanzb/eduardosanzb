@@ -35,6 +35,10 @@
       <p class="text-base text-gray-600">
         © {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.
       </p>
+      <p class="text-base text-gray-600">
+        The commit & build for this page was <a href="{{getenv "HUGO_GITHUB_ACTION_URL"}}" class="nav-link">
+          {{getenv "HUGO_GITHUB_SHA"}}</a> on {{ now.Format "2006-01-02 15:04:05" }} {{ .Site.Title }}. All rights reserved.
+      </p>
     </div>
   </div>
 </footer>
