@@ -3,6 +3,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
+  <!-- Styles -->
+  {{ $styles := resources.Get "css/main.css" }}
+  {{ $styles = $styles | css.PostCSS }}
+
+  {{ if hugo.IsProduction }}
+    <link rel="stylesheet" href="{{ ($styles | minify | fingerprint).Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+  {{ else }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+  {{ end }}
+
+
+  <!--TODO: optimize fonts download-->
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
@@ -12,28 +25,9 @@
   <meta name="description" content="{{ . }}">
   {{ end }}
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ " images/favicon.png" | relURL }}">
-
-  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon_light-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_light-16x16.png">
 
-  <!-- <link rel="manifest" href="/site.webmanifest"> -->
-
   <link rel="preload" href="/images/hero_1x.webp" as="image" type="image/webp" />
-
-
-  <!-- Styles -->
-  {{ $styles := resources.Get "css/main.css" }}
-  {{ $styles = $styles | css.PostCSS }}
-
-  {{ if hugo.IsProduction }}
-  {{ $styles = $styles | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
-  {{ else }}
-  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-  {{ end }}
 
 </head>

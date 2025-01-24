@@ -1,13 +1,11 @@
 {{ define "main" }}
 <!--HERO-->
+
 <section class="
     min-h-screen
-
     bg-dark
-
     flex
     flex-col
-
     justify-between
 
     bg-dark
@@ -15,29 +13,31 @@
     bg-cover
     bg-center
     bg-hero
-
     ">
   <span>
     <div id="first-header" class="group force-dark">
       {{ partial "header.html" (dict "context" . "first" "true") }}
     </div>
-    <div class="flex items-center site-container pt-4">
-      <span class="relative inline-flex rounded-md shadow-sm">
-        <span class="h-6 w-6 pointer-events-none">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-6 w-6 bg-green-500"></span>
-        </span>
-      </span>
-      <p class="pl-2 text-white text-xl font-extralight text-wrap max-w-64">One Spot Available For March 2025</p>
-    </div>
   </span>
 
   <div class="site-container">
-    <h1 class="max-w-2xl text-white text-6xl font-extralight">
+    <div class="flex items-center pb-4 lg:pb-8">
+      <span class="relative inline-flex rounded-md shadow-sm">
+        <span class="h-4 w-4 lg:h-6 lg:w-6 pointer-events-none">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-4 w-4 lg:h-6 lg:w-6 bg-green-500"></span>
+        </span>
+      </span>
+      <p class="pl-2 text-white text-md lg:text-xl font-extralight text-wrap max-w-40 lg:max-w-64">
+        One Spot Available For March 2025
+      </p>
+    </div>
+
+    <h1 class="max-w-md lg:max-w-2xl text-white text-3xl lg:text-6xl font-extralight">
       0-1 & 1-N Product Engineer
       Technical Depth & Impact;
     </h1>
-    <p class="mt-6 max-w-2xl text-xl text-white">
+    <p class="mt-6 max-w-72 lg:max-w-lg text-md lg:text-xl text-white font-extralight lg:font-light uppercase">
       Helping teams to achieve clarity and calm with
       reliable, scalable, sustainable and maintainable architectures.
     </p>
@@ -52,13 +52,26 @@
 
 
 <!-- Who Work with me -->
-<section class="dark:bg-light bg-dark min-h-screen">
-  <div class="site-container dark:text-dark text-white">
-    who work with me
+<section class="dark:bg-light bg-dark min-h-screen flex flex-col justify-between">
+  <div class="flex flex-row space-between items-start site-container min-w-full pt-[30rem]">
+    <div class="min-w-[40rem] m-11">
+      <h1 class="
+      text-white
+      dark:text-dark
+
+      text-7xl
+      lg:text-9xl
+      capitalize
+
+      font-light
+
+      ">
+        Who Work's With Me?
+      </h1>
+    </div>
+    {{ partial "inline/target-audience.html" . }}
   </div>
-  <div>
-    logos
-  </div>
+  {{ partial "inline/logos.html" . }}
 </section>
 
 
@@ -86,13 +99,9 @@
 {{ end }}
 
 
-
-
-
-
 {{ define "partials/inline/marquee.html" }}
 {{ $marquee := .Site.Data.marquee }}
-<div class="h-full overflow-clip marquee-text items-center">
+<div class="h-full overflow-clip items-center">
   <div class="
         flex
         pd-4
@@ -114,3 +123,32 @@
   </div>
 </div>
 {{ end }}
+
+{{ define "partials/inline/target-audience.html" }}
+{{ $audience := .Site.Data.target_audience }}
+<div class="h-full flex flex-col gap-16 justify-center text-white dark:text-dark">
+  {{ range $audience }}
+  <span class="flex gap-4">
+    <h1 class="text-6xl lg:text-8xl">
+      {{ .listNumber }}.
+    </h1>
+    <div class="flex flex-col gap-4">
+      <h1 class="text-4xl lg:text-6xl">
+        {{ .title }}
+      </h1>
+      <div class="flex-grow border-t border-dark pt-30"></div>
+      <p class="text-2xl lg:text-4xl font-light">
+        {{ .content }}
+      </p>
+    </div>
+  </span>
+  {{ end }}
+</div>
+{{end}}
+
+{{ define "partials/inline/logos.html" }}
+<div class="h-full flex bg-white min-h-60 flex flex-col site-container">
+  <h2 class="text-dark text-3xl font-extralight py-6">Past Experiences</h2>
+  <img src="https://via.placeholder.com/150" alt="logo" />
+</div>
+{{end}}

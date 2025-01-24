@@ -46,7 +46,7 @@ function initCal() {
     calLink: "eduardosanzb/15min",
   });
   Cal.ns["15min"]("ui", {
-    theme: localStorage?.theme?? "dark",
+    theme: localStorage?.theme ?? "dark",
 
     cssVarsPerTheme: {
       light: { "cal-brand": "#f8f8ff" },
@@ -69,6 +69,7 @@ function createCalInlineDiv() {
 }
 
 function refreshCal() {
+  console.log("refreshCal");
   const calInlineDiv = document.getElementById("my-cal-inline");
   if (calInlineDiv) {
     calInlineDiv.remove(); // Remove existing calendar
@@ -109,7 +110,6 @@ function observeHeader() {
       });
     },
     {
-      // Configure the observer options
       threshold: 0, // Trigger as soon as even 1px is out of viewport
       rootMargin: "0px", // No margin around the viewport
     },
@@ -125,10 +125,15 @@ function observeHeader() {
  */
 let finalDecision = ["force-light", "force-dark"];
 function toggleHeader(remove, add) {
-  const otherHeader = document.getElementById("secondary-element");
-  otherHeader.classList.remove(remove);
-  otherHeader.classList.add(add);
-  finalDecision = [remove, add];
+  console.log("toggleHeader", { remove, add });
+  try {
+    const otherHeader = document.getElementById("secondary-element");
+    otherHeader.classList.remove(remove);
+    otherHeader.classList.add(add);
+    finalDecision = [remove, add];
+  } catch (error) {
+    console.error("toggleHeader", error);
+  }
 }
 
 function observeSections() {
@@ -139,7 +144,7 @@ function observeSections() {
     // dark: [remove, add]
     "rgb(8, 8, 8)": ["force-light", "force-dark"],
     // ligth
-    "rgb(248, 248, 248)": ["force-dark", "force-light"],
+    "rgb(207, 207, 207)": ["force-dark", "force-light"],
   };
 
   const sections = document.querySelectorAll("section");
@@ -163,7 +168,14 @@ function observeSections() {
         if (entry.isIntersecting) {
           const percentage = entry.intersectionRatio * 100;
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
-          const [remove, add] = colors[bgColor];
+          const [remove, add] = colors?.[bgColor] ?? ["force-light", "force-dark"];
+          console.log({
+            // target: entry.target,
+            // percentage,
+            bgColor,
+            // ...{ remove, add },
+            // scrollDirection,
+          });
 
           // when going down the important one is the bigger one
           if (scrollDirection === "down") {
@@ -174,9 +186,14 @@ function observeSections() {
 
           // when going down the important one is the smaller one
           if (scrollDirection === "up") {
-            if (percentage < 20) {
+            if (percentage < 15) {
               toggleHeader(remove, add);
             }
+          }
+
+          // In the initial load
+          if (percentage > 98) {
+            toggleHeader(remove, add);
           }
         }
 
@@ -211,12 +228,15 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
   }
 });
 
-addEventListener("storage", refreshCal);
-
-matchMedia("(prefers-color-scheme: dark)").addEventListener(
-  "change",
-  refreshCal,
-);
+// This needs to wait for the main.js to load; so we can use the dark mode toggle
+if (
+  !localStorage.theme &&
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+) {
+  window.changeTheme("dark");
+} else {
+  window.changeTheme(localStorage.theme);
+}
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", (e) => {
@@ -228,22 +248,12 @@ if (document.readyState === "loading") {
   observeSections();
 }
 
-// This needs to wait for the main.js to load; so we can use the dark mode toggle
-setTimeout(() => {
-  if (
-    !localStorage.theme &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    window.changeTheme("dark");
-  } else {
-    window.changeTheme(localStorage.theme);
-  }
-}, 1000);
-
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches }) => {
     console.log("matches", matches);
+    refreshCal();
+    toggleHeader(...finalDecision.reverse());
     if (matches) {
       window.changeTheme("dark");
     } else {
@@ -252,6 +262,8 @@ window
   });
 
 addEventListener("storage", () => {
+  refreshCal();
+  toggleHeader(...finalDecision.reverse());
   if (localStorage.theme === "dark") {
     window.changeTheme("dark");
   } else {

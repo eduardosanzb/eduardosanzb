@@ -9,6 +9,10 @@ module.exports = {
   safelist: [
     'force-dark',
     'force-light',
+    { pattern: /^bg-\[url\(.*\)\]$/ },
+    { pattern: /^(pt|pb|pl|pr|px|py)-\d{1,9}$/ },
+    { pattern: /^gap-\d{1,9}$/ },
+    { pattern: /^text-\d{1,9}xl$/ },
   ],
   darkMode: 'class',
   theme: {
@@ -24,11 +28,12 @@ module.exports = {
         red: {
           ...require('tailwindcss/colors').red,
         },
-        green:{
+        green: {
           ...require('tailwindcss/colors').green,
         },
         dark: '#080808',
-        light: '#f8f8f8',
+        light: '#cfcfcf',
+        white: '#f8f8ff',
         banner: '#DFFF9D',
         pulse: '#1DFAA7',
 
@@ -46,7 +51,7 @@ module.exports = {
       animation: {
         marquee: 'marquee 20s linear infinite forwards',
       },
-      keyframes:{
+      keyframes: {
         marquee: {
           'to': { transform: 'translateX(-50%)' },
         },
@@ -54,14 +59,15 @@ module.exports = {
       fontWeight: {
         thin: 100,
         extralight: 200,
+        light: 300,
+        normal: 400,
       },
       letterSpacing: {
-        tightest: '-.075em',
+        tighteso: '-.075em',
       },
       backgroundImage: {
-        'hero-pattern': "url('/images/hero-pattern.svg')",
-        'footer-texture': "url('/images/footer-texture.png')",
         'hero': "url('/images/hero_1x.webp')",
+        'hero-fallback': "url('/images/hero_fb.webp')",
       },
       typography: {
         DEFAULT: {
