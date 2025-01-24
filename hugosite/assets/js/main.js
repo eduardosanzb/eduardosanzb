@@ -144,7 +144,7 @@ function observeSections() {
     // dark: [remove, add]
     "rgb(8, 8, 8)": ["force-light", "force-dark"],
     // ligth
-    "rgb(207, 207, 207)": ["force-dark", "force-light"],
+    "rgb(249, 249, 249)": ["force-dark", "force-light"],
   };
 
   const sections = document.querySelectorAll("section");
@@ -169,12 +169,12 @@ function observeSections() {
           const percentage = entry.intersectionRatio * 100;
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
           const [remove, add] = colors?.[bgColor] ?? ["force-light", "force-dark"];
-          console.log({
-            // target: entry.target,
-            // percentage,
+          console.debug({
+            target: entry.target,
+            percentage,
             bgColor,
-            // ...{ remove, add },
-            // scrollDirection,
+            ...{ remove, add },
+            scrollDirection,
           });
 
           // when going down the important one is the bigger one
@@ -251,7 +251,6 @@ if (document.readyState === "loading") {
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches }) => {
-    console.log("matches", matches);
     refreshCal();
     toggleHeader(...finalDecision.reverse());
     if (matches) {

@@ -1,14 +1,9 @@
-{{ $svg := . }}
-{{ $class := print $svg "-icon-lol" }}
+{{ $svg := .name }}
+{{ $class := .class }}
+
 {{ $match := "<svg (.*)?>(.*)</svg>" }}
 
-{{ $replaceWith := printf `<svg class="%s" ${1}>${2}</svg>` $class }}
-
-{{ $svgg := resources.Get (print "ionicons/" . ".svg") }}
-hola
-<!-- <span class="inline-svg"> -->
-<!--   {{ $svgg | safeHTML }} -->
-<!-- </span> -->
-
-{{ return (replaceRE $match $replaceWith (printf "/assets/svg/%s.svg" $svg | readFile) | safeHTML) }}
+{{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }}
+{{ $newsvg := printf `<svg class="%s" ${1}>${2}</svg>` $class }}
+{{ return (replaceRE $oldsvg $newsvg (printf "/assets/svg/%s.svg" $svg | readFile) | safeHTML) }}
 

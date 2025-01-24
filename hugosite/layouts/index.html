@@ -53,23 +53,27 @@
 
 <!-- Who Work with me -->
 <section class="dark:bg-light bg-dark min-h-screen flex flex-col justify-between">
-  <div class="flex flex-row space-between items-start site-container min-w-full pt-[30rem]">
-    <div class="min-w-[40rem] m-11">
+  <div class="flex flex-col lg:flex-row space-between lg:items-center site-container min-w-full flex-grow">
+    <div class="mt-11 lg:min-w-[40rem] lg:m-11">
       <h1 class="
       text-white
       dark:text-dark
 
-      text-7xl
-      lg:text-9xl
-      capitalize
+      max-w-[70%]
 
+      text-5xl
+      lg:text-9xl
+
+      capitalize
       font-light
 
       ">
         Who Work's With Me?
       </h1>
     </div>
-    {{ partial "inline/target-audience.html" . }}
+    <div class="my-8 lg:my-11">
+      {{ partial "inline/target-audience.html" . }}
+    </div>
   </div>
   {{ partial "inline/logos.html" . }}
 </section>
@@ -78,7 +82,7 @@
 <!-- Services -->
 <section class="bg-light dark:bg-dark min-h-screen">
   <div class="site-container text-dark dark:text-white">
-    services
+    <h2 class="text-3xl font-extralight py-6 capitalize">Services</h2>
   </div>
   <div>
     cards
@@ -112,13 +116,18 @@
 
         ">
     {{ range $marquee }}
-    <p class="pl-1 pr-2 font-thin text-xs">●</p>
-    <p class="pl-1 pr-2 font-medium">{{ . }}</p>
+    <span class="flex flex-row items-center">
+      <p class="pl-1 pr-2 font-thin text-xs">●</p>
+      <p class="pl-1 pr-2 font-medium">{{ . }}</p>
+    </span>
     {{ end }}
 
+
     {{ range $marquee }}
-    <p class="pl-1 pr-2 font-thin text-xs">●</p>
-    <p class="pl-1 pr-2 font-medium aria-hidden">{{ . }}</p>
+    <span class="flex flex-row items-center">
+      <p class="pl-1 pr-2 font-thin text-xs">●</p>
+      <p class="pl-1 pr-2 font-medium aria-hidden">{{ . }}</p>
+    </span>
     {{ end }}
   </div>
 </div>
@@ -132,11 +141,14 @@
     <h1 class="text-6xl lg:text-8xl">
       {{ .listNumber }}.
     </h1>
+    <h1 class="hidden text-4xl lg:text-6xl">
+      {{ .title }}
+    </h1>
     <div class="flex flex-col gap-4">
       <h1 class="text-4xl lg:text-6xl">
         {{ .title }}
       </h1>
-      <div class="flex-grow border-t border-dark pt-30"></div>
+      <div class="flex-grow border-t border-dark dark:border-white pt-30"></div>
       <p class="text-2xl lg:text-4xl font-light">
         {{ .content }}
       </p>
@@ -147,8 +159,32 @@
 {{end}}
 
 {{ define "partials/inline/logos.html" }}
-<div class="h-full flex bg-white min-h-60 flex flex-col site-container">
-  <h2 class="text-dark text-3xl font-extralight py-6">Past Experiences</h2>
-  <img src="https://via.placeholder.com/150" alt="logo" />
-</div>
-{{end}}
+<div class="h-full flex bg-gray min-h-40 flex flex-col">
+  <h2 class="text-dark text-3xl font-extralight pt-6 capitalize site-container">Past Experiences</h2>
+  <div class="h-full overflow-clip items-center min-h-32 flex-grow flex">
+    <div class="
+        flex
+        flex-col
+        lg:flex-row
+
+        flex-grow
+        items-center
+        gap-12
+        lg:gap-16
+        min-h-full
+        pt-4
+        lg:pt-0
+        pb-4
+        h-full
+
+        animate-marquee-TODO
+        " style="--marquee-speed: 20s; --marquee-direction: reverse;"
+        >
+
+      {{ $logos := slice "bcg" "generation" "kombo" "mckinsey" "platinion" "unity" }}
+      {{ range $logos }}
+        {{ partial "svg.html" (dict "name" . "class" "max-h-12") }}
+      {{ end }}
+    </div>
+  </div>
+  {{end}}

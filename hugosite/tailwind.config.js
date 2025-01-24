@@ -9,10 +9,6 @@ module.exports = {
   safelist: [
     'force-dark',
     'force-light',
-    { pattern: /^bg-\[url\(.*\)\]$/ },
-    { pattern: /^(pt|pb|pl|pr|px|py)-\d{1,9}$/ },
-    { pattern: /^gap-\d{1,9}$/ },
-    { pattern: /^text-\d{1,9}xl$/ },
   ],
   darkMode: 'class',
   theme: {
@@ -32,10 +28,10 @@ module.exports = {
           ...require('tailwindcss/colors').green,
         },
         dark: '#080808',
-        light: '#cfcfcf',
-        white: '#f8f8ff',
+        light: '#f9f9f9',
         banner: '#DFFF9D',
         pulse: '#1DFAA7',
+        gray: '#d9d9d9'
 
       },
       fontFamily: {
@@ -49,7 +45,7 @@ module.exports = {
 
       },
       animation: {
-        marquee: 'marquee 20s linear infinite forwards',
+        marquee: 'marquee var(--marquee-speed, 20s) linear infinite var(--marquee-direction, forwards)',
       },
       keyframes: {
         marquee: {

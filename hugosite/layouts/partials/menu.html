@@ -51,7 +51,8 @@
         "
       >
         {{if  isset .Params "icon"}}
-          {{ partial "svg.html" .Params.icon }}
+          {{ partial "svg.html"  (dict "name" .Params.icon "class" "max-h-[24px]") }}
+
           {{ if eq .Params.rel "external"}}
             {{- $name = "" }}
           {{ end }}
@@ -64,3 +65,4 @@
     </li>
   {{- end }}
 {{- end }}
+
