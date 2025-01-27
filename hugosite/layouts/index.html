@@ -92,11 +92,11 @@
     <div class="site-container min-h-full flex flex-col gap-4 max-w-screen-2xl">
       {{$services := .Site.Data.services}}
       {{ with $services }}
-      <div class="grid grid-cols-2 gap-4 site-container min-h-64">
+      <div class="grid md:grid-cols-2 gap-4 site-container min-h-64">
         {{ range first 2 . }} {{ partial "inline/service-card.html" . }}
         {{ end }}
       </div>
-      <div class="grid grid-cols-3 gap-4 site-container min-h-64">
+      <div class="grid md:grid-cols-3 gap-4 site-container min-h-64">
         {{ range after 2 . }}
         {{ partial "inline/service-card.html" . }}
         {{ end }}
