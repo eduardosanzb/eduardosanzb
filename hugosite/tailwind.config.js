@@ -31,7 +31,9 @@ module.exports = {
         light: '#f9f9f9',
         banner: '#DFFF9D',
         pulse: '#1DFAA7',
-        gray: '#d9d9d9'
+        logo: '#d9d9d9',
+        gray: '#161616',
+
 
       },
       fontFamily: {

@@ -3,13 +3,13 @@
 
 let scriptBody;
 function setupCalScript(C, A, L) {
-  let p = function (a, ar) {
+  let p = function(a, ar) {
     a.q.push(ar);
   };
   let d = C.document;
   C.Cal =
     C.Cal ||
-    function () {
+    function() {
       let cal = C.Cal;
       let ar = arguments;
       if (!cal.loaded) {
@@ -20,7 +20,7 @@ function setupCalScript(C, A, L) {
         cal.loaded = true;
       }
       if (ar[0] === L) {
-        const api = function () {
+        const api = function() {
           p(api, arguments);
         };
         const namespace = ar[1];
@@ -96,8 +96,13 @@ window.changeTheme = changeTheme;
  * based on the visibility of the primary header
  */
 function observeHeader() {
-  const primaryElement = document.getElementById("first-header");
+  const landingPageHeader = document.getElementById("first-header");
   const secondaryElement = document.getElementById("secondary-element");
+
+  if (!landingPageHeader) {
+    secondaryElement.classList.remove("hidden");
+    return
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -116,7 +121,7 @@ function observeHeader() {
   );
 
   // Start observing the primary element
-  observer.observe(primaryElement);
+  observer.observe(landingPageHeader);
 }
 
 /**
@@ -125,7 +130,6 @@ function observeHeader() {
  */
 let finalDecision = ["force-light", "force-dark"];
 function toggleHeader(remove, add) {
-  console.log("toggleHeader", { remove, add });
   try {
     const otherHeader = document.getElementById("secondary-element");
     otherHeader.classList.remove(remove);
@@ -148,6 +152,7 @@ function observeSections() {
   };
 
   const sections = document.querySelectorAll("section");
+  console.log({ sections });
   let scrollDirection = "down";
 
   const previousY = new Map();
@@ -169,8 +174,8 @@ function observeSections() {
           const percentage = entry.intersectionRatio * 100;
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
           const [remove, add] = colors?.[bgColor] ?? ["force-light", "force-dark"];
-          console.debug({
-            target: entry.target,
+          console.log({
+            target: entry.target.id,
             percentage,
             bgColor,
             ...{ remove, add },
@@ -203,16 +208,18 @@ function observeSections() {
     {
       // Configure the observer options
       threshold: [
-        0, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1,
-      ], // Trigger as soon as even 1px is out of viewport
+        0, 0.10, 0.15, 0.25, 0.5, 0.75, 0.95, 0.97, 0.98, 0.99, 1,
+      ],
       rootMargin: "0px", // No margin around the viewport
     },
   );
 
   // Start observing the primary element
+  const observers = []
   sections.forEach((section) => {
     observer.observe(section);
   });
+  console.log(observers)
 }
 
 setupCalScript(window, "https://app.cal.com/embed/embed.js", "init");
@@ -244,8 +251,11 @@ if (document.readyState === "loading") {
     observeSections();
   });
 } else {
+  setTimeout(() => {
+    observeSections();
+  }, 1000)
+
   observeHeader();
-  observeSections();
 }
 
 window

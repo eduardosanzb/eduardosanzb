@@ -38,8 +38,8 @@
       <p class="text-base text-gray-600">
         The build for this version was done with the commit:
         {{ $commit := getenv "HUGO_GITHUB_SHA" }}
-        <a target="_blank" href="{{getenv "HUGO_GITHUB_ACTION_URL"}}" class="nav-link">{{ printf "%.8s" $commit}}</a>
-        on © {{ now.Format "2006-01-02 15:04:05" }} {{ .Site.Title }}. All rights reserved.
+        <a target="_blank" href="{{getenv "HUGO_GITHUB_ACTION_URL"}}" class="nav-link">{{ printf ".8s" $commit}}</a>
+        on © {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.
       </p>
     </div>
   </div>

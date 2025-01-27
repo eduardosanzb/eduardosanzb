@@ -1,7 +1,6 @@
 {{ define "main" }}
 <!--HERO-->
-
-<section class="
+<section id="hero" class="
     min-h-screen
     bg-dark
     flex
@@ -14,11 +13,9 @@
     bg-center
     bg-hero
     ">
-  <span>
-    <div id="first-header" class="group force-dark">
-      {{ partial "header.html" (dict "context" . "first" "true") }}
-    </div>
-  </span>
+  <div id="first-header" class="group force-dark">
+    {{ partial "header.html" (dict "context" . "first" "true") }}
+  </div>
 
   <div class="site-container">
     <div class="flex items-center pb-4 lg:pb-8">
@@ -49,19 +46,24 @@
   </div>
 </section>
 
-
-
 <!-- Who Work with me -->
-<section class="dark:bg-light bg-dark min-h-screen flex flex-col justify-between">
+<section id="who-works" class="
+  min-h-screen
+
+  bg-dark
+  dark:bg-light
+
+  flex
+  flex-col
+  justify-between
+  ">
   <div class="flex flex-col lg:flex-row space-between lg:items-center site-container min-w-full flex-grow">
-    <div class="mt-11 lg:min-w-[40rem] lg:m-11">
+    <div class="mt-11 lg:m-11">
       <h1 class="
       text-white
       dark:text-dark
 
-      max-w-[70%]
-
-      text-5xl
+      text-7xl
       lg:text-9xl
 
       capitalize
@@ -80,23 +82,38 @@
 
 
 <!-- Services -->
-<section class="bg-light dark:bg-dark min-h-screen">
+<section id="services" class="bg-light dark:bg-dark min-h-screen flex flex-col align-center">
+
   <div class="site-container text-dark dark:text-white">
     <h2 class="text-3xl font-extralight py-6 capitalize">Services</h2>
   </div>
-  <div>
-    cards
-  </div>
+
+  <span class="min-w-full flex justify-center">
+    <div class="site-container min-h-full flex flex-col gap-4 max-w-screen-2xl">
+      {{$services := .Site.Data.services}}
+      {{ with $services }}
+      <div class="grid grid-cols-2 gap-4 site-container min-h-64">
+        {{ range first 2 . }} {{ partial "inline/service-card.html" . }}
+        {{ end }}
+      </div>
+      <div class="grid grid-cols-3 gap-4 site-container min-h-64">
+        {{ range after 2 . }}
+        {{ partial "inline/service-card.html" . }}
+        {{ end }}
+      </div>
+      <div>
+  </span>
+  {{ end }}
 </section>
 
 <!-- Contact -->
-<section class="dark:bg-light bg-dark min-h-screen">
+<section id="contact" class="dark:bg-light bg-dark min-h-screen">
   <div class="site-container dark:text-dark text-white">
     Do you wanna works with me?
   </div>
-  <div id="cal-section">
-    <div style="width: 100%; height: 100%; overflow: scroll" id="my-cal-inline"></div>
-  </div>
+  <!-- <div id="cal-section"> -->
+  <!--   <div style="width: 100%; height: 100%; overflow: scroll" id="my-cal-inline"></div> -->
+  <!-- </div> -->
 </section>
 
 
@@ -137,29 +154,44 @@
 {{ $audience := .Site.Data.target_audience }}
 <div class="h-full flex flex-col gap-16 justify-center text-white dark:text-dark">
   {{ range $audience }}
-  <span class="flex gap-4">
-    <h1 class="text-6xl lg:text-8xl">
-      {{ .listNumber }}.
-    </h1>
-    <h1 class="hidden text-4xl lg:text-6xl">
-      {{ .title }}
-    </h1>
-    <div class="flex flex-col gap-4">
-      <h1 class="text-4xl lg:text-6xl">
+  <!-- Small screen -->
+  <span class="md:hidden flex flex-col gap-4">
+    <span class="flex gap-4 items-center">
+      <h1 class="text-8xl">
+        {{ .listNumber }}.
+      </h1>
+      <h1 class="text-6xl">
         {{ .title }}
       </h1>
-      <div class="flex-grow border-t border-dark dark:border-white pt-30"></div>
-      <p class="text-2xl lg:text-4xl font-light">
+    </span>
+    <div class="flex-grow border-t border-white dark:border-dark pt-30"></div>
+    <p class="text-2xl lg:text-4xl font-light">
+      {{ .content }}
+    </p>
+  </span>
+
+  <!--From LG-->
+  <span class="hidden md:flex gap-4">
+    <h1 class="text-9xl">
+      {{ .listNumber }}.
+    </h1>
+    <span class="flex flex-col gap-4">
+      <h1 class="text-6xl">
+        {{ .title }}
+      </h1>
+      <div class="flex-grow border-t border-white dark:border-dark pt-30"></div>
+      <p class="text-4xl font-light">
         {{ .content }}
       </p>
-    </div>
+    </span>
   </span>
+
   {{ end }}
 </div>
 {{end}}
 
 {{ define "partials/inline/logos.html" }}
-<div class="h-full flex bg-gray min-h-40 flex flex-col">
+<div class="flex bg-logo min-h-40 flex flex-col">
   <h2 class="text-dark text-3xl font-extralight pt-6 capitalize site-container">Past Experiences</h2>
   <div class="h-full overflow-clip items-center min-h-32 flex-grow flex">
     <div class="
@@ -178,13 +210,25 @@
         h-full
 
         animate-marquee-TODO
-        " style="--marquee-speed: 20s; --marquee-direction: reverse;"
-        >
+        " style="--marquee-speed: 20s; --marquee-direction: reverse;">
 
       {{ $logos := slice "bcg" "generation" "kombo" "mckinsey" "platinion" "unity" }}
       {{ range $logos }}
-        {{ partial "svg.html" (dict "name" . "class" "max-h-12") }}
+      {{ partial "svg.html" (dict "name" . "class" "max-h-12 bg-logo") }}
       {{ end }}
     </div>
   </div>
-  {{end}}
+</div>
+{{end}}
+
+{{ define "partials/inline/service-card.html" }}
+<div class="dark:bg-gray border-grey-100 border-2 bg-white rounded-lg flex min-h-full p-5 aspect-3/2">
+  <span>
+    <h1 class="text-lg text-dark dark:text-white">{{ .title }}</h1>
+    <p class="text-md text dark dark:text-white">{{ .content }}</p>
+  </span>
+  <span>
+    {{ partial "svg.html" (dict "name" .icon "class" "max-h-12") }}
+  </span>
+</div>
+{{end}}
