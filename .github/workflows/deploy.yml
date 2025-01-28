@@ -47,7 +47,6 @@ jobs:
           HUGO_GITHUB_SHA: ${{ github.sha }}
           HUGO_GITHUB_ACTION_URL: ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}
 
-
         run: |
           hugo --minify --gc
 
