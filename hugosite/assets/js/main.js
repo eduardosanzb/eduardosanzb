@@ -121,7 +121,7 @@ function observeHeader() {
       });
     },
     {
-      threshold: 0,
+      threshold: 0.1,
     },
   );
 
