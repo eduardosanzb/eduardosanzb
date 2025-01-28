@@ -11,7 +11,9 @@
     bg-no-repeat
     bg-cover
     bg-center
-    bg-hero
+    md:bg-hero
+    bg-hero-portrait
+
     ">
   <div id="first-header" class="group force-dark">
     {{ partial "header.html" (dict "context" . "first" "true") }}

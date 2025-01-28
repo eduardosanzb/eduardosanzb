@@ -64,7 +64,7 @@ module.exports = {
       },
       backgroundImage: {
         'hero': "url('/images/hero_me_1x.webp')",
-        'hero-fallback': "url('/images/hero_fb.webp')",
+        'hero-portrait': "url('/images/hero_image_1x.webp')",
       },
       typography: {
         DEFAULT: {
