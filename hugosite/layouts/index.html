@@ -1,7 +1,7 @@
 {{ define "main" }}
 <!--HERO-->
 <section id="hero" class="
-    min-h-screen
+    min-h-dvh
     bg-dark
     flex
     flex-col
@@ -48,7 +48,7 @@
 
 <!-- Who Work with me -->
 <section id="who-works" class="
-  min-h-screen
+  min-h-dvh
 
   bg-dark
   dark:bg-light
@@ -82,21 +82,21 @@
 
 
 <!-- Services -->
-<section id="services" class="bg-light dark:bg-dark min-h-screen flex flex-col align-center">
+<section id="services" class="bg-light dark:bg-dark min-h-dvh flex flex-col align-center">
 
   <div class="site-container text-dark dark:text-white">
     <h2 class="text-3xl font-extralight py-6 capitalize">Services</h2>
   </div>
 
-  <span class="min-w-full flex justify-center">
-    <div class="site-container min-h-full flex flex-col gap-4 max-w-screen-2xl">
+  <span class="min-w-full flex justify-center flex-grow">
+    <div class="site-container min-h-full flex flex-col gap-4 max-w-screen-2xl flex-grow">
       {{$services := .Site.Data.services}}
       {{ with $services }}
-      <div class="grid md:grid-cols-2 gap-4 site-container min-h-64">
+      <div class="grid md:grid-cols-2 gap-4 min-h-96">
         {{ range first 2 . }} {{ partial "inline/service-card.html" . }}
         {{ end }}
       </div>
-      <div class="grid md:grid-cols-3 gap-4 site-container min-h-64">
+      <div class="grid md:grid-cols-3 gap-4 min-h-96">
         {{ range after 2 . }}
         {{ partial "inline/service-card.html" . }}
         {{ end }}
@@ -107,13 +107,33 @@
 </section>
 
 <!-- Contact -->
-<section id="contact" class="dark:bg-light bg-dark min-h-screen">
-  <div class="site-container dark:text-dark text-white">
-    Do you wanna works with me?
+<section id="contact" class="flex dark:bg-light bg-dark min-h-dvh">
+  <div class="flex flex-col lg:flex-row space-between items-center site-container min-w-full flex-grow">
+    <div class="mt-11 lg:m-11 min-w-[50%]">
+      <h1 class="
+      text-white
+      dark:text-dark
+
+      text-7xl
+      md:text-9xl
+
+      capitalize
+      font-light
+
+      ">
+        Do You Want To Work With Me?
+      </h1>
+      <button
+        id="copy-email"
+        class="mt-11 bg-logo min-w-56 hover:bg-gray-200 text-dark font-light py-2 px-4 rounded inline-flex items-center rounded-lg">
+        {{ partial "svg.html" (dict "name" "copy" "class" "fill-current w-4 h-4 mr-2") }}
+        <span>info@eduardosanzb.dev</span>
+      </button>
+    </div>
+    <div id="cal-section" class="min-w-[50%] mt-8 md:mt-52">
+      <div style="width: 100%; height: 100%; overflow: scroll" id="my-cal-inline"></div>
+    </div>
   </div>
-  <!-- <div id="cal-section"> -->
-  <!--   <div style="width: 100%; height: 100%; overflow: scroll" id="my-cal-inline"></div> -->
-  <!-- </div> -->
 </section>
 
 
@@ -154,7 +174,7 @@
 {{ $audience := .Site.Data.target_audience }}
 <div class="h-full flex flex-col gap-16 justify-center text-white dark:text-dark">
   {{ range $audience }}
-  <!-- Small screen -->
+  <!-- Small dvh -->
   <span class="md:hidden flex flex-col gap-4">
     <span class="flex gap-4 items-center">
       <h1 class="text-8xl">
@@ -222,13 +242,13 @@
 {{end}}
 
 {{ define "partials/inline/service-card.html" }}
-<div class="dark:bg-gray border-grey-100 border-2 bg-white rounded-lg flex min-h-full p-5 aspect-3/2">
+<div class="dark:bg-card dark:border-card border-gray-100 border-2 bg-white rounded-lg flex min-h-full p-5 aspect-3/2">
   <span>
     <h1 class="text-lg text-dark dark:text-white">{{ .title }}</h1>
     <p class="text-md text dark dark:text-white">{{ .content }}</p>
   </span>
   <span>
-    {{ partial "svg.html" (dict "name" .icon "class" "max-h-12") }}
+    {{ partial "svg.html" (dict "name" .icon "class" "text-card dark:text-white") }}
   </span>
 </div>
 {{end}}

@@ -37,23 +37,31 @@ function setupCalScript(C, A, L) {
 }
 
 function initCal() {
+  const element = document.getElementById("my-cal-inline");
+  if (!element) {
+    console.error("Element not found");
+    return;
+  }
+
   Cal("init", "15min", { origin: "https://cal.com" });
 
   const layout = "month_view";
+  const theme = localStorage.theme ?? 'light';
   Cal.ns["15min"]("inline", {
     elementOrSelector: "#my-cal-inline",
-    config: { layout, theme: localStorage.theme },
+    config: { layout, theme },
     calLink: "eduardosanzb/15min",
   });
+
   Cal.ns["15min"]("ui", {
-    theme: localStorage?.theme ?? "dark",
+    theme: theme,
 
     cssVarsPerTheme: {
       light: { "cal-brand": "#f8f8ff" },
       dark: { "cal-brand": "#080808" },
     },
 
-    hideEventTypeDetails: false,
+    hideEventTypeDetails: true,
     layout,
   });
 }
@@ -69,7 +77,6 @@ function createCalInlineDiv() {
 }
 
 function refreshCal() {
-  console.log("refreshCal");
   const calInlineDiv = document.getElementById("my-cal-inline");
   if (calInlineDiv) {
     calInlineDiv.remove(); // Remove existing calendar
@@ -115,7 +122,7 @@ function observeHeader() {
       });
     },
     {
-      threshold: 0, // Trigger as soon as even 1px is out of viewport
+      threshold: 0.25, // Trigger as soon as even 1px is out of viewport
       rootMargin: "0px", // No margin around the viewport
     },
   );
@@ -129,12 +136,13 @@ function observeHeader() {
  * will adapt the header
  */
 let finalDecision = ["force-light", "force-dark"];
-function toggleHeader(remove, add) {
+function toggleHeader(remove, add, who) {
   try {
     const otherHeader = document.getElementById("secondary-element");
     otherHeader.classList.remove(remove);
     otherHeader.classList.add(add);
     finalDecision = [remove, add];
+    console.log({ finalDecision, who })
   } catch (error) {
     console.error("toggleHeader", error);
   }
@@ -152,6 +160,10 @@ function observeSections() {
   };
 
   const sections = document.querySelectorAll("section");
+  if (!sections.length) {
+    console.log('No sections found')
+    return;
+  }
   console.log({ sections });
   let scrollDirection = "down";
 
@@ -159,6 +171,7 @@ function observeSections() {
 
   const observer = new IntersectionObserver(
     (entries) => {
+      console.log(entries)
       entries.forEach((entry) => {
         const currY = entry.boundingClientRect.y;
         const prevY = previousY.get(entry.target);
@@ -182,24 +195,25 @@ function observeSections() {
             scrollDirection,
           });
 
+          // In the initial load
+          if (percentage > 98) {
+            toggleHeader(remove, add, entry.target.id);
+            return
+          }
           // when going down the important one is the bigger one
           if (scrollDirection === "down") {
             if (percentage > 95) {
-              toggleHeader(remove, add);
+              toggleHeader(remove, add, entry.target.id);
             }
           }
 
           // when going down the important one is the smaller one
           if (scrollDirection === "up") {
             if (percentage < 15) {
-              toggleHeader(remove, add);
+              toggleHeader(remove, add, entry.target.id);
             }
           }
 
-          // In the initial load
-          if (percentage > 98) {
-            toggleHeader(remove, add);
-          }
         }
 
         previousY.set(entry.target, currY);
@@ -208,18 +222,18 @@ function observeSections() {
     {
       // Configure the observer options
       threshold: [
-        0, 0.10, 0.15, 0.25, 0.5, 0.75, 0.95, 0.97, 0.98, 0.99, 1,
+        // every pizel
+        0, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1,
+        // 0.05, 0.91, 0.95, 0.98, 1
       ],
       rootMargin: "0px", // No margin around the viewport
     },
   );
 
   // Start observing the primary element
-  const observers = []
   sections.forEach((section) => {
     observer.observe(section);
   });
-  console.log(observers)
 }
 
 setupCalScript(window, "https://app.cal.com/embed/embed.js", "init");
@@ -227,13 +241,36 @@ initCal();
 
 document.getElementById("theme-toggle").addEventListener("click", () => {
   refreshCal();
-  toggleHeader(...finalDecision.reverse());
+  toggleHeader(...finalDecision.reverse(), 'theme-toggle');
   if (document.documentElement.classList.contains("dark")) {
     window.changeTheme("light");
   } else {
     window.changeTheme("dark");
   }
 });
+
+
+document.getElementById('copy-email').addEventListener('click', (ev) => {
+  const copyLabel = 'Copied!';
+  if (ev.target.innerText === copyLabel) {
+    return;
+  }
+  const buttonEl = ev.currentTarget;
+
+  buttonEl.setAttribute('disabled', 'true');
+  const originalText = ev.target.innerText;
+
+  navigator.clipboard.writeText(window.params.email);
+
+  setTimeout(() => {
+    ev.target.innerText = copyLabel;
+    setTimeout(() => {
+      ev.target.innerText = originalText;
+      buttonEl.removeAttribute('disabled');
+    }, 1000)
+  });
+});
+
 
 // This needs to wait for the main.js to load; so we can use the dark mode toggle
 if (
@@ -262,7 +299,7 @@ window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches }) => {
     refreshCal();
-    toggleHeader(...finalDecision.reverse());
+    toggleHeader(...finalDecision.reverse(), 'prefers-color-scheme');
     if (matches) {
       window.changeTheme("dark");
     } else {
@@ -272,7 +309,7 @@ window
 
 addEventListener("storage", () => {
   refreshCal();
-  toggleHeader(...finalDecision.reverse());
+  toggleHeader(...finalDecision.reverse(), 'storage');
   if (localStorage.theme === "dark") {
     window.changeTheme("dark");
   } else {

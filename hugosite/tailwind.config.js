@@ -14,6 +14,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        green: {
+          ...require('tailwindcss/colors').green,
+        },
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -21,19 +24,15 @@ module.exports = {
           600: '#0284c7',
           700: '#0369a1',
         },
-        red: {
-          ...require('tailwindcss/colors').red,
-        },
-        green: {
-          ...require('tailwindcss/colors').green,
-        },
         dark: '#080808',
         light: '#f9f9f9',
         banner: '#DFFF9D',
         pulse: '#1DFAA7',
         logo: '#d9d9d9',
-        gray: '#161616',
-
+        card: '#161616',
+        gray: {
+          ...require('tailwindcss/colors').gray,
+        }
 
       },
       fontFamily: {
@@ -64,7 +63,7 @@ module.exports = {
         tighteso: '-.075em',
       },
       backgroundImage: {
-        'hero': "url('/images/hero_1x.webp')",
+        'hero': "url('/images/hero_me_1x.webp')",
         'hero-fallback': "url('/images/hero_fb.webp')",
       },
       typography: {
