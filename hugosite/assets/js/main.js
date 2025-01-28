@@ -105,7 +105,6 @@ window.changeTheme = changeTheme;
 function observeHeader() {
   const landingPageHeader = document.getElementById("first-header");
   const secondaryElement = document.getElementById("secondary-element");
-  console.log({ landingPageHeader, secondaryElement });
 
   if (!landingPageHeader) {
     secondaryElement.classList.remove("hidden");
@@ -116,17 +115,13 @@ function observeHeader() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log(entry.isIntersecting);
-        console.log(entry.intersectionRatio)
-        console.log(entry.boundingClientRect )
         if (!entry.isIntersecting) {
-          console.log("not isIntersecting");
           secondaryElement.classList.remove("hidden");
         }
       });
     },
     {
-      threshold: 0.25,
+      threshold: 0,
     },
   );
 
@@ -135,10 +130,7 @@ function observeHeader() {
     (entries) => {
       console.log({ entries });
       entries.forEach((entry) => {
-        console.log({ entry });
         if (entry.isIntersecting) {
-          console.log({ entry });
-          console.log("isComing");
           secondaryElement.classList.add("hidden");
         }
       });
