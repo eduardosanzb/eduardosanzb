@@ -105,29 +105,53 @@ window.changeTheme = changeTheme;
 function observeHeader() {
   const landingPageHeader = document.getElementById("first-header");
   const secondaryElement = document.getElementById("secondary-element");
+  console.log({ landingPageHeader, secondaryElement });
 
   if (!landingPageHeader) {
     secondaryElement.classList.remove("hidden");
     return
   }
 
+  // the landing header is leaving the viewport so we show the secondary header
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
+        console.log(entry.isIntersecting);
+        console.log(entry.intersectionRatio)
+        console.log(entry.boundingClientRect )
         if (!entry.isIntersecting) {
-          secondaryElement?.classList.remove("hidden");
-        } else {
-          secondaryElement?.classList.add("hidden");
+          console.log("not isIntersecting");
+          secondaryElement.classList.remove("hidden");
         }
       });
     },
     {
-      threshold: 0.3
+      threshold: 0.25,
     },
+  );
+
+  // We observe the landing header once is about to come back
+  const observer2 = new IntersectionObserver(
+    (entries) => {
+      console.log({ entries });
+      entries.forEach((entry) => {
+        console.log({ entry });
+        if (entry.isIntersecting) {
+          console.log({ entry });
+          console.log("isComing");
+          secondaryElement.classList.add("hidden");
+        }
+      });
+    },
+    {
+      threshold: 0,
+      margin: "-" + landingPageHeader.offsetHeight + "px",
+    }
   );
 
   // Start observing the primary element
   observer.observe(landingPageHeader);
+  observer2.observe(landingPageHeader);
 }
 
 /**
@@ -160,17 +184,14 @@ function observeSections() {
 
   const sections = document.querySelectorAll("section");
   if (!sections.length) {
-    console.log('No sections found')
     return;
   }
-  console.log({ sections });
   let scrollDirection = "down";
 
   const previousY = new Map();
 
   const observer = new IntersectionObserver(
     (entries) => {
-      console.log(entries)
       entries.forEach((entry) => {
         const currY = entry.boundingClientRect.y;
         const prevY = previousY.get(entry.target);
@@ -186,7 +207,7 @@ function observeSections() {
           const percentage = entry.intersectionRatio * 100;
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
           const [remove, add] = colors?.[bgColor] ?? ["force-light", "force-dark"];
-          console.log({
+          console.debug({
             target: entry.target.id,
             percentage,
             bgColor,
