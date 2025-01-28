@@ -50,7 +50,7 @@ function initCal() {
   Cal.ns["15min"]("inline", {
     elementOrSelector: "#my-cal-inline",
     config: { layout, theme },
-    calLink: "eduardosanzb/15min",
+    calLink: "eduardosanzb/30-min-landing-intro",
   });
 
   Cal.ns["15min"]("ui", {
