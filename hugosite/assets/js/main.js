@@ -122,8 +122,7 @@ function observeHeader() {
       });
     },
     {
-      threshold: 0.25, // Trigger as soon as even 1px is out of viewport
-      rootMargin: "0px", // No margin around the viewport
+      threshold: 0.3
     },
   );
 
@@ -136,7 +135,7 @@ function observeHeader() {
  * will adapt the header
  */
 let finalDecision = ["force-light", "force-dark"];
-function toggleHeader(remove, add, who) {
+function toggleHeaderTheme(remove, add, who) {
   try {
     const otherHeader = document.getElementById("secondary-element");
     otherHeader.classList.remove(remove);
@@ -197,20 +196,20 @@ function observeSections() {
 
           // In the initial load
           if (percentage > 98) {
-            toggleHeader(remove, add, entry.target.id);
+            toggleHeaderTheme(remove, add, entry.target.id);
             return
           }
           // when going down the important one is the bigger one
           if (scrollDirection === "down") {
             if (percentage > 95) {
-              toggleHeader(remove, add, entry.target.id);
+              toggleHeaderTheme(remove, add, entry.target.id);
             }
           }
 
           // when going down the important one is the smaller one
           if (scrollDirection === "up") {
             if (percentage < 15) {
-              toggleHeader(remove, add, entry.target.id);
+              toggleHeaderTheme(remove, add, entry.target.id);
             }
           }
 
@@ -241,7 +240,7 @@ initCal();
 
 document.getElementById("theme-toggle").addEventListener("click", () => {
   refreshCal();
-  toggleHeader(...finalDecision.reverse(), 'theme-toggle');
+  toggleHeaderTheme(...finalDecision.reverse(), 'theme-toggle');
   if (document.documentElement.classList.contains("dark")) {
     window.changeTheme("light");
   } else {
@@ -299,7 +298,7 @@ window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches }) => {
     refreshCal();
-    toggleHeader(...finalDecision.reverse(), 'prefers-color-scheme');
+    toggleHeaderTheme(...finalDecision.reverse(), 'prefers-color-scheme');
     if (matches) {
       window.changeTheme("dark");
     } else {
@@ -309,7 +308,7 @@ window
 
 addEventListener("storage", () => {
   refreshCal();
-  toggleHeader(...finalDecision.reverse(), 'storage');
+  toggleHeaderTheme(...finalDecision.reverse(), 'storage');
   if (localStorage.theme === "dark") {
     window.changeTheme("dark");
   } else {
