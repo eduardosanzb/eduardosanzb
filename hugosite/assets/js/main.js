@@ -188,6 +188,9 @@ function observeSections() {
         const currY = entry.boundingClientRect.y;
         const prevY = previousY.get(entry.target);
 
+        const viewportHeight = window.innerHeight;
+        const val = entry.intersectionRect.height / viewportHeight
+
         if (currY < prevY) {
           scrollDirection = "down";
         }
@@ -196,7 +199,8 @@ function observeSections() {
         }
 
         if (entry.isIntersecting) {
-          const percentage = entry.intersectionRatio * 100;
+          // const percentage = entry.intersectionRatio * 100;
+          const percentage = (entry.intersectionRect.height / viewportHeight) * 100;
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
           const [remove, add] = colors?.[bgColor] ?? ["force-light", "force-dark"];
           console.log({
@@ -214,7 +218,7 @@ function observeSections() {
           }
           // when going down the important one is the bigger one
           if (scrollDirection === "down") {
-            if (percentage > 95) {
+            if (percentage > 90) {
               toggleHeaderTheme(remove, add, entry.target.id);
             }
           }
@@ -232,12 +236,9 @@ function observeSections() {
       });
     },
     {
-      // Configure the observer options
       threshold: [
-        // every pizel
-        0, 0.5, 0.3, 0.7, 0.1, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1,
+        0, 0.5, 0.3, 0.7, 0.1, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 0.96, 0.97, 0.98, 0.99, 1,
       ],
-      rootMargin: "0px", // No margin around the viewport
     },
   );
 
