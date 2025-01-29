@@ -128,10 +128,10 @@ function observeHeader() {
   // We observe the landing header once is about to come back
   const observer2 = new IntersectionObserver(
     (entries) => {
-      console.log({ entries });
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          secondaryElement.classList.add("hidden");
+          setTimeout(() =>
+            secondaryElement.classList.add("hidden"))
         }
       });
     },
@@ -178,8 +178,8 @@ function observeSections() {
   if (!sections.length) {
     return;
   }
-  let scrollDirection = "down";
 
+  let scrollDirection = "down";
   const previousY = new Map();
 
   const observer = new IntersectionObserver(
@@ -199,7 +199,7 @@ function observeSections() {
           const percentage = entry.intersectionRatio * 100;
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
           const [remove, add] = colors?.[bgColor] ?? ["force-light", "force-dark"];
-          console.debug({
+          console.log({
             target: entry.target.id,
             percentage,
             bgColor,
@@ -235,8 +235,7 @@ function observeSections() {
       // Configure the observer options
       threshold: [
         // every pizel
-        0, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1,
-        // 0.05, 0.91, 0.95, 0.98, 1
+        0, 0.5, 0.3, 0.7, 0.1, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95, 1,
       ],
       rootMargin: "0px", // No margin around the viewport
     },
