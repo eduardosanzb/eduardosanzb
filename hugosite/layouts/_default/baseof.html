@@ -17,6 +17,7 @@
 
 </html>
 <!-- Scripts -->
-{{ $js := resources.Get "js/main.js" }}
-{{ $js = $js | minify | fingerprint }}
+{{- $options := dict "targetPath" "js/bundle.js" -}}
+{{- $js := resources.Get "js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
+
 <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
