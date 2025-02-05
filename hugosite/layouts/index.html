@@ -28,16 +28,34 @@
         </span>
       </span>
       <p class="pl-2 text-white text-md lg:text-xl font-extralight text-wrap max-w-40 lg:max-w-64">
-        {{.Site.Data.landing.availability.label}}
+        <a id="availability" href='#contact' class="underline">
+          {{.Site.Data.landing.availability.label}}
+        </a>
+        <script>
+          (function setupAvailability() {
+            const availability = document.getElementById('availability');
+            // the label normally is like this = "One Spot Available For March 2025"
+            // If the date is in the past or in the next 10 days. We change it for the next month
+
+            const date = new Date();
+            date.setMonth(date.getMonth() + 1);
+
+            const month = date.toLocaleString('default', {month: 'long'});
+            const year = date.getFullYear();
+            const currentMonth = `${month} ${year}`;
+            const label = availability.innerText;
+            availability.innerText = `One Spot Available For ${currentMonth}`;
+          })();
+        </script>
       </p>
+
     </div>
 
-    <h1 class="max-w-md lg:max-w-2xl text-white text-3xl lg:text-6xl font-extralight">
-      {{.Site.Data.landing.hero.title}}
-    </h1>
-    <p class="mt-6 max-w-72 lg:max-w-lg text-md lg:text-xl text-white font-extralight lg:font-light uppercase">
-      {{.Site.Data.landing.hero.subtitle}}
-    </p>
+    <h1 class="max-w-md lg:max-w-2xl text-white text-3xl lg:text-6xl font-extralight whitespace-pre-line">
+      {{.Site.Data.landing.hero.title}}</h1>
+    <p
+      class="mt-6 max-w-72 lg:max-w-lg text-md lg:text-xl text-white font-extralight lg:font-light whitespace-pre-line">
+      {{.Site.Data.landing.hero.subtitle}}</p>
 
   </div>
 
@@ -86,7 +104,7 @@
 
   <div class="site-container text-dark dark:text-white">
     <h2 class="text-3xl font-extralight py-6 capitalize">
-        {{.Site.Data.landing.services.title}}
+      {{.Site.Data.landing.services.title}}
     </h2>
   </div>
 
@@ -185,7 +203,7 @@
       </h1>
     </span>
     <div class="flex-grow border-t border-white dark:border-dark pt-30"></div>
-    <p class="text-2xl lg:text-4xl font-light">
+    <p class="text-2xl lg:text-4xl font-light whitespace-pre-line">
       {{ .content }}
     </p>
   </span>
@@ -200,7 +218,7 @@
         {{ .title }}
       </h1>
       <div class="flex-grow border-t border-white dark:border-dark pt-30"></div>
-      <p class="text-4xl font-light">
+      <p class="text-4xl font-light whitespace-pre-line">
         {{ .content }}
       </p>
     </span>
@@ -244,8 +262,8 @@
 {{ define "partials/inline/service-card.html" }}
 <div class="dark:bg-card dark:border-card border-gray-100 border-2 bg-white rounded-lg flex min-h-full p-5 aspect-3/2">
   <span>
-    <h1 class="text-lg text-dark dark:text-white">{{ .title }}</h1>
-    <p class="text-md text dark dark:text-white">{{ .content }}</p>
+    <h1 class="text-2xl text-dark dark:text-white">{{ .title }}</h1>
+    <p class="text-xl text dark dark:text-white mt-8">{{ .content }}</p>
   </span>
   <span>
     {{ partial "svg.html" (dict "name" .icon "class" "text-card dark:text-white") }}

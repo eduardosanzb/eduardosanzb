@@ -1,17 +1,17 @@
 [
   {
     "listNumber": 4,
-    "title": "Startups",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc. Nullam nec purus nec nunc"
+    "title": "Startups & Scale-ups",
+    "content": "I help early-stage and growing companies build/scale a solid technical foundation without the need for a full-time hire.\n\nFrom releasing your MVP to setting up scalable and robus infrastructure, I ensure your platform and team is ready to grow. When things get serious, I'm here to jump in and work together."
   },
   {
     "listNumber": 0,
-    "title": "Scale Ups",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc. Nullam nec purus nec nunc; Nullam nec purus nec nunc"
+    "title": "Digital Agencies",
+    "content": "I partner with digital agencies to streamline their technical delivery.\n\nFrom building reusable platforms to improving deployment pipelines and ensuring robust incident management, I help you deliver high-quality solutions to your clients—on time and on budget."
   },
   {
     "listNumber": 4,
-    "title": "Digital Agencies",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc"
+    "title": "Enterprises",
+    "content": "I help established companies modernize their legacy systems and adopt cloud-native practices.\n\nFrom architecture reviews to DevOps transformation, I ensure your systems are scalable, secure, and aligned with your business goals."
   }
 ]

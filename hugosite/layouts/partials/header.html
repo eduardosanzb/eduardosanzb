@@ -49,24 +49,15 @@
     </div>
 
     <!-- Mobile menu button - we'll add functionality later -->
-    <button class="md:hidden p-2 tham tham-e-squeeze tham-w-6" aria-label="Menu">
+    {{ if not $isFirst }}
+    <button class='md:hidden p-2 tham-e-squeeze tham-w-6 tham' aria-label="Menu">
       <div class="tham-box">
-        <div class="tham-inner bg-dark dark:bg-light"></div>
+        <div class="tham-inner bg-light dark:bg-dark
+          group-[.force-light]:bg-dark
+          group-[.force-dark]:bg-light
+          "></div>
       </div>
-      <!-- <svg class="w-6 h-6 dark:text-white -->
-      <!--     group-[.force-light]:text-dark -->
-      <!--     group-[.force-dark]:text-white -->
-      <!--   " fill="none" stroke="currentColor" viewBox="0 0 24 24"> -->
-      <!--   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /> -->
-      <!-- </svg> -->
     </button>
-    <script>
-      const tham = document.querySelector(".tham");
-
-      tham.addEventListener('click', () => {
-        tham.classList.toggle('tham-active');
-      });
-    </script>
-
+    {{ end }}
   </nav>
 </header>

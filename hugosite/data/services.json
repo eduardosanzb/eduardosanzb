@@ -1,27 +1,37 @@
 [
   {
-    "title": "Product Engineering",
-    "content": "We help you build products that are scalable, secure and user-friendly. Our team of experts will help you build your product from scratch or help you improve your existing product.",
-    "icon": "github"
+    "title": "Platform Engineering & DevOps",
+    "content": "I help you build and maintain scalable, secure, and automated platforms. From CI/CD pipelines to Kubernetes and infrastructure as code (IaC), I ensure your systems are reliable and future-proof.",
+    "icon": "cloud"
   },
   {
-    "title": "Product Engineering",
-    "content": "We help you build products that are scalable, secure and user-friendly. Our team of experts will help you build your product from scratch or help you improve your existing product.",
-    "icon": "github"
+    "title": "Software Architecture Design",
+    "content": "I design robust, scalable architectures tailored to your product goals. Whether it’s microservices, API-first design, or cloud-native solutions, I ensure your systems are built to grow with your business.",
+    "icon": "layout"
   },
   {
-    "title": "Product Engineering",
-    "content": "We help you build products that are scalable, secure and user-friendly. Our team of experts will help you build your product from scratch or help you improve your existing product.",
-    "icon": "github"
+    "title": "Engineering Leadership & Coaching",
+    "content": "I mentor engineering teams and leaders to improve collaboration, decision-making, and delivery. From technical strategy to team dynamics, I help you navigate complex challenges and drive success.",
+    "icon": "users"
   },
   {
-    "title": "Product Engineering",
-    "content": "We help you build products that are scalable, secure and user-friendly. Our team of experts will help you build your product from scratch or help you improve your existing product.",
-    "icon": "github"
+    "title": "Architecture Audits & Optimization",
+    "content": "I assess your existing systems for scalability, performance, and cost-efficiency. My actionable recommendations help you future-proof your architecture and reduce technical debt.",
+    "icon": "search"
   },
   {
-    "title": "Product Engineering",
-    "content": "We help you build products that are scalable, secure and user-friendly. Our team of experts will help you build your product from scratch or help you improve your existing product.",
+    "title": "Product Engineering Workshops",
+    "content": "I train your team to build user-centric, scalable products. Through hands-on workshops, I help align technical decisions with business outcomes and foster a culture of innovation.",
+    "icon": "book"
+  },
+  {
+    "title": "Cloud-Native Transformation",
+    "content": "I help you migrate legacy systems to cloud-native architectures, leveraging tools like Kubernetes, Docker, and serverless technologies to improve scalability and reduce costs.",
+    "icon": "cloud"
+  },
+  {
+    "title": "Incident Management & Reliability",
+    "content": "I help you set up incident response processes and SRE practices to improve system reliability, reduce downtime, and ensure seamless operations.",
     "icon": "github"
   }
 ]
