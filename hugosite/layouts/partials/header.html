@@ -77,10 +77,41 @@
         group-[.force-light]:text-white
         group-[.force-dark]:text-white
         flex-col items-center space-x-4 gap-8 pt-4 pb-4">
-        {{ with .context }}
-        {{ partial "menu.html" (dict "menuID" "mobile" "page" .) }}
-        {{ end }}
+
+        {{ $menuEntries := index site.Menus "mobile" }}
+        {{ range $menuEntries }}
+        {{partial "debug.html" .}}
+        <!--Translation-->
+        {{- $name := .Name }}
+        {{- with .Identifier }}
+        {{- with T . }}
+        {{- $name = . }}
+        {{- end }}
+        {{- end }}
+        <li class="ml-8 space-x-8">
+          <a href="{{ .URL }}" {{ with .Params.rel }} rel="{{ . }}" {{ end }} {{ if .Params.download }}download{{ end }}
+            {{ if isset .Params "id" }}id="{{.Params.id}}" {{ end }} {{ if eq .Params.rel "external" }} target="_blank"
+            rel="noopener" {{ end }} class="
+        flex
+        nav-link
+        font-light
+        text-xl
+        text-white
+        ">
+            {{if isset .Params "icon"}}
+            {{ partial "svg.html" (dict "name" .Params.icon "class" "max-h-[24px] max-w-[20px]") }}
+            {{ end }}
+
+            <span class="ml-2">
+              {{ $name }}
+            </span>
+          </a>
+        </li>
+        {{- end }}
+
+
       </ul>
+
     </div>
 
     {{ end }}
