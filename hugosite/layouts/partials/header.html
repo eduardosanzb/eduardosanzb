@@ -60,20 +60,19 @@
           "></div>
       </div>
     </button>
-  <div id="mobile-menu" class="
-    backdrop-blur-xl
+    <div id="mobile-menu" class="
     md:hidden
     fixed inset-0
     h-screen
     w-screen
     text-white z-50
     transform translate-y-full transition-transform duration-300">
-    <ul class="flex flex-col items-center space-x-4 backdrop-filter backdrop-blur-xl gap-8 pt-4 pb-4">
-      {{ with .context }}
-      {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-      {{ end }}
-    </ul>
-  </div>
+      <ul class="flex flex-col items-center space-x-4  gap-8 pt-4 pb-4">
+        {{ with .context }}
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+        {{ end }}
+      </ul>
+    </div>
 
     {{ end }}
   </nav>
