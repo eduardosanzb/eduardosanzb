@@ -160,7 +160,6 @@ let isMenuOpen = false;
 console.log('mobileMenu', mobileMenu);
 tham.addEventListener('click', () => {
   tham.classList.toggle('tham-active');
-  console.log('isMenuOpen', isMenuOpen);
   if (isMenuOpen) {
     mobileMenu.classList.remove('translate-y-0');
     mobileMenu.classList.add('translate-y-full');
