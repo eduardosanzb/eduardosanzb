@@ -62,20 +62,13 @@
     </button>
     <div id="mobile-menu" class="
     md:hidden
-    bg-dark
-    dark:bg-white
-    group-[.force-light]:text-white
-    group-[.force-dark]:text-white
+    bg-gray-200
     fixed inset-0
     h-screen
     w-screen
-    text-white z-50
+    z-50
     transform translate-y-full transition-transform duration-300">
       <ul class="flex
-        text-dark
-        dark:text-white
-        group-[.force-light]:text-white
-        group-[.force-dark]:text-white
         flex-col items-center space-x-4 gap-8 pt-4 pb-4">
 
         {{ $menuEntries := index site.Menus "mobile" }}
@@ -96,7 +89,7 @@
         nav-link
         font-light
         text-xl
-        text-white
+        text-dark
         ">
             {{if isset .Params "icon"}}
             {{ partial "svg.html" (dict "name" .Params.icon "class" "max-h-[24px] max-w-[20px]") }}
