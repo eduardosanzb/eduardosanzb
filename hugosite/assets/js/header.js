@@ -154,6 +154,21 @@ export function observeSections() {
 }
 
 const tham = document.querySelector(".tham");
+const mobileMenu = document.getElementById("mobile-menu");
+let isMenuOpen = false;
+
+console.log('mobileMenu', mobileMenu);
 tham.addEventListener('click', () => {
   tham.classList.toggle('tham-active');
+  console.log('isMenuOpen', isMenuOpen);
+  if (isMenuOpen) {
+    mobileMenu.classList.remove('translate-y-0');
+    mobileMenu.classList.add('translate-y-full');
+    document.body.style.overflow = 'auto';
+  } else {
+    mobileMenu.classList.remove('translate-y-full');
+    mobileMenu.classList.add('translate-y-0');
+    document.body.style.overflow = 'hidden';
+  }
+  isMenuOpen = !isMenuOpen;
 });

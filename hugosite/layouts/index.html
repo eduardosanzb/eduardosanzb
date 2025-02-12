@@ -204,7 +204,7 @@
       <h1 class="text-8xl">
         {{ .listNumber }}.
       </h1>
-      <h1 class="text-6xl">
+      <h1 class="text-5xl">
         {{ .title }}
       </h1>
     </span>
@@ -256,7 +256,7 @@
         animate-marquee-TODO
         " style="--marquee-speed: 20s; --marquee-direction: reverse;">
 
-      {{ $logos := slice "bcg" "generation" "kombo" "mckinsey" "platinion" "unity" }}
+      {{ $logos := .Site.Data.experiences }}
       {{ range $logos }}
       {{ partial "svg.html" (dict "name" . "class" "max-h-12 bg-logo") }}
       {{ end }}

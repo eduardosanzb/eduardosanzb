@@ -23,13 +23,15 @@
     <!-- Menu  -->
     <div class="hidden md:flex justify-content items-center ">
       {{ with .context }}
-      {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+      <ul class="flex items-center space-x-4">
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+      </ul>
       {{ end }}
 
 
       <!-- Dark Mode Toggle -->
       {{ if not $isFirst }}
-      <div class="sm:flex items-center ml-2">
+      <div class="hidden items-center ml-2">
         <button id="theme-toggle" class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
           <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor"
             viewBox="0 0 24 24">
@@ -50,7 +52,7 @@
 
     <!-- Mobile menu button - we'll add functionality later -->
     {{ if not $isFirst }}
-    <button class='md:hidden p-2 tham-e-squeeze tham-w-6 tham' aria-label="Menu">
+    <button style="z-index:100" class='md:hidden z-100 p-2 tham-e-squeeze tham-w-6 tham' aria-label="Menu">
       <div class="tham-box">
         <div class="tham-inner bg-light dark:bg-dark
           group-[.force-light]:bg-dark
@@ -58,6 +60,21 @@
           "></div>
       </div>
     </button>
+  <div id="mobile-menu" class="
+    backdrop-blur-xl
+    md:hidden
+    fixed inset-0
+    h-screen
+    w-screen
+    text-white z-50
+    transform translate-y-full transition-transform duration-300">
+    <ul class="flex flex-col items-center space-x-4 backdrop-filter backdrop-blur-xl gap-8 pt-4 pb-4">
+      {{ with .context }}
+      {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+      {{ end }}
+    </ul>
+  </div>
+
     {{ end }}
   </nav>
 </header>
