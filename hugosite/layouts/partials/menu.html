@@ -13,9 +13,9 @@
 
   {{- range .menuEntries }}
 
-    {{ partial "debug.html" (dict "context" .) }}
+  {{ partial "debug.html" . }}
 
-    {{ if .Params.Hidden }}
+    {{ if .Params.Skip }}
       {{- continue }}
     {{ end }}
 

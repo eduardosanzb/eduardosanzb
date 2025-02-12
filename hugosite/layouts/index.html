@@ -108,16 +108,22 @@
     </h2>
   </div>
 
-  <span class="min-w-full flex justify-center flex-grow">
+  <span class="min-w-full flex justify-center flex-grow pb-4">
     <div class="site-container min-h-full flex flex-col gap-4 max-w-screen-2xl flex-grow">
-      {{$services := .Site.Data.services}}
+      {{$services := where .Site.Data.services "skip" false}}
+
       {{ with $services }}
-      <div class="grid md:grid-cols-2 gap-4 min-h-96">
+      <div class="grid md:grid-cols-2 gap-4 ">
         {{ range first 2 . }} {{ partial "inline/service-card.html" . }}
         {{ end }}
       </div>
-      <div class="grid md:grid-cols-3 gap-4 min-h-96">
-        {{ range after 2 . }}
+      <div class="grid md:grid-cols-3 gap-4 ">
+        {{ range . | after 2 | first 3}}
+        {{ partial "inline/service-card.html" . }}
+        {{ end }}
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        {{ range after 5 . }}
         {{ partial "inline/service-card.html" . }}
         {{ end }}
       </div>
@@ -262,11 +268,13 @@
 {{ define "partials/inline/service-card.html" }}
 <div class="dark:bg-card dark:border-card border-gray-100 border-2 bg-white rounded-lg flex min-h-full p-5 aspect-3/2">
   <span>
-    <h1 class="text-2xl text-dark dark:text-white">{{ .title }}</h1>
-    <p class="text-xl text dark dark:text-white mt-8">{{ .content }}</p>
+    <h1 class="text-4xl text-dark dark:text-white">{{ .title }}</h1>
+    <p class="text-2xl text dark dark:text-white mt-8 whitespace-pre-line">{{ .content }}</p>
   </span>
-  <span>
-    {{ partial "svg.html" (dict "name" .icon "class" "text-card dark:text-white") }}
-  </span>
+  <picture>
+    <source srcset={{ .srcset }}
+      sizes="(max-width: 300px) 300px, (max-width: 600px) 600px, (max-width: 900px) 900px, 1200px" type="image/webp">
+    <img src="image-large.webp" alt={{.title}}>
+  </picture>
 </div>
 {{end}}

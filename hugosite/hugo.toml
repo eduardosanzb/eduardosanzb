@@ -15,12 +15,7 @@ pygmentsUseClasses = true
   email = "eduardosanzb@gmail.com"
 
 [menu]
-  # [[menu.main]]
-  #   name = "Personal"
-  #   pageRef = "/"
-  #   weight = 1
   [[menu.main]]
-    hidden = true
     name = "CV"
     url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf"
     weight = 2
@@ -31,13 +26,17 @@ pygmentsUseClasses = true
     name = "Case-Studies"
     pageRef = "/case-studies/"
     weight = 3
+    [menu.main.params]
+      skip = true
   [[menu.main]]
     name = "Blog"
     url = "/blog/"
     weight = 4
+    [menu.main.params]
+      skip = true
   [[menu.main]]
     name = "Contact"
-    pageRef = "/contact/"
+    url = "/#contact"
     weight = 5
   [[menu.main]]
     name = "Linkedin"

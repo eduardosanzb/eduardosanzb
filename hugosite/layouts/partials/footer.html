@@ -2,28 +2,37 @@
   <div class="site-container dark:bg-light bg-dark border-t border-gray-100 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">About</h3>
-        <p class="mt-4 text-base text-gray-600">
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">About</h3>
+        <p class="mt-4 text-base text-white">
           {{ .Site.Params.description }}
         </p>
       </div>
+      {{ $impressum := .Site.GetPage "impressum.md" }} {{/* Get the Impressum page */}}
+        <a class=
+        "nav-link text-white"
+          href="{{ $impressum.Permalink }}">{{ $impressum.Title }}</a>
 
       <div>
-        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider">Connect</h3>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wider">Connect</h3>
         <ul class="mt-4 space-y-2">
           {{ with .Site.Params.github }}
           <li>
-            <a href="{{ . }}" class="nav-link">GitHub</a>
+            <a href="{{ . }}" class="nav-link text-white"
+              target="_blank" rel="noopener noreferrer"
+              >GitHub</a>
           </li>
           {{ end }}
           {{ with .Site.Params.linkedin }}
           <li>
-            <a href="{{ . }}" class="nav-link">LinkedIn</a>
+            <a href="{{ . }}" class="nav-link text-white"
+              target="_blank" rel="noopener noreferrer"
+              >LinkedIn</a>
           </li>
           {{ end }}
           {{ with .Site.Params.email }}
           <li>
-            <a href="mailto:{{ . }}" class="nav-link">Email</a>
+            <a href="mailto:{{ . }}" class="nav-link text-white" target="_blank" rel="noopener noreferrer"
+              >Email</a>
           </li>
           {{ end }}
         </ul>
@@ -32,10 +41,10 @@
 
     <!-- Copyright -->
     <div class="mt-8 pt-8 border-t border-gray-100">
-      <p class="text-base text-gray-600">
+      <p class="text-base text-white">
         © {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.
       </p>
-      <p class="text-base text-gray-600">
+      <p class="text-base text-white">
         The build for this version was done with the commit:
         {{ $commit := getenv "HUGO_GITHUB_SHA" }}
         <a target="_blank" href="{{getenv "HUGO_GITHUB_ACTION_URL"}}" class="text-ellipsis">{{$commit}}</a>

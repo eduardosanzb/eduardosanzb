@@ -1,37 +1,44 @@
 [
   {
-    "title": "Platform Engineering & DevOps",
-    "content": "I help you build and maintain scalable, secure, and automated platforms. From CI/CD pipelines to Kubernetes and infrastructure as code (IaC), I ensure your systems are reliable and future-proof.",
-    "icon": "cloud"
+    "skip": false,
+    "title": "Quick Prototyping",
+    "content": "Rapidly building prototypes to test your product ideas.\n\n Using latest technologies and a pragmatic approach, I help you validate your ideas quickly and cost-effectively.",
+    "srcset":"images/proto500.webp 500w, images/proto1000.webp 900w"
   },
   {
-    "title": "Software Architecture Design",
-    "content": "I design robust, scalable architectures tailored to your product goals. Whether it’s microservices, API-first design, or cloud-native solutions, I ensure your systems are built to grow with your business.",
-    "icon": "layout"
+    "skip": false,
+    "title": "Tech Assessments",
+    "content": "Deep dive into your systems to find performance bottlenecks and cost-saving opportunities.",
+    "srcset":"images/ass300.webp 300w, images/ass500.webp 500w, images/ass600.webp 600w, images/ass900.webp 900w"
   },
   {
-    "title": "Engineering Leadership & Coaching",
-    "content": "I mentor engineering teams and leaders to improve collaboration, decision-making, and delivery. From technical strategy to team dynamics, I help you navigate complex challenges and drive success.",
-    "icon": "users"
+    "skip": false,
+    "title": "On-going Support",
+    "content": "Flexible support to lead your technical projects or provide on-demand expertise.",
+    "srcset":"images/mont300.webp 300w, images/mont500.webp 500w, images/mont600.webp 600w, images/mont900.webp 900w"
   },
   {
-    "title": "Architecture Audits & Optimization",
-    "content": "I assess your existing systems for scalability, performance, and cost-efficiency. My actionable recommendations help you future-proof your architecture and reduce technical debt.",
-    "icon": "search"
+    "skip": true,
+    "title": "Scalable Architecture",
+    "content": "I design systems that can grow with your business.",
+    "srcset":"images/arch250.webp 200w, images/arch500.webp 500w, images/arch700.webp 700w, images/arch900.webp 900w"
   },
   {
-    "title": "Product Engineering Workshops",
-    "content": "I train your team to build user-centric, scalable products. Through hands-on workshops, I help align technical decisions with business outcomes and foster a culture of innovation.",
-    "icon": "book"
+    "skip": true,
+    "title": "Security Review",
+    "content": "I find and fix security weaknesses in your systems.",
+    "srcset":"images/sec300.webp 300w, images/sec500.webp 500w, images/sec600.webp 600w, images/sec900.webp 900w"
   },
   {
-    "title": "Cloud-Native Transformation",
-    "content": "I help you migrate legacy systems to cloud-native architectures, leveraging tools like Kubernetes, Docker, and serverless technologies to improve scalability and reduce costs.",
-    "icon": "cloud"
+    "skip": false,
+    "title": "System Integrations",
+    "content": "I connect different systems to work together smoothly.",
+    "srcset":"images/int300.webp 300w, images/int500.webp 500w, images/int600.webp 600w, images/int900.webp 900w"
   },
   {
-    "title": "Incident Management & Reliability",
-    "content": "I help you set up incident response processes and SRE practices to improve system reliability, reduce downtime, and ensure seamless operations.",
-    "icon": "github"
+    "skip": false,
+    "title": "Cloud Migration",
+    "content": "I move your systems to the cloud efficiently.",
+    "srcset":"images/cloud300.webp 300w, images/cloud600.webp 600w, images/cloud900.webp 900w"
   }
 ]
