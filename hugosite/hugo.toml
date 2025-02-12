@@ -14,6 +14,7 @@ pygmentsUseClasses = true
   linkedin = "https://linkedin.com/in/eduardosanzb"
   email = "eduardosanzb@gmail.com"
 
+
 [menu]
   [[menu.main]]
     name = "CV"
@@ -50,5 +51,26 @@ pygmentsUseClasses = true
     url = "https://github.com/eduardosanzb/"
     weight = 7
     [menu.main.params]
+      rel = 'external'
+      icon = 'github'
+  [[menu.mobile]]
+    name = "CV"
+    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf"
+    weight = 2
+    [menu.mobile.params]
+      icon = 'download'
+      download = true
+  [[menu.mobile]]
+    name = "Linkedin"
+    url = "https://linkedin.com/in/eduardosanzb"
+    weight = 6
+    [menu.mobile.params]
+      rel = 'external'
+      icon = 'linkedin'
+  [[menu.mobile]]
+    name = "github"
+    url = "https://github.com/eduardosanzb/"
+    weight = 7
+    [menu.mobile.params]
       rel = 'external'
       icon = 'github'

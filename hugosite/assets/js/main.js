@@ -1,6 +1,9 @@
 import {initCal, refreshCal} from './assets/js/cal.js'
 import {toggleHeaderTheme, observeHeader, observeSections} from './assets/js/header.js'
 import {changeTheme} from './assets/js/change-theme.js'
+import{hideMenu} from './assets/js/header.js'
+
+window.hideMenu = hideMenu;
 
 initCal();
 

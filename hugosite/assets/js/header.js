@@ -1,3 +1,4 @@
+
 /**
  * This script will observe the header and show/hide the secondary header
  * based on the visibility of the primary header
@@ -157,7 +158,15 @@ const tham = document.querySelector(".tham");
 const mobileMenu = document.getElementById("mobile-menu");
 let isMenuOpen = false;
 
-console.log('mobileMenu', mobileMenu);
+export const hideMenu = () => {
+  console.log('hideMenu');
+  mobileMenu.classList.remove('translate-y-0');
+  mobileMenu.classList.add('translate-y-full');
+  document.body.style.overflow = 'auto';
+  isMenuOpen = false;
+  tham.classList.toggle('tham-active');
+}
+
 tham.addEventListener('click', () => {
   tham.classList.toggle('tham-active');
   if (isMenuOpen) {
