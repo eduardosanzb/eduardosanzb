@@ -40,12 +40,14 @@ Explore examples in [Tiktokenizer](https://tiktokenizer.vercel.app/)
 
 ### neuronal network I/O
 
-TLDR; We take windows of token in the dataset _we control the window size e.g. 512 tokens_ and we predict the next token.
+TLDR; We take windows of token in the dataset _we control the window size e.g. 512 tokens_
+and we predict the next token.
 **This is the input to the neuronal network. The output is the probability of the next token.**
 
 ### training
 
-Because we already know the next token in the training data, we can calibrate the neuronal network to predict the next token with a high probability.
+Because we already know the next token in the training data, we can calibrate the neuronal network
+to predict the next token with a high probability.
 
 ```mermaid
 ---
@@ -78,8 +80,10 @@ flowchart TB
 
 
 ### Neuronal network internals
+_The params is normally what is attached to the models e.g. Llama 3.1 405B_
 We have the inputs of tokens that can go to 0 to a defined amount of tokens.
-This is the context, then we have put this inputs with parameters (_weights_) which are like knobs that
+This is the context, then we have put this inputs with parameters (_weights_) which are like
+knobs that we can tune to get the best output.
 
 All of this is passed to a gian mathematical expression that will always give the outputs.
 
@@ -87,6 +91,12 @@ All of this is passed to a gian mathematical expression that will always give th
 ### Inference
 generating new datea from the model, to analize what kind of patterns the model has internalized.
 
-The use case of this is to generate text _or predict the next token_ inspired by the data that the model has seen.
+The use case of this is to generate text _or predict the next token_ inspired by the data that the
+model has seen.
+
+## Example of training a model
+
+
+
 
 

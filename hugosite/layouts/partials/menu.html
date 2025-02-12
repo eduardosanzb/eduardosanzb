@@ -13,6 +13,8 @@
 
   {{- range .menuEntries }}
 
+    {{ partial "debug.html" (dict "context" .) }}
+
     {{ if .Params.Hidden }}
       {{- continue }}
     {{ end }}
