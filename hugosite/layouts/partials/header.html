@@ -62,13 +62,16 @@
     </button>
     <div id="mobile-menu" class="
     md:hidden
-    backdrop-blur-xl
+    bg-black
     fixed inset-0
     h-screen
     w-screen
     text-white z-50
     transform translate-y-full transition-transform duration-300">
-      <ul class="flex flex-col items-center space-x-4 gap-8 pt-4 pb-4">
+      <ul class="flex
+
+          text-white
+        flex-col items-center space-x-4 gap-8 pt-4 pb-4">
         {{ with .context }}
         {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
         {{ end }}
