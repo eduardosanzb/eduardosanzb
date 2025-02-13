@@ -68,10 +68,10 @@ flowchart TB
     n8@{ shape: anchor}
     n1@{ shape: rounded}
     n2@{ shape: rounded}
-    n3@{ shape: rounded}
+    n3@{ shape: rounded}jjjjjj
     n4@{ shape: rounded}
     n5@{ shape: rounded}
-    n9@{ shape: rect}
+    n9@{ shape: rect}0
     n10@{ shape: rect}
     n11@{ shape: rect}
     n12@{ shape: rounded}
@@ -80,23 +80,67 @@ flowchart TB
 
 
 ### Neuronal network internals
-_The params is normally what is attached to the models e.g. Llama 3.1 405B_
+_The params is normally what is attached to the models e.g. Llama 3.1 405B as of 405 billion of params_
 We have the inputs of tokens that can go to 0 to a defined amount of tokens.
 This is the context, then we have put this inputs with parameters (_weights_) which are like
 knobs that we can tune to get the best output.
 
-All of this is passed to a gian mathematical expression that will always give the outputs.
+All of this is passed to a giant mathematical expression that will always give the outputs.
 
 
 ### Inference
-generating new datea from the model, to analize what kind of patterns the model has internalized.
+generating new data from the model, to analize what kind of patterns the model has internalized.
 
 The use case of this is to generate text _or predict the next token_ inspired by the data that the
 model has seen.
 
 ## Example of training a model
 
+Here we understand the cycle of training a model; which basically is to feed the model with windows of
+tokens and calibrate the weights of the model to predict the next token.
+
+**This is the most expensive part of the training process; here's where we use massive machines**
+
+The output will be the "Base model". Which is an internet document simulator.
+
+_We could train a very small model like GPT-2 for around 400usd in 2025_
 
 
+### The psychology of a base model
+- It is a token-level internet document simulator
+- It is stochastic / probabilistic - you're going to get something else each time you run *
+- It "dreams" internet documents
+- It can also recite some training documents verbatim from memory ("regurgitation")
+- The parameters of the model are kind of like a lossy zip file of the internet
+-> a lot of useful world knowledge is stored in the parameters of the network
+- You can already use it for applications (e..g translation) by being clever with your prompts
+  - e.g. English-Korean translator app by constructing a "few-shot" prompt and leveraging "in-context-learning" ability
+  - e.g. an Assistant that answer questions using a prompt that looks like a conversation
 
+## Post-training
+_This is the step where we fine-tune the base model to become an assistant, this is a less expensive step_
+
+we should start thinking in "Conversations" instead of "Documents". We want to model how the model interacts with the user.
+We'll do this by training the model with a dataset of conversations; this will make the model more human-like.
+
+### Tokenazation of conversations
+We have to think in a data structure/protocol like the TCP IP protocol, but for conversations.
+
+*Normal conversation*:
+- User: What is 2+2?
+- Assistant: 2+2=4
+- User: What if it was *?
+- Assistant: 2^2=4, same as 2+2!
+
+Then this conversation will be tokenized into a format that the model can understand. Like:
+
+```
+<|im_start|>user<|im_sep|>what is 2+2?<|im_end|><|im_start|>assistant<|im_sep|>2+2=4<|im_end|><|im_start|>user<|im_sep|>what if it is *?<|im_end|>
+<|im_start|>assistant<|im_sep|>2^2=4, same as 2+2!<|im_end|><|im_start|>assistant<|im_sep|>
+```
+
+The important part is that the base model has never been this new token "im_start" or "im_end", so we have to train the model with this new tokens and
+the conversation dataset.
+
+This is done the same as before; chunking the window of the tokens and calibrating the weights of the model to predict the next token.
 
