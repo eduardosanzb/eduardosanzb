@@ -7,22 +7,9 @@ import axios from 'axios';
 
 const filePath = path.join(path.resolve(),  'cv.pdf');
 const data = fs.readFileSync(filePath);
-
 const formData = new FormData();
+// here you can use your own file
 formData.append('file', data, 'cv.pdf');
-
-
-
-//  await fetch('http://localhost:8000/uploadfile', {
-//   body: formData,
-//   method: 'POST',
-//   headers: {
-//     // ...formData.getHeaders(),
-//     // 'Accept-Encoding': 'gzip, deflate, br, zstd',
-//     // 'Content-Type': undefined,
-//     accept: 'application/json',
-//   }
-// }).then(res => res.json()).then(x => console.log(inspect(x, {depth: null})))
 
 axios.post('http://localhost:8000/uploadfile', formData, {
   headers: {

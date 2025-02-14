@@ -107,3 +107,6 @@ dist
 .tern-port
 hugosite/public/
 hugosite/resources/
+javascript/.wwebjs_auth/session
+javascript/.wwebjs_cache
+python/__pycache__
