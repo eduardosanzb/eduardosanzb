@@ -25,6 +25,7 @@
         - [ ] ansible
         - [ ] OSS slackbot aim manager
         - [ ] Slackbot incident manager
+        - [ ] Migrate neovim to lazy.nvim
 - Business sass
     - [ ] #problems-ideas
 
