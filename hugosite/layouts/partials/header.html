@@ -73,7 +73,6 @@
 
         {{ $menuEntries := index site.Menus "mobile" }}
         {{ range $menuEntries }}
-        {{partial "debug.html" .}}
         <!--Translation-->
         {{- $name := .Name }}
         {{- with .Identifier }}
@@ -81,10 +80,12 @@
         {{- $name = . }}
         {{- end }}
         {{- end }}
-        <li class="ml-8 space-x-8">
+        <li class="space-x-8">
           <a href="{{ .URL }}" {{ with .Params.rel }} rel="{{ . }}" {{ end }} {{ if .Params.download }}download{{ end }}
             {{ if isset .Params "id" }}id="{{.Params.id}}" {{ end }} {{ if eq .Params.rel "external" }} target="_blank"
             rel="noopener" {{ end }} class="
+            items-center
+            justify-start
         flex
         nav-link
         font-light

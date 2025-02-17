@@ -45,7 +45,7 @@
         © {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.
       </p>
       <p class="text-base text-white">
-        The build for this version was done with the commit:
+      The build for this version was crafted <i>without AI</i> in the commit:
         {{ $commit := getenv "HUGO_GITHUB_SHA" }}
         <a target="_blank" href="{{getenv "HUGO_GITHUB_ACTION_URL"}}" class="text-ellipsis">{{$commit}}</a>
         on © {{ now.Format "2006" }} {{ .Site.Title }}. All rights reserved.

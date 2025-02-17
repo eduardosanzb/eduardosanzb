@@ -63,7 +63,6 @@ export function toggleHeaderTheme(...params) {
     otherHeader.classList.remove(remove);
     otherHeader.classList.add(add);
     finalDecision = [remove, add];
-    console.debug({ finalDecision, who })
   } catch (error) {
     console.error("toggleHeader", error);
   }
