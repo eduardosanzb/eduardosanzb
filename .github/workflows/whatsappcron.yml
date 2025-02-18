@@ -14,4 +14,4 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run --rm eduardosanzb/test-curl
+        docker run --rm --cap-ad=NET_ADMIN eduardosanzb/test-curl
