@@ -1,0 +1,17 @@
+FROM alpine:latest
+
+RUN apk add --no-cache curl iptables bind-tools dnsmasq
+
+# Add the custom DNS configuration for dnsmasq
+# RUN echo "server=/eduardosanzb.dev/8.8.8.8" > /etc/dnsmasq.conf && \
+#     echo "address=/#/0.0.0.0" >> /etc/dnsmasq.conf
+
+WORKDIR /
+COPY ./test_curl.sh /test_curl.sh
+RUN chmod +x /test_curl.sh
+
+# Starting this bad boi
+# RUN dnsmasq
+
+## The script will attempt to curl google and fail
+CMD ["sh", "test_curl.sh"]
