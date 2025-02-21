@@ -6,7 +6,7 @@
 
 ## Introduction
 
-### pretaining data (internet)
+### Pretaining. In: Internet documents Out: Base Model
 
 TLDR; the data is collected from the internet, then using a complex pipeline the data gets pruned and formatted.
 
@@ -117,7 +117,7 @@ _We could train a very small model like GPT-2 for around 400usd in 2025_
   - e.g. English-Korean translator app by constructing a "few-shot" prompt and leveraging "in-context-learning" ability
   - e.g. an Assistant that answer questions using a prompt that looks like a conversation
 
-## Post-training
+## Post-training: Supervised Finetuning. In: Base Model Out: SFT model
 _This is the step where we fine-tune the base model to become an assistant, this is a less expensive step_
 
 we should start thinking in "Conversations" instead of "Documents". We want to model how the model interacts with the user.
@@ -143,4 +143,29 @@ The important part is that the base model has never been this new token "im_star
 the conversation dataset.
 
 This is done the same as before; chunking the window of the tokens and calibrating the weights of the model to predict the next token.
+
+
+We learn that at the beginning someone like openAI hired a bunch of "human labelers" to create this kind of conversations.
+There are other open source datasets like the one in [ huggingface](https://huggingface.co/datasets/stingning/ultrachat), but nowadays we use more advance techniques for creating this chats.
+One example is the usage of [UltraChat](https://github.com/thunlp/UltraChat)
+
+
+### Post-training: Reinforcement Learning. In: SFT model Output:
+This is the final step of training a model; in this phase is about giving the model the power of "reasoning".
+Which without the magic, is making the model to question itself.
+
+
+## Summary of Training a model
+```mermaid
+graph:
+
+[Internet Documents] --> {_pretraining_} --> [Base Model] --> {_supervised finetunning_} --> [SFT model: An assistant, trained] --> {_reinforcement_} --> [RL model]
+```
+
+**Analogy**. A science study book from school.
+Pre-training --> Exposition to background knowledge; in a book is just the chapter content
+Post-training<Supervised finetuning> --> Is the problem+demonstrated solution, for imitation
+Post-training<Reinforcement learning> --> Is the promts to practice, trial & error until reach correct answer
+
+
 
