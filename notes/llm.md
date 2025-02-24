@@ -167,5 +167,29 @@ Pre-training --> Exposition to background knowledge; in a book is just the chapt
 Post-training<Supervised finetuning> --> Is the problem+demonstrated solution, for imitation
 Post-training<Reinforcement learning> --> Is the promts to practice, trial & error until reach correct answer
 
+## Notes
+
+ ** Limitations of Reinforcement learning**; at some point RL will plateu and the results will become shit.
+ This usually happens when doing RL from un-verfifieable domains (e.g. rating a joke).
+
+ The setup for this RL is normally to use a separated "rating model" which emulates human behaviour. After multiple passes of the RL the RL model
+ will learn how to trick the RM.
+
+_e.g. A joke about pelicans? --> "the the the the the the the" will come as a super joke.
+
+## What is next for 2025
+
+- multimodal (not just text but audio, images, video, etc)
+- tasks -> agents
+- pervasive, invisible
+- computer-using
+- test-time training?
+
+
+## Resources to keep up to date
+
+- https://lmarena.ai
+- https://buttondown.com/ainews
+- https://together.ai
 
 

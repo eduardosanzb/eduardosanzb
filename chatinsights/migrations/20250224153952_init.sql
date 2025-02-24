@@ -1,0 +1,4 @@
+-- Create "user_profiles" table
+CREATE TABLE `user_profiles` (`id` int NOT NULL, `name` text NOT NULL, `email` text NOT NULL, `preferred_language` text NOT NULL DEFAULT 'en', `theme` text NOT NULL DEFAULT 'system', `timezone` text NOT NULL DEFAULT 'UTC', PRIMARY KEY (`id`));
+-- Create "summary_preferences" table
+CREATE TABLE `summary_preferences` (`id` int NOT NULL, `user_profile_id` int NOT NULL, `summary_frequency` text NOT NULL DEFAULT 'daily', `daily_summary_time` text NOT NULL DEFAULT '09:00', `weekly_summary_day` text NOT NULL DEFAULT 'Monday', `scheduled_summary_times` text NOT NULL, `summarize_chat_types` text NOT NULL DEFAULT 'all', `keywords_enabled` boolean NOT NULL DEFAULT false, `keywords_list` text NOT NULL, PRIMARY KEY (`id`), CONSTRAINT `fk_user_profile` FOREIGN KEY (`user_profile_id`) REFERENCES `user_profiles` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE);
