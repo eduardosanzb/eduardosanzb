@@ -8,7 +8,7 @@ table "user_profiles" {
   }
   column "name" {
     type    = text
-    null    = false
+    null    = true
   }
   column "email" {
     type    = text
