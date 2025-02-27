@@ -1,109 +1,79 @@
-**WhatsApp Message Management Project**
-======================================
+# Workflow Specifications
 
-**Table of Contents**
------------------
+## Workflow A: Sourcing Data Messages (CJ<>CB)
 
-1. [Overview](#overview)
-2. [Domains](#domains)
-3. [Workflows](#workflows)
-4. [API Endpoints](#api-endpoints)
-5. [Design Considerations](#design-considerations)
+* **Trigger**: Cron Job (CJ) initiation
+* **Endpoints**:
+    + `POST /messages` (Set preferences)
+* **Steps**:
+    1. `CJ Fetches WhatsApp Messages`
+    2. `Format Messages` (list of chats with Messages, Contacs and metadata)
+    3. `POST /messages` to Core Backend (CB)
+    4. `CB Normalizes & Upserts` in database, generates embeddings
+    5. `CB Responds` with Success/Failure
+    6. `CJ Marks Action` as Success/Failure; Notify on Failure
 
-**Overview**
---------
+## Workflow B: Summarization Flow (CJ<>CB<>User)
 
-* **Project Goal:** Develop a system for managing WhatsApp messages, including summarization, reply suggestions, and integration with Telegram.
-* **Key Components:**
-	+ Cron Job (CJ) for data sourcing and workflow initiation
-	+ Core Backend (CB) for data processing, summarization, and API management
-	+ User Interface (UI) primarily through Telegram, with potential expansion
+* **Trigger**: CJ initiation for summarization
+* **Endpoints**:
+    + `POST /summarization/start` (Set preferences)
+* **Steps**:
+    1. `CJ Sends HTTP Request` to CB for summarization
+    2. `CB Calls Summarization Engine`
+    3. `CB Posts Summary` to Telegram Chatbot
+    4. `CB Responds` with OK/Error
+    5. `CJ Marks Action` as Success/Failure; Notify on Failure
 
-**Domains**
---------
+## Workflow C: User Configuration Management (User<>CB)
 
-1. **Message Management**
-2. **Summarization Management**
-3. **Reminder Management**
-4. **Reply Suggestions**
-5. **Telegram Integration**
-6. **Configuration Management**
-7. **Authentication and Security**
+* **Trigger**: User interaction
+* **Endpoints**:
+    + `POST /config/preferences` (Set preferences)
+    + `GET /config/preferences` (Retrieve current preferences)
+* **Steps**:
+    1. `User Submits Preferences`
+    2. `CB Updates & Stores Preferences`
+    3. `CB Responds` with Success
 
-**Workflows**
----------
+## Workflow D: Data Export/Backup (User<>CB)
 
-### Workflow A: Sourcing Data Messages (CJ<>CB)
+* **Trigger**: User request
+* **Endpoints**:
+    + `POST /data/export` (Initiate export)
+    + `GET /data/export/status` (Check export status)
+* **Steps**:
+    1. `User Requests Data Export`
+    2. `CB Initiates Export Process`
+    3. `CB Provides Export Status`
 
-1. **CJ Initiates Fetch**: Retrieve all WhatsApp messages.
-2. **Format Messages**: Standardize message format (list of chats with messages and metadata).
-3. **POST to CB**: `/messages`
-4. **CB Normalizes & Upserts**: Store in database, generate embeddings.
-5. **CB Responds**: Success/Failure
-6. **CJ Marks Action**: Success/ Failure; Notify on Failure
+## Workflow E: System Health and Status Updates (CB)
 
-### Workflow B: Summarization Flow (CJ<>CB<>User)
+* **Trigger**: Scheduled checks
+* **Endpoints**:
+    + `GET /system/status` (Retrieve system status)
+* **Steps**:
+    1. `CB Checks System Health`
+    2. `CB Updates & Provides Status`
 
-1. **CJ Initiates Summarization**: HTTP request to CB.
-2. **CB Calls Summarization Engine**:
-3. **CB Posts Summary to Chatbot** (Telegram):
-4. **CB Responds**: OK/Error
-5. **CJ Marks Action**: Success/Failure; Notify on Failure
+## Workflow F: Data Encryption and Access Control (CB)
 
-### Workflow C: User Configuration Management (User<>CB)
+* **Implementation**:
+    + Data encryption at rest and in transit
+    + Multi-factor authentication setup
 
-* **Endpoints:**
-	+ `POST /config/preferences` (Set preferences)
-	+ `GET /config/preferences` (Retrieve current preferences)
+## Workflow G: Bulk Operations and Optimization (CJ<>CB)
 
-### Workflow D: Data Export/Backup (User<>CB)
+* **Endpoints**:
+    + `/messages/bulk` (Efficient large-volume message handling)
+* **Steps**:
+    1. `CJ Sends Bulk Message Request`
+    2. `CB Processes Bulk Messages Optimally`
 
-* **Endpoints:**
-	+ `POST /data/export` (Initiate export)
-	+ `GET /data/export/status` (Check export status)
+## Workflow H: Advanced Interaction Patterns (User<>CB)
 
-### Workflow E: System Health and Status Updates (CB)
-
-* **Endpoints:**
-	+ `GET /system/status` (Retrieve system status)
-
-### Workflow F: Data Encryption and Access Control (CB)
-
-* **Implemented Security Measures:**
-	+ Data encryption at rest and in transit
-	+ Multi-factor authentication setup
-
-### Workflow G: Bulk Operations and Optimization (CJ<>CB)
-
-* **Optimized Endpoints for Bulk Processing:**
-	+ `/messages/bulk` (For efficient large-volume message handling)
-
-### Workflow H: Advanced Interaction Patterns (User<>CB)
-
-* **Endpoints for Custom Commands/Gestures:**
-	+ `POST /commands/custom` (Execute custom command)
-
-**API Endpoints**
---------------
-
-### Message Management
-
-* `POST /messages`: Handle incoming messages from CJ
-* `GET /messages`: Retrieve messages (with filtering, sorting, pagination)
-
-### Summarization Management
-
-* `POST /summarize`: Initiate summarization process
-* `GET /summaries`: Retrieve generated summaries
-
-### ... (Endpoints for other domains and workflows as outlined above)
-
-**Design Considerations**
-----------------------
-
-* **RESTful Principles**: Utilize HTTP methods appropriately
-* **Versioning**: Implement API versioning (e.g., `/api/v1/...`)
-* **Error Handling**: Return meaningful error responses with HTTP status codes
-* **Authentication & Authorization**: Secure endpoints with authentication and role-based access control
-* **Rate Limiting**: Protect against abuse with rate limiting measures
-* **Documentation**: Maintain comprehensive API documentation (Swagger/OpenAPI)
+* **Endpoints**:
+    + `POST /commands/custom` (Execute custom command)
+* **Steps**:
+    1. `User Executes Custom Command`
+    2. `CB Processes & Responds to Command`
