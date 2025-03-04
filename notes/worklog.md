@@ -31,4 +31,6 @@
 - Started checking out the FastAPI tutorial
 - Added a [todo](./pythob-poc.todo.md) file for tracking the development
 
-
+## 2025-03-04
+- Worked on the TDD; completed the first part of the summary engine
+- setup gemini to work with webUI

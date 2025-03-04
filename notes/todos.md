@@ -1,23 +1,34 @@
 # TODOs
 
-## 2025-03-03
-- [ ] Water the plants
+## 2025-03-05
+- [ ] Joao's activity
+- [ ] Therapy homework
 - [ ] Batch admin
-    - [ ] Say thnaks to linda & unity
-    - [ ] Pay TK
-    - [ ] Do the Hallesches app
     - [ ] Review VPN and expense
+    - [ ] Review ALG1 money
+    - [ ] Setup payment for mystuff
+
+
+## 2025-03-04
+- [x] Organize bbq
+- [x] Therapy
+
+## 2025-03-03
+- [x] Water the plants
+- [x] Batch admin
+    - [x] Say thnaks to linda & unity
+    - [x] Pay TK
+    - [x] Do the Hallesches app
+    - [x] Pay Shay
 
 ## Week 10: 2025-03-03, 2025-03-04, 2025-03-05, 2025-03-06, 2025-03-07
-
 -  Important
     - [ ] Python POC <I>
     - [ ] Business plan <I>
 -  Personal
-    - [ ] Joao's activity
+    - [ ] Ikea's shopping
 -  Business-freelancer
     - [ ] Check Discord business <I>
-
 
 ## ON-going
 -  Personal
@@ -28,6 +39,7 @@
         - [ ] Website page
         - [ ] Find meetups
 -  Business-freelancer
+    - [ ] Register freiberufler
     - [ ] Redo website Udo feedback
     - [ ] Font should come from static!
     - [ ] Meetups?
@@ -48,7 +60,13 @@
 - Business sass
     - [ ] #problems-ideas
 
-#problems-ideas
+# problems-ideas
 - The shitty hiring market is flooded with AI and shitty candidates
 - Photographers share location tips for locations
+
+#  Business expenses
+- Couching
+- German classes
+- laptop
+- VPN
 

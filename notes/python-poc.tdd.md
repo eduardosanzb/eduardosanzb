@@ -1,4 +1,5 @@
 # Pyton POC TDD
+
 ## Problem Statement
 
 This project aims to build a personal assistant for managing WhatsApp messages. It will summarize daily messages, track important conversations, provide reply reminders, and offer AI-powered reply suggestions, all while prioritizing user privacy by keeping data and LLM processing local.
@@ -42,52 +43,6 @@ For further understanding of the explored **Workflows** of the system, pleaser r
 * Provide a private and secure solution.
 * Provide a learning platform for Python, AWS, and LLM technologies.
 
-## Functional Requirements
-### Data Acquisition and Storage
-* The system shall extract, parse and store WhatsApp messages relevant data.
-* The system should have a way to update the database with new exported chat logs.
-### Message Summarization and Context Enrichment
-* The system shall provide a daily summary of received messages.
-* The system shall use a local Large Language Model (LLM) to generate message summaries.
-* The system shall identify and track important conversations based on user-defined criteria (e.g., keywords, sender).
-* The system shall enrich messages with context (e.g., sentiment analysis, topic identification).
-* The system must be able to index all conversations for later queries.
-### Reply Reminders
-* The system shall provide reminders for critical messages that require a reply.
-* The system shall allow users to mark messages as critical.
-* The system shall allow users to set reminder schedules.
-### AI-Powered Reply Suggestions
-* The system shall use a LLM to generate reply suggestions.
-* The reply suggestions shall be based on message content and conversation context.
-* The system should try to mimic the user writing style.
-### User Interface
-* The primary user interface shall be a Chat bot.
-* The user shall be able to interact with the system using natural language commands.
-* The bot shall receive chat exports and user queries.
-* The bot shall send message summaries, reminders, and reply suggestions.
-* The bot shall provide a conversational interface for interacting with the system.
-### Configuration and Management
-* The system shall provide configuration options for database connection, LLM settings, and reminder schedules.
-* The system shall be deployable to cloud infrastructure.
-* The system shall have logging and monitoring capabilities.
-
-## Non-Functional Requirements
-
-### Security
-* _User data shall be processed and stored locally to ensure privacy._
-### Usability
-* The Chat bot interface shall be intuitive and easy to use.
-* The system shall provide clear and concise information.
-### Reliability
-* The system shall be robust and handle errors gracefully.
-* The system shall provide consistent results.
-### Maintainability
-* The system shall be designed for easy maintenance and updates.
-* The code shall be well-documented.
-### Scalability
-* Initially the system will be used for 1 user. But potential scalability for multiple users would be nice.
-### Portability
-* The system shall be deployable to different environments (local, AWS).
 
 ## Technology Stack
 * Python
@@ -278,40 +233,32 @@ The requirements for a backend are the next:
 The backend ensures all data processing and AI computations are done locally, prioritizing user privacy.
 
 We can split this exploration in the next parts:
-- Data Layer
-    - Data ingestion/exposure
-      - Define interfaces (OAS, Types, etc)
-      - Ranking rules
-    - Data Storage
-      - DB setup
-      - Migrations
-      - Client
-      - Vector data research
-- Summary engine
-  - LLm integration research
-  - Testing Business Logic
-- Actions (send/receive)
-  - Integrations capabilities (which integrations)
-    - interact with whatsapp
-    - Connect googlecal
-    - interact with telegram/slack
-    - interact with email
-  - Define CRUD interfaces for actions
-  - Reminders engine
-
+- [ ] Data Layer
+    - [x] Data ingestion/exposure
+  - [x] Data model
+      - [x] Define interfaces (OAS, Types, etc)
+      - [ ] Ranking rules
+    - [ ] Data Storage
+      - [x] DB setup
+      - [x] Migrations
+      - [x] Client
+      - [ ] Vector data research
+- [ ] Summary engine
+  - [] Data model of a summary
+  - [ ] LLm integration research
+  - [ ] Testing Business Logic
+- [ ] Actions (send/receive)
+  - [ ] Integrations capabilities (which integrations)
+    - [x] interact with whatsapp
+    - [ ] Connect googlecal
+    - [ ] interact with chat bot (telegaram or slack tbd)
+    - [ ] interact with email
+  - [ ] Define CRUD interfaces for actions
+  - [ ] Reminders engine
 The common component between this parts is that we'll be coupling all of this functionality in one monolithic service. As a learning opportunity we'll use python instead of typescript or go.
 
 #### Data Layer
 This section is the foundation of the core backend; one of the main decisions we have to make here is to select the database technology; As constraints we have that this is a small project; so we want to prioritize simplicity nevertheless we also want to use the right tool.
-
-##### The Database Technology
-We first explore the rationale behind choosing a SQL database engine.SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
-Without any doubt we can recommend to use a SQL database engine.
-
-Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recoginzed for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
-
-Considering the nature of the project and rapid development, our **recommendation for this section is to start with SQLite, architecture the data layer in a way that we can gradually if required migrate towards PostgreSQL**
-
 ##### Conceptual Data Model
 We started by identifying the core entities needed for our personal chat application: `UserProfile`, `Contacts`, `Chats`, and `Messages`.
 We recognized the need to store user preferences and decided to create a separate `SummaryPreferences` entity to manage settings related to chat summarization, keeping it distinct from the general `UserProfile`.
@@ -382,7 +329,10 @@ Key decisions included separating "critical contacts" as a property of the Conta
     *   `message_embedding` (BLOB, Optional): Vector embedding of the message text content.
 
 #### Interfaces and API design
-In this section we'll explore how our system will interact.
+In this section we'll explore how all the components of our system will interact with each other.
+- REST API - The core backbone of our integration; allowin the CronJon & Chatbot to interact with the system
+- DB Client - The interaction between our Backend and the DB
+- Typescript SDK - A wrapper around the REST API to facilitate the interactions.
 
 ##### API Design
 We can categorize the domains for our API in the next ones, based in our [workflows](./python-poc.spec.md)
@@ -410,28 +360,76 @@ We can categorize the domains for our API in the next ones, based in our [workfl
 From this we can generate our FastAPI types, which eventually will be used to create OAS and TS definitions.
 
 ##### DB Client
-
-Given that we'll use sqlite; we can use the library already provided by [python](https://docs.python.org/3/library/sqlite3.html)
-
-
-
-
-
-
+Given that we'll use sqlite; we can use the library already provided by [python](https://docs.python.org/3/library/sqlite3.html).
+With this simple approach and combining it with FastAPI pydanctic models we can have a very simple and straightforward approach.
 
 #### Ranking Logic
-- [ ] Ranking logic
-  - [ ] Criteria: importance, recency, user interaction
+This section outline how conversations are prioritized in the summary creation of our system.
+This is crucial for determining which conversations are more important, need urgent attention or shoul dbe highlighted by the chatbot.
+
+We can break down this section in the next parts:
+- **Ranking Criteria** - What's the criteria to determine the priority of a conversation.
+- **Ranking Algorithm** - How the ranking is calculated based on the criteria.
+- **Implementation and Testing** - How the ranking logic is implemented and tested in the system.
 
 
-#### Ranking Logic
-- [ ] Vectorization: Research and implement data embeddings for LLM summarization
-  - [ ] Tools:
+1. **Ranking Criteria**
+- **Sender Priority**: Messages from high-priority contacts are ranked higher.
+- **Critical Keywords**: Messages containing predefined critical keywords (e.g., "urgent," "deadline") are prioritized.
+- **Recency*: More recent messages are given higher priority to ensure timely responses.
+- **User Interaction**: Messages interacted with by the user (replied, favorited) are ranked higher.
+- **Message Context and Sentiment*: Sentiment analysis influences ranking, with negative sentiment indicating potential issues.
+
+2. **Ranking Algorithm**
+Weighted Scoring System: Each criterion is assigned a weight, contributing to a total score for each message:
+Example:
+```python
+def calculate_priority(message):
+    # Example calculation using sender priority, keyword presence, and recency
+    sender_priority = get_sender_priority(message.sender)
+    has_critical_keyword = any(keyword in message.content for keyword in get_critical_keywords())
+    recency_score = calculate_recency_score(message.timestamp)
+    return sender_priority * 0.4 + has_critical_keyword * 0.3 + recency_score * 0.3
+```
+
+Dynamic Weights: Users can adjust weights to customize prioritization.
+
+3. **Implementation and Testing**
+
+- Data Model Enhancements:
+    - Expand the Contacts entity with an enumeration for priority levels.
+    - Rename keywords_list in SummaryPreferences to critical_keywords.
+    - Add fields to track user interactions (replied, favorited).
+- Integrate sentiment scores from the local LLM.
+- Implement the weighted scoring system in the message ranking logic.
+- Write unit tests to validate the ranking algorithm with various scenarios.
+
+**Key Decisions**
+
+1. _Granularity of Ranking_
+Decision: Implement message-level ranking initially for simplicity.
+Rationale: Allows highlighting critical messages without waiting for conversation aggregation.
+
+2. _Hybrid Approach_
+Plan: Consider evolving to a hybrid model combining both message and conversation ranking in the future.
+    Primary ranking by conversation for coherence.
+    Secondary ranking of individual messages within conversations.
+
+**Exploration Process**
+1. Initial Focus: Started with defining ranking criteria, ensuring alignment with functional requirements and user needs.
+2. Algorithm Selection: Chose a weighted scoring system due to its simplicity and effectiveness.
+3. Granularity Discussion: Debated message vs. conversation ranking, opting for an initial message-level approach with future scalability.
+
+#### Data Storage
+
+##### The Database Technology
+We first explore the rationale behind choosing a SQL database engine.SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
+Without any doubt we can recommend to use a SQL database engine.
+
+Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recoginzed for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
+Considering the nature of the project and rapid development, our **recommendation for this section is to start with SQLite, architecture the data layer in a way that we can gradually if required migrate towards PostgreSQL**
 
 #### Migrations
-- [ ] Migrations and infrastructure
-  - [x] Migrations with atlas
-
 In our exploration of database migration management tools, we considered several popular open-source options including [Flyway](https://flywaydb.org/), [Liquibase](https://www.liquibase.org/), [dbmate](https://github.com/amacneil/dbmate) and [Atlas](https://atlasgo.io/). While each tool offers robust capabilities, Atlas stands out due to its modern, declarative approach to schema management, aligning well with infrastructure-as-code principles.
 
 Atlas's language-agnostic nature, defining schemas in HCL or SQL and generating standard SQL migrations, ensures broad applicability regardless of the application's backend language.
@@ -448,36 +446,198 @@ We tested atlas by managing a simple schema with changes and applying the migrat
 - To apply the migration
 `atlas migrate status --env local`
 
+#### Summary Engine
+The summary engine is one of the core functionalities of our system, responsible for generating concise summaries of chat messages. This section explores the API design, data model of a summary, the summarization techniques.
+Later in this section we'll explore the AI-powered integration within the engine.
 
-#### SRE
-  - [ ] Infra setup local vs cloud
-    - [ ] AWS cost-effectiveness
-    - [ ] Just a VM?
-  - [ ] CI/CD
+##### API Design
+
+Initially, we considered a synchronous API with a single endpoint (`/summarization/start`) that would return the summary once the process was complete. However, this approach has significant drawbacks for longer summarization tasks, as it can block the client and provide no feedback on progress.
+
+We then explored an asynchronous approach, implementing three endpoints: `/summarization/start` to trigger the summarization, `/summarization/status` to check the progress, and `/summarization/result` to retrieve the summary once completed. This design allows for a non-blocking, scalable solution where users can initiate summarization and check back later without waiting for the process to finish.
+
+To accommodate scenarios where users might have multiple summarization requests, we included the ability to check the status and retrieve results for one or more summary IDs via the status and result endpoints. This design requires a mechanism to store and track summarization requests, statuses, and results.
+
+**We recommend implementing the asynchronous API** with the following endpoints:
+
+*   `POST /summarization/start`: Initiates the summarization process and returns a `summary_id` for tracking. Required parameters include `chat_id` to specify which chat to summarize with the optional params of `start_timestamp` and `end_timestamp`
+    to filter which messages summarize..
+*   `GET /summarization/status`: Checks the status of a summarization request using `summary_id` or an array of `summary_ids` Optional parameter is a list of ID. Returns fields like status, start time, completion time & progress percentage.
+*   `GET /summarization/result`: Retrieves the summary result using `summary_id` an array of `summary_ids` Optional parameter is a list of ID. Returns the complete formatted & structured summary.
+
+##### Shape of a Summary
+
+The shape of the summary was designed with the user interface and workflows in mind. We went through several iterations, exploring options that ranged from simple lists of key points to complex structures with various metadata. To provide the most value, we determined that the summary should provide actionable insights for the user.
+
+Based on the workflows described in [`python-poc.spec.md`](./python-poc.spec.md), The main action is AI autogenerated rely and the whatssapp Proxy functionality; the design converges to provide insight of the most important converations and from there trigger any action needed.
+
+We decided to structure the summary into distinct sections optimized to the user experience: **a metadata section, a top-ranked conversations section, and a topics section.**
+
+We recommend structuring the summary into distinct sections to align with our project's UX, specifically to surface the automatted AI replies or Whatspp proxy functionalities from the high ranked messages, each stored as JSON data:
+
+*   `metadata_section_data`: JSON object storing high-level information about the summary (e.g., number of conversations summarized, summarization time).
+*   `top_ranked_conversations_data`: JSON array storing the prioritized conversations with key message snippets, sorted by ranking.
+*   `key_conversation_topics_data`: JSON object grouping conversations by common themes to provide insight of what the summariation entails.
+
+The supporting conceptual data model is as follows:
+**Summary**
+*   **Purpose:** Stores structured summary information, broken down into sections for chatbot display, directly supporting UI elements and features like the AI Reply workflow.
+*   **Attributes:**
+    *   `summary_id` (INTEGER, PRIMARY KEY, Auto-increment): Unique identifier for the summary.
+    *   `user_profile_id` (INTEGER, NOT NULL): Foreign key linking the summary to a user profile.
+    *   `summary_timestamp` (TIMESTAMP, NOT NULL): Timestamp when the summarization was generated.
+
+    *   `metadata_section_data` (TEXT, Optional): JSON object storing metadata for the summary display section.
+        ```json
+        {
+          "conversation_count": INTEGER,
+          "summarization_time": STRING (Timestamp in user-friendly format),
+          "upcoming_events_count": INTEGER (Optional),
+          "reminders_count": INTEGER (Optional)
+        }
+        ```
+        *Example Data:*
+        ```json
+        {
+          "conversation_count": 15,
+          "summarization_time": "October 26, 2023 at 10:30 AM PST"
+        }
+        ```
+
+    *   `top_ranked_conversations_data` (TEXT, Optional): JSON array storing data for the "Top Ranked Conversations" section.
+        ```json
+        [
+          {
+            "conversation_id": STRING/INTEGER (ID of the conversation),
+            "conversation_title": TEXT,
+            "representative_message_snippet": TEXT,
+            "rank": INTEGER (Optional, rank order)
+          },
+          {
+            "conversation_id": STRING/INTEGER,
+            "conversation_title": TEXT,
+            "representative_message_snippet": TEXT,
+            "rank": INTEGER
+          },
+          ... (more ranked conversations)
+        ]
+        ```
+        *Example Data:*
+        ```json
+        [
+          {
+            "conversation_id": "group-chat-123",
+            "conversation_title": "Dinner with Sarah - Friday Night",
+            "representative_message_snippet": "[Sarah] - Still on for dinner Friday at 7?",
+            "rank": 1
+          },
+          {
+            "conversation_id": "family-group-456",
+            "conversation_title": "Mom's Birthday Gift Ideas - Family Group",
+            "representative_message_snippet": "[Mom] - Thinking about what I might want for my birthday...",
+            "rank": 2
+          },
+          {
+            "conversation_id": "private-chat-dogwalker",
+            "conversation_title": "Dog Walker Inquiry - [Dog Walker's Name]",
+            "representative_message_snippet": "[Dog Walker] - Yes, I'm available next week to walk [Dog's Name].",
+            "rank": 3
+          }
+        ]
+        ```
+
+    *   `key_conversation_topics_data` (TEXT, Optional): JSON object storing data for the "Key Conversation Topics" section.
+        ```json
+        {
+          "topics": [
+            {
+              "topic_name": TEXT,
+              "conversation_ids": [STRING/INTEGER, STRING/INTEGER, ...]
+            },
+            {
+              "topic_name": TEXT,
+              "conversation_ids": [STRING/INTEGER, STRING/INTEGER, ...]
+            },
+            ... (more topics)
+          ]
+        }
+        ```
+        *Example Data:*
+        ```json
+        {
+          "topics": [
+            {
+              "topic_name": "Social Events & Meetups",
+              "conversation_ids": ["group-chat-123", "group-chat-789"]
+            },
+            {
+              "topic_name": "Family Updates & Discussions",
+              "conversation_ids": ["family-group-456", "private-chat-uncle"]
+            },
+            {
+              "topic_name": "Home & Errands",
+              "conversation_ids": ["private-chat-dogwalker", "private-chat-plumber"]
+            }
+          ]
+        }
+        ```
+
+    *   `status` (TEXT, NOT NULL): Current status of the summarization process (e.g., "pending", "processing", "completed", "failed").
+    *   `start_time` (TIMESTAMP, NOT NULL): Timestamp when the summarization process started.
+    *   `completion_time` (TIMESTAMP, Optional): Timestamp when the summarization process completed.
+    *   `error_message` (TEXT, Optional): Error message if the summarization process failed.
 
 
-#### Additional
-- [ ] Additional
-    - [ ] Performance optimizations
-    - [ ] Security
+##### Summarization Engine Techniques and implementation**
+- [ ] Incorporate a ranking system to prioritize messages or topics.
+- [ ] Understand how the ranking system influences the summarization process.
+- [ ] Ensure seamless integration of the ranking system into the summarization engine.
+
+## **AI-Powered Summarization Engine**
+### **AI Integration**
+- [ ] Explore the use of Large Language Models (LLMs) for enhanced summarization.
+- [ ] Consider methods like Retrieval-Augmented Generation (RAG) and fine-tuning.
+- [ ] Understand how LLMs can generate more detailed and context-aware summaries.
+
+### **Reply Reminders**
+- [ ] Implement AI-generated reminders for critical messages.
+- [ ] Allow users to mark messages as critical and set reminder schedules.
+- [ ] Ensure reminders are seamlessly integrated into the existing system.
+
+### **AI-Powered Reply Suggestions**
+- [ ] Develop AI-driven suggestions for replies based on message content and conversation context.
+- [ ] Ensure suggestions are relevant and user-friendly.
+- [ ] Mimic the user's writing style in reply suggestions.
 
 
+##### API Design
+
+#### AI-Powered Workflows
+- [ ] Embeddings: Research and implemeentd embeddings for LLM summarization
+- [ ] Vectorization: Implement data vectorization for LLM Processing
+- [ ] Summarization Method: Choose a summarization method for LLm
+- [ ] Integration: Integrate the AI engine with the workflows
+- [ ] Optimization: Strategies for improving performance and accuracy
+
+### Chat Bot Interface
 
 
-
-
-
-### Telegram integration
-Create a Telegram bot using the `python-telegram-bot` library. The bot will receive chat exports, user queries, and send summaries and reminders.
-
-### AI part!
-
-#### Local LLM integration
+##### Embeddings
+- [ ] Vectorization: Research and implement data embeddings for LLM summarization
+  - [ ] Tools:
+##### Local LLM integration
 Integrate a local LLM (e.g., llama.cpp) into the FastAPI backend to generate message summaries and reply suggestions.
 
 ### Deployment
 - AWS deployment: Deploy the FastAPI backend to AWS Elastic Beanstalk or ECS and use Amazon RDS for PostgreSQL.
 - CI/CD pipeline: Set up a CI/CD pipeline for automated deployment.
+  - [ ] Infra setup local vs cloud
+    - [ ] AWS cost-effectiveness
+    - [ ] Just a VM?
+  - [ ] CI/CD (migrations also)
+- [ ] Additional
+    - [ ] Performance optimizations
+    - [ ] Security
 
 ### E2E Testing
 Deploy the FastAPI backend to AWS Elastic Beanstalk or ECS and use Amazon RDS for PostgreSQL.
@@ -522,49 +682,64 @@ Next steps:
 ## Definition of Done
 
 **Functional Requirements:**
+**Data Acquisition and Storage**
+- [ ] The system shall extract, parse and store WhatsApp messages relevant data.
+- [ ] The system should have a way to update the database with new exported chat logs.
 
--   Parses exported WhatsApp chat logs.
--   Stores messages and metadata in PostgreSQL.
--   Telegram bot receives chat exports and user queries.
--   FastAPI backend exposes necessary API endpoints.
--   Local LLM generates message summaries and reply suggestions.
--   Reminders are sent via Telegram.
+**Message Summarization and Context Enrichment**
+- [ ] The system shall provide a daily summary of received messages.
+- [ ] The system shall use a local Large Language Model (LLM) to generate message summaries.
+- [ ] The system shall identify and track important conversations based on user-defined criteria (e.g., keywords, sender).
+- [ ] The system shall enrich messages with context (e.g., sentiment analysis, topic identification).
+- [ ] The system must be able to index all conversations for later queries.
 
-**Testing and Automation:**
+**Reply Reminders**
+- [ ] The system shall provide reminders for critical messages that require a reply.
+- [ ] The system shall allow users to mark messages as critical.
+- [ ] The system shall allow users to set reminder schedules.
 
--   Unit tests cover core logic.
--   E2E tests verify end-to-end functionality.
--   API tests ensure API endpoints work correctly.
--   CI/CD pipeline automates build and deployment.
+**AI-Powered Reply Suggestions**
+- [ ] The system shall use a LLM to generate reply suggestions.
+- [ ] The reply suggestions shall be based on message content and conversation context.
+- [ ] The system should try to mimic the user writing style.
 
-**Monitoring and Logging:**
+**User Interface**
+- [ ] The primary user interface shall be a Chat bot.
+- [ ] The user shall be able to interact with the system using natural language commands.
+- [ ] The bot shall receive chat exports and user queries.
+- [ ] The bot shall send message summaries, reminders, and reply suggestions.
+- [ ] The bot shall provide a conversational interface for interacting with the system.
 
--   Logging implemented for all components.
--   Metrics collected for performance monitoring.
+**Configuration and Management**
+- [ ] The system shall provide configuration options for database connection, LLM settings, and reminder schedules.
+- [ ] The system shall be deployable to cloud infrastructure.
+- [ ] The system shall have logging and monitoring capabilities.
 
-**Deployment:**
+**Non-Functional Requirements**
 
--   Deployment scripts for local, dev, and prod environments.
--   Application deployed to AWS.
+**Security**
+- [ ] _User data shall be processed and stored locally to ensure privacy._
+
+**Usability**
+- [ ] The Chat bot interface shall be intuitive and easy to use.
+- [ ] The system shall provide clear and concise information.
+
+**Reliability**
+- [ ] The system shall be robust and handle errors gracefully.
+- [ ] The system shall provide consistent results.
+- [ ] The sustem provide monitoring, logging, and alerting.
+
+**Maintainability**
+- [ ] The system shall be designed for easy maintenance and updates.
+- [ ] The code shall be well-documented.
+- [ ] The system shall have automated tests for core functionality.
+- [ ] The system shall have a CI/CD pipeline for automated deployment.
+
+**Scalability**
+- [ ] Initially the system will be used for 1 user. But potential scalability for multiple users would be nice.
+
+**Portability**
+- [ ] The system shall be deployable to different environments (local, AWS).
 
 **Cost:**
-
--   AWS costs estimated and optimized.
-
-**Security:**
-
--   Data privacy ensured (local processing).
--   Secure access to AWS resources.
-
-**Documentation:**
-
--   README with setup instructions.
--   API documentation.
-
-**Communication:**
-
--   Regular updates on project progress.
-
-**Feedback:**
-
--   Gather feedback on usability and functionality.
+- [ ] The system shall be cost-effective to run on AWS.
