@@ -1,13 +1,18 @@
 # TODOs
 
-## 2025-03-05
+## 2025-03-06
 - [ ] Joao's activity
-- [ ] Therapy homework
+- [ ] Check party with Linda!
+    - [ ] Pickup fanny pack from bogdan's house
 - [ ] Batch admin
     - [ ] Review VPN and expense
-    - [ ] Review ALG1 money
     - [ ] Setup payment for mystuff
+    - [ ] Clean mailbox
 
+## 2025-03-05
+- [x] Therapy homework
+- [x] Review ALG1 money
+- [x] German class
 
 ## 2025-03-04
 - [x] Organize bbq

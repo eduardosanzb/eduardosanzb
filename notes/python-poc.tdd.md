@@ -588,10 +588,30 @@ The supporting conceptual data model is as follows:
     *   `error_message` (TEXT, Optional): Error message if the summarization process failed.
 
 
-##### Summarization Engine Techniques and implementation**
-- [ ] Incorporate a ranking system to prioritize messages or topics.
-- [ ] Understand how the ranking system influences the summarization process.
-- [ ] Ensure seamless integration of the ranking system into the summarization engine.
+##### Summary Engine: Summarization Engine Techniques (Non-AI Baseline)
+
+This section details the non-AI summarization techniques for the initial Summary Engine baseline.  In line with the project's pragmatic and step-by-step approach, we chose rule-based techniques as a foundation before AI methods. This ensures a functional, reliable system **by providing a fallback to the AI solution** and provides a benchmark for future AI enhancements, while also enabling quick development and more in-depth process understanding.
+
+### Non-AI Techniques Exploration
+
+For our baseline, we selected  non-AI techniques, moving beyond simpler methods like basic frequency-based scoring which lack context.  We tailored techniques to populate specific sections of our summary data model:
+
+*   **For `key_conversation_topics_data` (Key Conversation Topics Section): TF-IDF Keyword Extraction.** We use `scikit-learn`'s `TfidfVectorizer` for Term Frequency-Inverse Document Frequency (TF-IDF). This identifies thematically relevant keywords by weighting term uniqueness across all conversations. Language-specific `TfidfVectorizer` instances will handle multilingual content, leveraging `chat_language` data.
+
+*   **For `top_ranked_conversations_data` (Top Ranked Conversations Snippets): Keyword-Centric Sentence Scoring.**  This method scores sentences based on the presence of TF-IDF keywords from the relevant conversation. Top-scoring sentences become informative snippets in the Top Ranked Conversations section.
+
+*   **For `metadata_section_data` (Metadata Section): Statistical Summary.**  We will calculate and display key metadata like conversation count, time range, and message totals to provide context for each summary.
+
+### Recommendation and Justification
+
+We recommend these non-AI techniques for the baseline engine due to:
+
+*   **Pragmatic Implementation:**  Straightforward implementation using Python libraries like `scikit-learn` and `nltk` allows for efficient development.
+*   **Enhanced Baseline:**  These techniques offer improved quality and relevance over simpler methods.
+*   **Foundation for AI:**  This baseline provides a crucial stepping stone for AI integration, enabling deeper understanding, a clear benchmark, and user feedback to guide AI development.
+*   **Efficient Library Use:**  Leveraging existing libraries ensures robustness and maintainability, aligning with pragmatic project goals.
+
+This non-AI baseline provides a valuable and reliable starting point, enabling a functional feature and facilitating future, more advanced AI enhancements to the Summary Engine.
 
 ## **AI-Powered Summarization Engine**
 ### **AI Integration**
