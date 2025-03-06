@@ -5,6 +5,7 @@
 - [ ] Check party with Linda!
     - [ ] Pickup fanny pack from bogdan's house
 - [ ] Batch admin
+    - [ ] Ikea's shopping
     - [ ] Review VPN and expense
     - [ ] Setup payment for mystuff
     - [ ] Clean mailbox
@@ -31,9 +32,9 @@
     - [ ] Python POC <I>
     - [ ] Business plan <I>
 -  Personal
-    - [ ] Ikea's shopping
+    - [ ] Plan a trip
 -  Business-freelancer
-    - [ ] Check Discord business <I>
+    - [x] Check Discord business <I>
 
 ## ON-going
 -  Personal

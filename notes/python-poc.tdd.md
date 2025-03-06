@@ -10,7 +10,6 @@ This project aims to build a personal assistant for managing WhatsApp messages. 
 3. **AI Assistance**: Use a local Language Model (LLM) to generate reply suggestions.
 4. **Data Privacy**: Ensure all data processing and AI computations are done locally to protect user privacy.
 
-
 This project serves as a learning opportunity for Python, AWS infrastructure, modern Python tooling, and local LLM exploration.
 Furthermore exposes a Design driven project.
 
@@ -592,7 +591,7 @@ The supporting conceptual data model is as follows:
 
 This section details the non-AI summarization techniques for the initial Summary Engine baseline.  In line with the project's pragmatic and step-by-step approach, we chose rule-based techniques as a foundation before AI methods. This ensures a functional, reliable system **by providing a fallback to the AI solution** and provides a benchmark for future AI enhancements, while also enabling quick development and more in-depth process understanding.
 
-### Non-AI Techniques Exploration
+**Non-AI Techniques Exploration**
 
 For our baseline, we selected  non-AI techniques, moving beyond simpler methods like basic frequency-based scoring which lack context.  We tailored techniques to populate specific sections of our summary data model:
 
@@ -602,7 +601,7 @@ For our baseline, we selected  non-AI techniques, moving beyond simpler methods 
 
 *   **For `metadata_section_data` (Metadata Section): Statistical Summary.**  We will calculate and display key metadata like conversation count, time range, and message totals to provide context for each summary.
 
-### Recommendation and Justification
+**Recommendation and Justification**
 
 We recommend these non-AI techniques for the baseline engine due to:
 
@@ -613,11 +612,196 @@ We recommend these non-AI techniques for the baseline engine due to:
 
 This non-AI baseline provides a valuable and reliable starting point, enabling a functional feature and facilitating future, more advanced AI enhancements to the Summary Engine.
 
-## **AI-Powered Summarization Engine**
-### **AI Integration**
-- [ ] Explore the use of Large Language Models (LLMs) for enhanced summarization.
-- [ ] Consider methods like Retrieval-Augmented Generation (RAG) and fine-tuning.
-- [ ] Understand how LLMs can generate more detailed and context-aware summaries.
+##### Summary Engine: AI-Powered Approach
+
+Building upon the foundational non-AI summarization techniques, this section outlines the design of the AI-Powered Summarization Engine. Our goal is to leverage the advanced capabilities of Large Language Models (LLMs) to create more sophisticated, context-aware, and user-friendly summaries of WhatsApp conversations.
+
+**Core Components of the AI-Powered Engine**
+
+The AI-Powered Summary Engine comprises the following key components, working in concert to generate structured and insightful summaries:
+
+*   **Ranking Engine (Pre-processing for Prioritization):**  As a crucial pre-processing step, the Ranking Engine (detailed in the 'Ranking Logic' section of this document) is integrated to prioritize conversations based on defined criteria (Sender Priority, Critical Keywords, Recency, User Interaction, and Sentiment). This component ensures that the subsequent AI-powered summarization focuses on the most relevant and important conversations, aligning with user needs and preferences. The Ranking Engine outputs a ranked list of conversations, guiding the LLM's summarization efforts.
+
+*   **Conversation Segmentation Module (Time-Based Context Management):** To handle potentially lengthy WhatsApp conversations and ensure topic coherence, a Time-Based Conversation Segmentation Module is incorporated. This module breaks down long conversations into temporally distinct segments based on configurable time gaps between messages. By processing these smaller, time-coherent segments, we mitigate LLM context window limitations and improve the topical focus of individual summaries.
+
+*   **Prompting Module (Structured JSON Prompt Design):** The Prompting Module is responsible for constructing effective prompts to guide the LLM's summarization process.  For our initial approach, we adopt a **"Single Prompt for Structured JSON Output (Option A)"** strategy. This involves crafting a comprehensive prompt that instructs the LLM to generate a structured summary in JSON format, directly populating the key sections of our `Summary` data model.  This prompt, detailed in the "Initial Draft - Single Prompt for Structured JSON Output (Option A)" subsection below, is designed to elicit a structured output encompassing metadata, top-ranked conversation summaries, key conversation topics, and optionally an overall summary.  We recognize that prompt engineering is an iterative process, and this initial prompt serves as a starting point for refinement and experimentation.
+
+*   **LLM HTTP Service (Local LLM Inference with Llama 3.2):**  For local LLM inference, we utilize an **LLM HTTP Service**, configured to run the **Llama 3.2 (3B) model** and expose an OpenAI-compatible HTTP server. This component acts as our local AI inference service, receiving prompts and conversation data from the Python Backend, performing LLM inference using Llama 3.2, and returning the generated summary text.  This choice enables local, cost-effective experimentation and leverages the computational resources of a local machine during development.
+
+
+**Workflow of AI-Powered Summarization**
+
+The AI-Powered Summarization process involves these key steps:
+1. **Data Retrieval:** Python Backend retrieves WhatsApp conversation data from Data Models based on criteria.
+2. **Ranking Engine:**  Ranking Engine prioritizes conversations using a weighted scoring algorithm.
+3. **Prompting Module:** Prompting Module constructs a structured prompt, incorporating conversation data and ranking for LLM summarization guidance.
+4. **LLM HTTP Service Request:** Python Backend requests summarization from the LLM HTTP Service, sending the structured prompt and conversation data.
+5. **LLM Inference:** LLM HTTP Service (Llama 3.2) performs inference, generating a summary in JSON format as per the prompt.
+6. **Summary Data Processing & Mapping:** Python Backend parses and validates the LLM's JSON output, mapping it to the Summary Data Model.
+7. **Summary Data Storage:** Structured summary is stored in the Summary Data Model within the database.
+
+```mermaid
+graph LR
+    A[Ranking Engine] --> B(Prompting Module)
+    B --> C[LLM HTTP Service]
+    C --> D(Summary Data Processing & Mapping)
+    D --> E[Summary Data Model]
+    B -.-> A
+    style A fill:#ccf,stroke:#333,stroke-width:2px
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#ccf,stroke:#333,stroke-width:2px
+
+    subgraph Python Backend - Summary Service
+        B
+        A
+        D
+    end
+
+```
+
+**Advantages of the AI-Powered Approach**
+
+The AI-Powered Summarization Engine offers key advantages:
+
+* Abstractive Summaries: LLMs enable the generation of abstractive summaries that rephrase and synthesize information, resulting in more concise, fluent, human-like summaries compared to extractive methods.
+* Enhanced Contextual Understanding: LLMs possess a deeper understanding of natural language context, allowing them to capture nuances and the essence of conversations more effectively.
+* More Insightful and Actionable Summaries: By understanding context and leveraging ranking information, the AI-powered engine can potentially generate summaries that are not only informative but also more insightful and directly actionable for users.
+* Improved User Experience: The expected improvements in summary quality, conciseness, and relevance will contribute to a significantly enhanced user experience within the chat application.
+* Synergy with AI-Powered Replies Feature: Utilizing LLMs for summarization creates a technology synergy with the planned AI-Powered Reply Suggestions feature, potentially allowing for shared infrastructure, skills, and a more cohesive AI-driven system.
+
+**Next Steps and Iterations**
+
+Future development will focus on:
+1. Prompt Refinement: Thoroughly testing and iteratively refining the "Single Prompt for Structured JSON Output (Option A)" to optimize summary quality, structure, and adherence to the desired JSON format.
+2. Implementation of Ranking Engine and Segmentation Modules: Developing the Python code for the Ranking Engine and Conversation Segmentation Modules and integrating them into the Python Backend.
+3. End-to-End System Integration: Building the complete workflow, connecting the Python Backend with the LLM HTTP Service, implementing data flow, and ensuring seamless operation of all components.
+4. Evaluation & Benchmarking:  Establish metrics to evaluate and benchmark AI summary quality against the non-AI baseline.
+5. Exploration of Advanced Techniques (Future Iterations): In subsequent iterations, we will explore more advanced techniques such as fine-tuning LLMs, incorporating Retrieval-Augmented Generation (RAG) for richer context, and potentially experimenting with alternative prompt strategies and LLM models to further enhance the Summary Engine's capabilities.
+
+**Initial Draft - Single Prompt for Structured JSON Output (Option A):**
+```markdown
+Your task is to summarize a set of WhatsApp conversations and output the summary in a structured JSON format.  **The Top 3 most important conversations have already been identified and ranked by a separate Ranking Engine and are clearly marked below.** Please focus on summarizing these pre-ranked conversations and identifying key topics across all provided conversations.
+
+The JSON output should contain the following sections:
+
+1.  **Metadata Section (`metadata_section_data`):**
+    Generate metadata about the summarized WhatsApp conversations. Include the following information within the `metadata_section_data` JSON object:
+    *   `conversation_count`:  The total number of WhatsApp conversations summarized (integer).
+    *   `summarization_time`: The current date and time of summarization, formatted as "Month Day, Year at HH:MM Timezone" (e.g., "October 27, 2025 at 14:30 PST").
+
+    Example JSON for metadata_section_data:
+    ```json
+    {
+      "conversation_count": 5,
+      "summarization_time": "October 27, 2025 at 15:00 UTC"
+    }
+    ```
+
+2.  **Top Ranked Conversations Section (`top_ranked_conversations_data`):**
+    Summarize the **following Top 3 WhatsApp conversations (already ranked by a Ranking Engine)**. For each conversation, provide the following information as a JSON object within the `top_ranked_conversations_data` JSON array:
+    *   `conversation_title`: A concise title summarizing the main topic of the conversation (text).
+    *   `representative_message_snippet`: A key message or short excerpt from the conversation that best represents its content and importance (text).
+    *   `rank`:  **[Context: This conversation is ranked as Rank [RANK NUMBER] by the Ranking Engine]** -  Do NOT re-rank. Just state the provided rank (integer - will be 1, 2, or 3).
+
+    Example JSON for top_ranked_conversations_data (array of 3 objects):
+    ```json
+    [
+      {
+        "conversation_title": "Project Alpha - Deadline Discussion",
+        "representative_message_snippet": "[John Doe] - We absolutely need to finalize the Alpha project timeline by EOD tomorrow.",
+        "rank": 1
+      },
+      {
+        "conversation_title": "Urgent Bug in Production - Team Channel",
+        "representative_message_snippet": "[Jane Smith] - Production is down! Investigating the critical bug reported.",
+        "rank": 2
+      },
+      {
+        "conversation_title": "Planning Team Offsite - Initial Ideas",
+        "representative_message_snippet": "[You] - Let's brainstorm some fun locations for our team offsite next month!",
+        "rank": 3
+      }
+    ]
+    ```
+
+3.  **Key Conversation Topics Section (`key_conversation_topics_data`):**
+    Identify the key overarching topics discussed across **ALL** the provided WhatsApp conversations (including both the Top Ranked and the other conversations). Group the conversations by common themes. Aim for 2-4 key topics. For each topic, provide the following within the `key_conversation_topics_data` JSON object:
+    *   `topic_name`: A concise name that clearly describes the theme (text).
+    *   `conversation_ids`: A list of conversation identifiers (e.g., "Conversation 1", "Conversation 2", etc.) that fall under this topic (array of strings).
+
+    Example JSON for key_conversation_topics_data:
+    ```json
+    {
+      "topics": [
+        {
+          "topic_name": "Project Deadlines & Timelines",
+          "conversation_ids": ["Conversation 1", "Conversation 5", "Conversation 9"]
+        },
+        {
+          "topic_name": "Urgent Issues & Bug Fixes",
+          "conversation_ids": ["Conversation 2", "Conversation 8"]
+        },
+        {
+          "topic_name": "Team & Social Events",
+          "conversation_ids": ["Conversation 3", "Conversation 7"]
+        }
+      ]
+    }
+    ```
+
+4.  **Overall Summary Section (`overall_summary_data` - Optional):**
+    Provide a brief overall summary of the main themes and key takeaways from ALL the provided WhatsApp conversations. Generate a concise paragraph (2-3 sentences maximum) summarizing the most important overarching themes and key points. Place this summary text in the `overall_summary_data` JSON field.
+
+    Example JSON for overall_summary_data:
+    ```json
+    {
+      "overall_summary_data": "The conversations primarily revolve around project deadlines and timelines, urgent bug fixes, and planning for team and social events. Key action items include finalizing project timelines and addressing production issues."
+    }
+    ```
+
+**Input Conversations (with Top 3 Clearly Marked - Example):**
+
+**Top Ranked Conversations (Pre-ranked by Ranking Engine):**
+
+**Rank 1 - Conversation 1: [PASTE YOUR RANK 1 WHATSAPP CONVERSATION TEXT HERE]**
+
+**Rank 2 - Conversation 2: [PASTE YOUR RANK 2 WHATSAPP CONVERSATION TEXT HERE]**
+
+**Rank 3 - Conversation 3: [PASTE YOUR RANK 3 WHATSAPP CONVERSATION TEXT HERE]**
+
+**Other Conversations (Unranked):**
+
+**Conversation 4: [PASTE YOUR UNRANKED CONVERSATION 4 TEXT HERE]**
+
+**Conversation 5: [PASTE YOUR UNRANKED CONVERSATION 5 TEXT HERE]**
+
+**... [PASTE ANY REMAINING UNRANKED CONVERSATIONS HERE]**
+
+
+**Desired JSON Output Structure:**
+
+Ensure that your final output is a valid JSON object encompassing ALL the sections described above.  The top-level JSON object should have the keys: `metadata_section_data`, `top_ranked_conversations_data`, `key_conversation_topics_data`, and `overall_summary_data`.
+
+```json
+{
+  "metadata_section_data": {
+    // ... metadata JSON object here
+  },
+  "top_ranked_conversations_data": [
+    // ... array of top conversation JSON objects here
+  ],
+  "key_conversation_topics_data": {
+    // ... key topics JSON object here
+  },
+  "overall_summary_data": {
+    // ... overall summary JSON object here (optional)
+  }
+}
+Important: Please provide the summary in valid JSON format.
+```
+
+
+
 
 ### **Reply Reminders**
 - [ ] Implement AI-generated reminders for critical messages.
@@ -640,7 +824,6 @@ This non-AI baseline provides a valuable and reliable starting point, enabling a
 - [ ] Optimization: Strategies for improving performance and accuracy
 
 ### Chat Bot Interface
-
 
 ##### Embeddings
 - [ ] Vectorization: Research and implement data embeddings for LLM summarization
