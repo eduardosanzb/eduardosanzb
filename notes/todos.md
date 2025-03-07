@@ -1,14 +1,27 @@
 # TODOs
 
+-  Important
+    - [ ] Python POC <I>
+    - [ ] Business plan <I>
+- [ ] Batch admin
+    - [ ] Ask for GGS from Agenteur
+-----
+## 2025-03-08
+- [ ] Joao's activity
+- [ ] Plan Asia
+- [ ] Batch admin
+    - [ ] Setup payment for mystuff
+    - [ ] Ikea's shopping
+
 ## 2025-03-07
 - [ ] Joao's activity
 - [ ] Plan Asia
 - [ ] Batch admin
-    - [ ] Ask for GGS from Agenteur
-    - [ ] plan the party or food or what?
-    - [ ] Ikea's shopping
     - [ ] Setup payment for mystuff
-    - [ ] Thank Marilia for the cafe
+    - [ ] Ask for GGS from Agenteur
+    - [ ] Ikea's shopping
+    - [x] plan the party or food or what?
+    - [x] Thank Marilia for the cafe
 
 ## 2025-03-06
 - [ ] Check party with Linda!
@@ -38,12 +51,15 @@
 
 ## Week 10: 2025-03-03, 2025-03-04, 2025-03-05, 2025-03-06, 2025-03-07
 -  Important
-    - [ ] Python POC <I>
-    - [ ] Business plan <I>
+    - [x] Python POC <I>
 -  Personal
     - [x] Plan a trip
 -  Business-freelancer
     - [x] Check Discord business <I>
+
+---
+
+
 
 ## ON-going
 -  Personal
@@ -54,6 +70,7 @@
         - [ ] Website page design
         - [ ] Find meetups
 -  Business-freelancer
+    - [ ] We want a blog post about my way of working with LLMs
     - [ ] Register freiberufler
     - [ ] Redo website Udo feedback and to think about "real engineering"
     - [ ] Font should come from static!
@@ -79,7 +96,6 @@
 
 #  Business expenses
 - Couching
-- German classes
-- laptop
+- German classes laptop
 - VPN
 

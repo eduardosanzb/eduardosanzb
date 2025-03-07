@@ -1,5 +1,11 @@
 # Worklog
 
+## 2025-03-07
+- Worked on TDD: Finalized summary engine
+- Started the AI powered reply feature.
+- Started working with local LLM qwq 32B is amazing
+- Saw degradation of prompt processing when context is getting bigger.
+
 ## 2025-03-05
 - Worked on the TDD; summary engine: non-ai techniques and drafted the ai part
 - Tested a summary generation with deepseek and llama in mlstudio.

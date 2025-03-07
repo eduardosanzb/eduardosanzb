@@ -108,7 +108,7 @@
     4. `CB` Updates the summary
     5. `CJ Marks Action` as Success/Failure; Notify on Failure
 
-## Workflow: User request LLM reply to specific message
+## Workflow: User request LLM reply to specific message (AI powered replies)
 * **Purpose**: Allow users to request AI-generated replies for specific messages. If the user approves the reply, it is sent to WhatsApp. If the user provides additional information (addendums), the system restarts the reply generation process.
 * **Trigger**: User react to specific chat with 🤖 emoji
 * **Endpoints**:
