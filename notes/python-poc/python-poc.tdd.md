@@ -966,12 +966,7 @@ sequenceDiagram
 | Task crashes mid-processing → `RETRYING` is set, and worker requeues after backoff.  |
 | User submits an addendum on a failed task → Reset to `PENDING`, allowing retries with new context. |
 
----
-
-
-
-
-
+----
 
 ### **Reply Reminders**
 - [ ] Implement AI-generated reminders for critical messages.

@@ -1,29 +1,37 @@
 # TODOs
 
--  Important
-    - [ ] Python POC <I>
-    - [ ] Business plan <I>
-- [ ] Batch admin
-    - [ ] Ask for GGS from Agenteur
------
-## 2025-03-08
-- [ ] Joao's activity
+### 2025-03-11
+- [ ] <Blocked>Register freiberufler
+- [ ] <Blocked> Work on business plan
+- [ ] Help lina with bike
 - [ ] Plan Asia
-- [ ] Batch admin
+- [ ] Maybe apply? https://independent-photo.com/submit/
+- [x] Batch admin
     - [ ] Setup payment for mystuff
-    - [ ] Ikea's shopping
 
-## 2025-03-07
-- [ ] Joao's activity
-- [ ] Plan Asia
-- [ ] Batch admin
-    - [ ] Setup payment for mystuff
-    - [ ] Ask for GGS from Agenteur
-    - [ ] Ikea's shopping
+### 2025-03-10
+- [x] Plan & ask for GGS from Agenteur
+- [x] water the plants bogdan
+- [x] Batch admin
+    - [x] Ikea's shopping
+    - [x] Joao's activity(1)
+
+## Week 11
+-  Personal
+    - [ ] Plan Asia
+    - [ ] Time with lina
+-  Business-freelancer
+    - [ ] Python POC <I>
+    - [ ] Gründungszuschuss <I>
+        - [ ] Business plan
+-----
+
+### 2025-03-07
+- [x] Batch admin
     - [x] plan the party or food or what?
     - [x] Thank Marilia for the cafe
 
-## 2025-03-06
+###  2025-03-06
 - [ ] Check party with Linda!
     - [ ] Pickup fanny pack from bogdan's house
 - [x] Batch admin
@@ -32,16 +40,16 @@
     - [x] Clean mailbox
     - [x] setup time tracker
 
-## 2025-03-05
+###  2025-03-05
 - [x] Therapy homework
 - [x] Review ALG1 money
 - [x] German class
 
-## 2025-03-04
+###  2025-03-04
 - [x] Organize bbq
 - [x] Therapy
 
-## 2025-03-03
+###  2025-03-03
 - [x] Water the plants
 - [x] Batch admin
     - [x] Say thnaks to linda & unity
@@ -59,19 +67,16 @@
 
 ---
 
-
-
-## ON-going
+# ON-going
 -  Personal
     - [ ] Mexican movie night
-    - [x] Mallorca car
+    - [] Mallorca car
     - [ ] Salsa classes <I>
     -  Photography
         - [ ] Website page design
         - [ ] Find meetups
 -  Business-freelancer
     - [ ] We want a blog post about my way of working with LLMs
-    - [ ] Register freiberufler
     - [ ] Redo website Udo feedback and to think about "real engineering"
     - [ ] Font should come from static!
     - [ ] Meetups?
