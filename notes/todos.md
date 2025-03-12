@@ -1,11 +1,16 @@
 # TODOs
-## 2025-03-12
-- [ ] <Blocked>Register freiberufler
-- [ ] <Blocked> Work on business plan
-- [x] Batch admin
+## 2025-03-13
+- Gründungszuschuss <I>
+    - [ ] <Blocked>Register freiberufler
+    - [ ] <Blocked> Work on business plan
+- [ ] Take bike somewhere to fix
+- Batch admin
     - [ ] Buy flight tickets
     - [ ] Joao's activity book
     - [ ] cancel the car
+
+## 2025-03-12
+- [x] Check bike rack
 
 ### 2025-03-11
 - [ ] <Blocked>Register freiberufler
@@ -25,15 +30,10 @@
 
 ## Week 11
 -  Personal
-    - [ ] Plan Asia
     - [ ] Time with lina
-    - [ ] Maybe apply? https://independent-photo.com/submit/
     - [ ] Fix coffee machine
-    - [ ] Put bike rack
 -  Business-freelancer
     - [ ] Python POC <I>
-    - [ ] Gründungszuschuss <I>
-        - [ ] Business plan
 -----
 
 ### 2025-03-07
@@ -108,9 +108,11 @@
 # Business-problems-ideas
 - The shitty hiring market is flooded with AI and shitty candidates
 - Photographers share location tips for locations
+- LLM powered ig blocker
 
 #  Business expenses
 - Couching
-- German classes laptop
+- German classes
+- laptop
 - VPN
 

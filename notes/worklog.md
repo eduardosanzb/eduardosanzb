@@ -1,4 +1,8 @@
 # Worklog
+## 2025-03-12
+- Finished very nicely the llm reply deep Dive
+- improved my tdd prompt
+- created a new checklist for api design best practices
 
 ## 2025-03-07
 - Worked on TDD: Finalized summary engine

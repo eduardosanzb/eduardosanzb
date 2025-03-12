@@ -1,4 +1,4 @@
-# Pyton POC Technical Design Document TDD
+# Python POC Technical Design Document TDD
 
 ## Problem Statement
 
@@ -260,10 +260,10 @@ The common component between this parts is that we'll be coupling all of this fu
 This section is the foundation of the core backend; one of the main decisions we have to make here is to select the database technology; As constraints we have that this is a small project; so we want to prioritize simplicity nevertheless we also want to use the right tool.
 
 ##### The Database Technology
-We first explore the rationale behind choosing a SQL database engine.SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
+We first explore the rationale behind choosing a SQL database engine. SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
 Without any doubt we can recommend to use a SQL database engine.
 
-Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recoginzed for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
+Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recognized for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
 Considering the nature of the project and rapid development, our **recommendation for this section is to start with SQLite, architecture the data layer in a way that we can gradually if required migrate towards PostgreSQL**
 
 #### Migrations
@@ -282,7 +282,9 @@ We tested atlas by managing a simple schema with changes and applying the migrat
 `atlas migrate diff --dev-url "sqlite://dev?mode=memory" --to "file://schema.hcl"`
 - To apply the migration
 `atlas migrate status --env local`
-##### Conceptual Data Model
+
+#### Conceptual Data Model (core entities)
+
 We started by identifying the core entities needed for our personal chat application: `UserProfile`, `Contacts`, `Chats`, and `Messages`.
 We recognized the need to store user preferences and decided to create a separate `SummaryPreferences` entity to manage settings related to chat summarization, keeping it distinct from the general `UserProfile`.
 Throughout our discussion, we prioritized pragmatism and aimed for a balance between creating a solid foundation and avoiding over-engineering for the initial version
@@ -353,12 +355,17 @@ Key decisions included separating "critical contacts" as a property of the Conta
 
 #### Interfaces and API design
 In this section we'll explore how all the components of our system will interact with each other.
-- REST API - The core backbone of our integration; allowin the CronJon & Chatbot to interact with the system
+- REST API - The core backbone of our integration; allows for the cron-job & Chatbot to interact with the system
 - DB Client - The interaction between our Backend and the DB
 - Typescript SDK - A wrapper around the REST API to facilitate the interactions.
 
-##### API Design
-We can categorize the domains for our API in the next ones, based in our [workflows](./python-poc.spec.md)
+##### API Design foundations
+
+Throughout this document we'll be exploring discovering the required specifications for our API; and later on we'll be using our [Design API checklist](./api-design-rfc.checklist.md) to ensure we are following the best practices.
+
+
+As now we can already start by defining the main API endpoints; We can categorize the domains for our API in the next ones, based in our [workflows](./python-poc.spec.md)
+
 1. Message Sourcing and Processing `/messages`
 `POST` `/messages`- Send WhatsApp messages to the backend for processing.
 
@@ -448,7 +455,7 @@ Plan: Consider evolving to a hybrid model combining both message and conversatio
 The summary engine is one of the core functionalities of our system, responsible for generating concise summaries of chat messages. This section explores the API design, data model of a summary, the summarization techniques.
 Later in this section we'll explore the AI-powered integration within the engine.
 
-##### API Design
+##### API Design deep-dive
 
 Initially, we considered a synchronous API with a single endpoint (`/summarization/start`) that would return the summary once the process was complete. However, this approach has significant drawbacks for longer summarization tasks, as it can block the client and provide no feedback on progress.
 
@@ -806,42 +813,74 @@ Ensure that your final output is a valid JSON object encompassing ALL the sectio
 }
 Important: Please provide the summary in valid JSON format.
 ```
-
 #### **AI-Powered Reply Suggestions**
-A core feature of our system is to enable users to receive AI-generated reply suggestions based on message context and the user style preferences, integrated into the core messaging workflow with support for iterative refinement (addendums).
+
+A core feature of our system is to enable users to receive AI-generated reply suggestions based on message context and user style preferences, integrated into the core messaging workflow with support for iterative refinement (addendums).
+
+This feature leverages Retrieval-Augmented Generation (RAG) to enhance the quality and relevance of suggestions by incorporating context from past conversations and user-specific data.
 
 ---
 
 ##### 1. System Overview
+
+The AI-Powered Reply Suggestions feature is designed as a modular and robust system that reuses components from the [Summarization Engine](#summary-engine) and introduces a Retrieval-Augmented Generation (RAG) pipeline.
+
+The system is built around a monolithic architecture with decoupled modules and utilizes a single SQLite database for both structured data and vector embeddings (via `sqlite-vec`).
+
 **Key Components:**
-- **LLM Service Layer:** Shares infrastructure with the [Summarization Engine](#summary-engine), including embeddings and vectorization logic, to reduce redundancy and improve efficiency.
-- **Task Management Module:** Shares the DB-layer of the system for persistent tracking of reply tasks (status, context history, retries).
-- **Background Processing:** FastAPI background tasks handle LLM calls asynchronously without external brokers (e.g., Celery/Redis), leveraging short transactions and file locks for reliability.
+
+```mermaid
+graph TB
+    subgraph User Interaction
+        A[User Input Handler]
+    end
+    subgraph RAG Workflow
+        B[Context Retriever]
+        C[Prompt Constructor]
+        D[LLM Service Interface]
+        E[Reply Processor & Updater]
+    end
+    subgraph Data Storage Single SQLite DB
+        F[Vector Database sqlite-vec]
+        G[Structured Database SQLite]
+    end
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> G
+    B --> F
+    B --> G
+    C --> G
+    E --> G
+    style A fill:#ccf,stroke:#333,stroke-width:2px
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#ccf,stroke:#333,stroke-width:2px
+    style D fill:#f9f,stroke:#333,stroke-width:2px
+    style E fill:#ccf,stroke:#333,stroke-width:2px
+    style F fill:#eee,stroke:#333,stroke-width:2px
+    style G fill:#eee,stroke:#333,stroke-width:2px
+    classDef component fill:#fdd,stroke:#333,stroke-width:2px
+    class A,B,C,D,E,F,G component
+```
+
+- **User Input Handler (UIH):**  Receives user requests and initiates the reply suggestion workflow.
+- **Context Retriever (CR):** Implements the RAG retrieval logic, fetching relevant context from the Vector Database and Structured Database.
+- **Prompt Constructor (PC):** Assembles the final prompt for the LLM, incorporating retrieved context, user preferences, and metadata.
+- **LLM Service Interface (LLMSI):**  Handles communication with the Large Language Model (LLM) API.
+- **Reply Processor & Updater (RPU):** Processes the LLM response, updates task status, and stores results.
+- **Vector Database (VDB - sqlite-vec):**  Stores and indexes vector embeddings for efficient similarity search, integrated within SQLite.
+- **Structured Database (SDB - SQLite):** Stores structured data including reply tasks, user profiles, contacts, chats, messages, and summaries, all within a single SQLite database.
 
 ---
 
-##### 3. Conceptual Data Model of a Task
+##### 2. Task Lifecycle & Status Transitions
 
-**ReplyTask**
-**Purpose:**
-Track asynchronous reply generation tasks, including their lifecycle, context updates via addendums, and error/retry information.
+The lifecycle of a reply suggestion task is managed through a clear set of status transitions, tracked within the `ReplyTask` data model.
 
-**Attributes:**
-- `task_id` (TEXT PRIMARY KEY): Unique identifier for the task.
-- `user_profile_id` (INTEGER, NOT NULL): Foreign key to the requesting user profile (UserProfile.user_id).
-- `context_data` (JSONB/NVARCHAR(MAX)): Serialized message context and addendums history.
-- `status` (VARCHAR(20), NOT NULL): Current state of task processing (see table below).
-- `result_text` (TEXT): Final reply generated by the LLM (NULL until COMPLETED).
-- `attempts_count` (INTEGER, DEFAULT 0): Number of retries attempted.
-- `created_at` (TIMESTAMP, NOT NULL): Task creation timestamp.
-- `updated_at` (TIMESTAMP, ON UPDATE CURRENT_TIMESTAMP): Last status update time.
-- `error_message` (TEXT): Error details if task failed.
-
-
-**Task Lifecycle & Status Transitions**
 | **Status**       | Description                                                                 | Next Steps/Implications                                                                 |
 |------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| `PENDING`        | Task created but not yet processed.                                         | Background worker triggers LLM processing → transitions to `PROCESSING`.               |
+| `PENDING`        | Task created but not yet processed.                                         | User Input Handler triggers Context Retrieval → transitions to `PROCESSING`.            |
 | `PROCESSING`     | Active generation by the LLM; blocks further updates until completion/failure. | - Success → `COMPLETED`. <br> - Failure (e.g., timeout) → `RETRYING` or `FAILED`.    |
 | `ADDENDUM_READY` | User submitted an addendum via PATCH; task is paused for reprocessing.     | Task resets to `PENDING`, merging new context before retrying LLM generation.        |
 | `COMPLETED`      | Valid reply generated; result stored in DB.                                 | Available for retrieval via `/tasks/{taskId}/result`.                                  |
@@ -849,121 +888,216 @@ Track asynchronous reply generation tasks, including their lifecycle, context up
 
 ---
 
-##### 3. Error Handling & Retries
+##### 3. Conceptual Data Model of a Task (Revised for RAG)
+
+**ReplyTask**
+
+**Purpose:**
+Track asynchronous reply generation tasks, including RAG-related information.
+
+**Attributes:**
+
+- `task_id` (TEXT PRIMARY KEY): Unique identifier for the task.
+- `user_profile_id` (INTEGER, NOT NULL): Foreign key to the requesting user profile (`UserProfile.user_id`).
+- `context_data` (JSONB/NVARCHAR(MAX)): **Original input context** - Current message, recent history, addendums.
+- `status` (VARCHAR(20), NOT NULL): Current state of task processing (see status table).
+- `result_text` (TEXT): Final reply generated by the LLM (NULL until COMPLETED).
+- `attempts_count` (INTEGER, DEFAULT 0): Number of retries attempted.
+- `created_at` (TIMESTAMP, NOT NULL): Task creation timestamp.
+- `updated_at` (TIMESTAMP, ON UPDATE CURRENT_TIMESTAMP): Last status update time.
+- `error_message` (TEXT): Error details if task failed.
+- `retrieved_context` (TEXT): **RAG Augmented Context** - Text snippets retrieved by RAG.
+- `retrieval_sources` (JSONB): **RAG Source Metadata** - Details about where `retrieved_context` came from.
+
+---
+
+##### 4. Error Handling & Retries
+
 **Design Goals:**
+
 - Graceful degradation during LLM unavailability or timeouts.
-- Automatic retry logic for transient errors, enforced via `attempts_count` in SQLite ([source_id=0]).
+- Automatic retry logic for transient errors, enforced via `attempts_count` in SQLite [source_id=0].
 
 **Mechanics:**
-1. **Retry Policy:**
-   - Exponential backoff (e.g., `2^attempt seconds` between retries).
-   - Max retries configurable per task or globally.
 
-2. **Fallback Behavior:**
-   - If LLM is unreachable for >5 attempts, return a generic error message to the client.
-
----
-
-##### 4. Integration with Existing Components
-- **`process_raw_chats` Workflow:** Triggers reply generation as a subworkflow when users interact via `🤖 emoji`.
-- **User Profile Synergy:** Style preferences  stored in the user profile used to fine-tune prompts dynamically.
+1.  **Retry Policy:**
+    - Exponential backoff (e.g., `2^attempt seconds` between retries).
+    - Max retries configurable per task or globally.
+2.  **Fallback Behavior:**
+    - If LLM is unreachable for >5 attempts, return a generic error message to the client.
 
 ---
 
-##### 5. API Workflow Design
+##### 5. Integration with Existing Components
+
+- **`process_raw_chats` Workflow:** Triggers reply generation as a subworkflow when users interact via `🤖 emoji` [source_id=1].
+- **User Profile Synergy:** Style preferences (e.g., formal/informal tone) stored in the user profile [source_id=0], used to fine-tune prompts dynamically.
+- **Summarization Engine:** Reuses the embedding infrastructure from the Summarization Engine [source_id=0], enhancing efficiency and consistency.
+
+---
+
+##### 6. API Workflow Design
+
+The API workflow is designed to be asynchronous, allowing for non-blocking user experience while reply suggestions are generated in the background.
 
 ```mermaid
 sequenceDiagram
-    participant Bot as "Telegram/WhatsApp Bot"
-    participant CB as "Central Backend (Monolith)"
-    participant LLMService as "Shared LLM Service"
-    participant DB as "Database (Task/State Store)"
 
-    Bot->>CB: POST /replies/generate {"chat_id": "ABC123", "addendum": null}
-    CB->>DB: Start new Task (taskId=T123)
-    CB->>LLMService: Request reply for chat ABC123 (with context enrichment)
-    LLMService->>LLMService: Load embeddings from existing summaries <source_id data="1" title="python-poc.spec.md" /> (for context)
-    LLMService-->>CB: Generated reply or error status
-    CB->>DB: Update task T123 with initial draft
-    alt Success:
-        CB-->>Bot: Notify success with taskId=T123, preview reply
-    else On Error (e.g., LLM timeout):
-        CB->>DB: Mark task T123 as retrying
-        CB-->>Bot: Notify delay (trigger retry after backoff)
-    end
+    participant User
+    participant UIH as User Input Handler
+    participant CR as Context Retriever
+    participant PC as Prompt Constructor
+    participant LLMSI as LLM Service Interface
+    participant RPU as Reply Processor & Updater
+    participant VDB as Vector Database
+    participant SDB as Structured Database
 
-    Bot->>CB: GET /replies/status/T123 (poll or webhook)
-    CB-->>Bot: Return current state (e.g., "completed" with reply draft)
+    User->>UIH: Request Reply Suggestion
+    UIH->>SDB: Create ReplyTask (Status=PENDING)
+    UIH->>CR: Trigger Context Retrieval (Task ID)
+    activate CR
 
-    loop User modifcation:
-    Bot->>CB: POST /replies/update-reply/T123 {"addendum": "Make it more formal"}
-    CB->>LLMService: Regenerate reply with updated context + addendum
-    LLMService-->>CB: New refined reply or error
-    CB->>DB: Update task T123 with revised draft
-    end
+    CR->>VDB: Query VDB for Relevant Message Embeddings
+    VDB-->>CR: Relevant Message Embeddings & Metadata
 
+    CR->>VDB: Query VDB for Relevant Summary Embeddings
+    VDB-->>CR: Relevant Summary Embeddings & Metadata
+
+    CR->>SDB: Query Structured DB (User Profile, Contact Info, Chat Info)
+    SDB-->>CR: User Profile, Contact, Chat Data
+    CR->>CR: Assemble Retrieved Context & Sources
+    CR-->>PC: Send Retrieved Context & Task Info
+    deactivate CR
+
+    activate PC
+    PC->>PC: Construct LLM Prompt (Context, User Prefs)
+    PC-->>LLMSI: Send LLM Prompt
+    deactivate PC
+
+    activate LLMSI
+    LLMSI->>LLM: Send Prompt to LLM API
+    LLM-->>LLMSI: Generated Reply Text or Error
+    LLMSI-->>RPU: Send Reply Text or Error & Task ID
+    deactivate LLMSI
+
+    activate RPU
+    RPU->>SDB: Update ReplyTask (Status=COMPLETED, Result, Retrieved Context, Sources)
+    SDB-->>RPU: Task Updated
+    RPU-->>UIH: Signal Task Completion
+    deactivate RPU
+
+    UIH-->>User: Reply Suggestion Ready (Task ID)
 ```
-##### Core Endpoints:
+
+**Core Endpoints:**
+
 | Endpoint                          | Purpose                                                                                     |
 |-----------------------------------|---------------------------------------------------------------------------------------------|
 | `POST /replies/generate`          | Starts a new reply task; returns immediate `taskId`.                                        |
 | `GET /tasks/{taskId}/status`      | Polls the status of a task (e.g., `PENDING`, `COMPLETED`).                                  |
 | `PATCH /tasks/{taskId}/addendum`  | Updates context with user feedback → triggers reprocessing.                                |
 
-##### Data Flows:
-1. **Real-Time Trigger:** User reacts to a chat with 🤖 → `/replies/generate` creates task and queues LLM processing.
-2. **Addendum Handling:** PATCH updates trigger merges of new context and reprocessing ([source_id=0]).
+**Data Flows:**
 
-**End-to-End Workflow Example**
-**Scenario: User Requests a Reply → Receives Updated Results with Addendums**
+1.  **Real-Time Trigger:** User reacts to a chat with 🤖 → `/replies/generate` creates task and queues RAG-enhanced LLM processing.
+2.  **Addendum Handling:** PATCH updates trigger merges of new context and reprocessing, re-engaging the RAG pipeline.
 
-1. **Initial Request (POST /replies/generate):**
-   - Client sends message context.
-   - System creates `ReplyTask` row in SQLite with status **PENDING**.
-   ```plaintext
-   Response → { "taskId": "abc-123", "status": "PENDING" }
-   ```
+---
 
-2. **Background Processing Triggers:**
-   - Worker fetches the task, sets status to **PROCESSING**, and calls LLM:
-     ```python
-     # Pseudocode for worker logic:
-     if task.status == "PENDING":
-         update_status("PROCESSING")
-         try:
-             result = llm.generate(task.context_data)
-             update_status("COMPLETED", result=result)
-         except Error:
-             handle_error()  # Sets status to RETRYING/FAILED
-     ```
+##### 7. Prompt Engineering & Generation
 
-3. **User Polls Status (GET /tasks/abc-123):**
-   - Returns `status: "PROCESSING"` → user waits.
+The effectiveness of AI-Powered Reply Suggestions hinges significantly on well-engineered prompts. This section details the structure, dynamic assembly, and key considerations for designing prompts that guide the LLM to generate relevant, user-aligned, and contextually rich replies.
 
-4. **LLM Generates Reply Successfully:**
-   - Task status is set to **COMPLETED**, and result stored.
+**7.1. Prompt Structure**
 
-5. **User Submits Addendum (PATCH /tasks/abc-123/addendum):**
-   ```plaintext
-   Body: { "addendum": "Make the tone more formal!" }
-   ```
-   - System updates `context_data` with addendum, sets status to **ADDENDUM_READY**, and resets `attempts_count`.
+To ensure structured and effective communication with the LLM, we employ a prompt template composed of distinct sections:
 
-6. **Reprocessing Triggered:**
-   - Background worker reprocesses the task (status back to **PENDING/PROCESSING**).
+```plaintext
+[SYSTEM_INSTRUCTIONS]
+{system_instructions_content}
 
-7. **Final Poll Returns Updated Result:**
-   ```plaintext
-   GET /tasks/abc-123 → { "status": "COMPLETED", "result": "... formalized reply ..."}
-   ```
+[CONTEXT]
+Relevant Conversation History:
+{retrieved_context_messages}
 
-**Edge Cases Handled by Status Transitions**
-| Case | Resolution via Status Logic |
-|------|--------------------------|
-| Task crashes mid-processing → `RETRYING` is set, and worker requeues after backoff.  |
-| User submits an addendum on a failed task → Reset to `PENDING`, allowing retries with new context. |
+Relevant Conversation Summaries:
+{retrieved_context_summaries}
 
-----
+Current Message:
+{current_message_text}
+
+User Addendum (if any):
+{user_addendum_text}
+
+[USER_PREFERENCES]
+Style Preference: {user_style_preference}
+Language: {user_language_preference}
+Contact Role (if known): {contact_role}
+Chat Purpose (if known): {chat_purpose}
+
+[OUTPUT_FORMAT_INSTRUCTIONS]
+{output_format_instructions_content}
+``````
+**Sections Breakdown:**
+
+- **`[SYSTEM_INSTRUCTIONS]`**: Contains high-level directives for the LLM, guiding its overall behavior and tone. Examples include:
+    - "You are a helpful AI assistant designed to provide concise and relevant reply suggestions in chat conversations."
+    - "Adopt a {user_style_preference} tone in your responses."
+    - "Prioritize clarity and conciseness."
+
+- **`[CONTEXT]`**: Provides the LLM with the necessary contextual information to generate informed replies. This section is dynamically populated by the `Context Retriever` and includes:
+    - **`Relevant Conversation History`**:  Snippets of the most semantically relevant past messages retrieved from the chat history using vector similarity search (via `sqlite-vec`).
+    - **`Relevant Conversation Summaries`**:  Summaries of past conversations (if available and relevant) retrieved using vector similarity search.
+    - **`Current Message`**: The text of the user's latest message that triggered the reply suggestion request.
+    - **`User Addendum (if any)`**:  If the user has provided an addendum via the `/tasks/{taskId}/addendum` endpoint, it is included here to guide reply refinement.
+
+- **`[USER_PREFERENCES]`**:  Incorporates user-specific settings and metadata to personalize the reply suggestions:
+    - **`Style Preference`**:  The user's preferred communication style (e.g., "formal," "informal," "casual") retrieved from `UserProfile.style_preference`.
+    - **`Language`**: The user's preferred language for replies (from `UserProfile.language`).
+    - **`Contact Role (if known)`**:  The role or relationship of the contact in the conversation (e.g., "client," "colleague," "friend"), if available from `Contact.metadata`.
+    - **`Chat Purpose (if known)`**:  The purpose or topic tags associated with the chat (e.g., "project:alpha," "urgent," "personal"), if available from `Chat.tags`.
+
+- **`[OUTPUT_FORMAT_INSTRUCTIONS]`**: Specifies constraints and formatting guidelines for the LLM's output. Examples include:
+    - "Generate a reply suggestion that is concise and under 140 characters."
+    - "Provide only the reply text, without any introductory or concluding phrases."
+    - "Do not use markdown formatting in your response."
+
+**7.2. Dynamic Prompt Assembly Logic**
+
+The `Prompt Constructor` component is responsible for dynamically assembling the prompt using data retrieved and prepared by the `Context Retriever` and data accessed from the Structured Database. The assembly process involves the following steps:
+
+1.  **Template Retrieval**: The `Prompt Constructor` retrieves the base prompt template (as defined in section 7.1). This template can be stored as a configuration file or within the application code.
+
+2.  **Context Insertion**:  The `Prompt Constructor` inserts the `Retrieved Context` (messages and summaries) obtained from the `Context Retriever` into the `[CONTEXT]` section of the template. If no relevant context is retrieved, this section may remain empty or include a default message like "No relevant historical context found."
+
+3.  **User Preference Injection**:  User preferences (style, language) are retrieved from the `UserProfile` and injected into the `[USER_PREFERENCES]` section. Similarly, contact role and chat purpose metadata (if available) are also inserted into this section.
+
+4.  **Addendum Incorporation**: If a `user_addendum_text` is present in the `ReplyTask`, it is inserted into the `[CONTEXT]` section under "User Addendum."
+
+5.  **Final Prompt Compilation**: The `Prompt Constructor` combines all sections of the template, replacing placeholders with the dynamically retrieved and prepared content, to create the final `LLM Prompt`.
+
+**7.3. Key Prompt Engineering Considerations**
+
+- **Conciseness and Clarity**: Prompts are designed to be clear, concise, and focused, ensuring the LLM receives targeted instructions and relevant context without unnecessary verbosity.
+- **User Style Alignment**:  Dynamically incorporating `UserProfile.style_preference` is crucial for generating replies that resonate with the user's communication style, enhancing personalization.
+- **Contextual Richness**:  Leveraging RAG to inject `Retrieved Context` from past messages and summaries ensures that the LLM's suggestions are informed by the ongoing conversation history and relevant past interactions.
+- **Metadata Utilization**:  Incorporating `Contact.role` and `Chat.tags` allows for context-aware reply generation that can adapt to different relationship types and conversation purposes.
+- **Addendum Handling**:  The prompt structure explicitly accommodates user addendums, enabling iterative refinement of reply suggestions based on user feedback.
+- **Output Constraints**:  `[OUTPUT_FORMAT_INSTRUCTIONS]` are essential for controlling the LLM's output format, length, and style, ensuring generated replies are suitable for the chat interface and user expectations.
+- **Iterative Refinement**: Prompt engineering is an iterative process. We will continuously monitor the quality of generated replies, analyze user feedback, and refine the prompt template and assembly logic to optimize performance and user satisfaction.
+
+---
+
+##### 8. Future Enhancements
+
+- **External Knowledge Sources:** Explore integrating external knowledge sources to further enrich the context for reply suggestions.
+- **Cross-Conversation Context:**  Potentially enable retrieval of context from past conversations with the same contact (with appropriate privacy controls).
+- **Prompt Validation Workflow:** Define a process to validate and refine prompt templates and generated replies.
+- **User Historical Data for Prompting:** Utilize user feedback and historical reply data to further personalize and optimize prompt strategies.
+
+---
+
+
 
 ### **Reply Reminders**
 - [ ] Implement AI-generated reminders for critical messages.
