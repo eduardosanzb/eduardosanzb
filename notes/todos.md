@@ -1,13 +1,20 @@
 # TODOs
+## 2025-03-12
+- [ ] <Blocked>Register freiberufler
+- [ ] <Blocked> Work on business plan
+- [x] Batch admin
+    - [ ] Buy flight tickets
+    - [ ] Joao's activity book
+    - [ ] cancel the car
 
 ### 2025-03-11
 - [ ] <Blocked>Register freiberufler
 - [ ] <Blocked> Work on business plan
-- [ ] Help lina with bike
-- [ ] Plan Asia
-- [ ] Maybe apply? https://independent-photo.com/submit/
+- [x] Help lina with bike
+- [x] Plan Asia
 - [x] Batch admin
-    - [ ] Setup payment for mystuff
+    - [x] Mallorca car
+    - [x] Joao's activity(2)
 
 ### 2025-03-10
 - [x] Plan & ask for GGS from Agenteur
@@ -20,6 +27,9 @@
 -  Personal
     - [ ] Plan Asia
     - [ ] Time with lina
+    - [ ] Maybe apply? https://independent-photo.com/submit/
+    - [ ] Fix coffee machine
+    - [ ] Put bike rack
 -  Business-freelancer
     - [ ] Python POC <I>
     - [ ] Gründungszuschuss <I>
@@ -70,8 +80,8 @@
 # ON-going
 -  Personal
     - [ ] Mexican movie night
-    - [] Mallorca car
-    - [ ] Salsa classes <I>
+    - [ ] Setup payment for mystuff
+    - [ ] Salsa classes
     -  Photography
         - [ ] Website page design
         - [ ] Find meetups

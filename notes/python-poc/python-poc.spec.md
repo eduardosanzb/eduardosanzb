@@ -1,5 +1,7 @@
 # Workflow Specifications
 
+# System workflows
+
 ## Workflow: Sourcing Data Messages (CJ<>CB)
 * **Purpose**: Fetches WhatsApp messages from an external source and sends them to the Core Backend for processing.
 * **Trigger**: Cron Job (CJ) initiation
@@ -12,6 +14,15 @@
     4. `CB Process messages` using the Process Raw Chats workflow
     5. `CB Responds` with Success/Failure
     6. `CJ Marks Action` as Success/Failure; Notify on Failure
+
+## Workflow: System Health and Status Updates (CB)
+* **Purpose**: Check systems are healthy
+* **Trigger**: Scheduled checks
+* **Endpoints**:
+    + `GET /system/status` (Retrieve system status)
+* **Steps**:
+    1. `CB Checks System Health`
+    2. `CB Updates & Provides Status`
 
 ## Workflow: Process Raw Chats (Orchestrator)
 * **Purpose**: Orchestrates the complete processing of raw chat data, coordinating extraction, message processing, formatting, and database upsert.
@@ -94,6 +105,8 @@
     2. **Error Handling**: Implement error handling as needed within formatting logic and use `context.record_error(step="format_chat_metadata", error_details=...)` if formatting fails.
     3. **Return Formatted Data**: Return the formatted chat metadata structure.
 
+# User workflows
+
 ## Workflow B: Summarization Flow (CJ<>CB<>User)
 * **Purpose**: Provide a summarize of the User messages in a time-frame
 * **Trigger**: CJ initiation for summarization
@@ -132,20 +145,12 @@
     3. `CB` when success reply to `Bot` that the message was sent
     4. `Bot` react to the reply with a ✅
 
+# Unexplored Workflows
 ## Workflow: User Configuration Management (User<>CB)
 * **Purpose**: Allow user to configure the profile
 * **Trigger**: User action (to be defined, but managed via DB directly)
 * **Endpoints**: N/A - Management via DB directly
 * **Steps**: _Management will be done via the DB directly_
-
-## Workflow: System Health and Status Updates (CB)
-* **Purpose**: Check systems are healthy
-* **Trigger**: Scheduled checks
-* **Endpoints**:
-    + `GET /system/status` (Retrieve system status)
-* **Steps**:
-    1. `CB Checks System Health`
-    2. `CB Updates & Provides Status`
 
 ## Workflow: User wants to create a calendar entry based on conversation and invite Contact
 * **Purpose**: Allow user to generate a calendar entry and invite Contacts in Chat
@@ -158,3 +163,12 @@
     3. `CB` will attempt to invite the `Contact` using the metadata. If email is not found then it will ask for an email to the `Contact`.
     And if possible we'll send an auto-invite link to the `Contact`.
     4. `Bot` will send a message once the invite has been created and the contact invited.
+
+## Workflow: User wants to have TLDR from audio messages
+* **Purpose**: Enable user to receive a TLDR of an audio message; in the case that exists.
+* **Trigger**:
+    + User send audio message form chatbot.
+    + User sends audio from whatsapp and the system detects it.
+* **Endpoints**:
+    + TBD
+
