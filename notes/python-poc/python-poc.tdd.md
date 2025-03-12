@@ -258,6 +258,30 @@ The common component between this parts is that we'll be coupling all of this fu
 
 #### Data Layer
 This section is the foundation of the core backend; one of the main decisions we have to make here is to select the database technology; As constraints we have that this is a small project; so we want to prioritize simplicity nevertheless we also want to use the right tool.
+
+##### The Database Technology
+We first explore the rationale behind choosing a SQL database engine.SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
+Without any doubt we can recommend to use a SQL database engine.
+
+Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recoginzed for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
+Considering the nature of the project and rapid development, our **recommendation for this section is to start with SQLite, architecture the data layer in a way that we can gradually if required migrate towards PostgreSQL**
+
+#### Migrations
+In our exploration of database migration management tools, we considered several popular open-source options including [Flyway](https://flywaydb.org/), [Liquibase](https://www.liquibase.org/), [dbmate](https://github.com/amacneil/dbmate) and [Atlas](https://atlasgo.io/). While each tool offers robust capabilities, Atlas stands out due to its modern, declarative approach to schema management, aligning well with infrastructure-as-code principles.
+
+Atlas's language-agnostic nature, defining schemas in HCL or SQL and generating standard SQL migrations, ensures broad applicability regardless of the application's backend language.
+Its workflow promotes standardized, version-controlled database evolution, crucial for maintainability and collaboration. Furthermore, Atlas is designed for seamless integration with CI/CD pipelines, automating schema updates as part of the development lifecycle.
+
+**Our recommendation for this section is to adopt Atlas as our database migration management tool due to its modern declarative approach, language agnosticism, CI-friendly workflow, and potential for Terraform integration.**
+
+We tested atlas by managing a simple schema with changes and applying the migrations, with the next workflow:
+
+
+- Make changes to the `schema.hcl` file
+- Run the command to generate the SQL migration file
+`atlas migrate diff --dev-url "sqlite://dev?mode=memory" --to "file://schema.hcl"`
+- To apply the migration
+`atlas migrate status --env local`
 ##### Conceptual Data Model
 We started by identifying the core entities needed for our personal chat application: `UserProfile`, `Contacts`, `Chats`, and `Messages`.
 We recognized the need to store user preferences and decided to create a separate `SummaryPreferences` entity to manage settings related to chat summarization, keeping it distinct from the general `UserProfile`.
@@ -419,31 +443,6 @@ Plan: Consider evolving to a hybrid model combining both message and conversatio
 2. Algorithm Selection: Chose a weighted scoring system due to its simplicity and effectiveness.
 3. Granularity Discussion: Debated message vs. conversation ranking, opting for an initial message-level approach with future scalability.
 
-#### Data Storage
-
-##### The Database Technology
-We first explore the rationale behind choosing a SQL database engine.SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
-Without any doubt we can recommend to use a SQL database engine.
-
-Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recoginzed for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
-Considering the nature of the project and rapid development, our **recommendation for this section is to start with SQLite, architecture the data layer in a way that we can gradually if required migrate towards PostgreSQL**
-
-#### Migrations
-In our exploration of database migration management tools, we considered several popular open-source options including [Flyway](https://flywaydb.org/), [Liquibase](https://www.liquibase.org/), [dbmate](https://github.com/amacneil/dbmate) and [Atlas](https://atlasgo.io/). While each tool offers robust capabilities, Atlas stands out due to its modern, declarative approach to schema management, aligning well with infrastructure-as-code principles.
-
-Atlas's language-agnostic nature, defining schemas in HCL or SQL and generating standard SQL migrations, ensures broad applicability regardless of the application's backend language.
-Its workflow promotes standardized, version-controlled database evolution, crucial for maintainability and collaboration. Furthermore, Atlas is designed for seamless integration with CI/CD pipelines, automating schema updates as part of the development lifecycle.
-
-**Our recommendation for this section is to adopt Atlas as our database migration management tool due to its modern declarative approach, language agnosticism, CI-friendly workflow, and potential for Terraform integration.**
-
-We tested atlas by managing a simple schema with changes and applying the migrations, with the next workflow:
-
-
-- Make changes to the `schema.hcl` file
-- Run the command to generate the SQL migration file
-`atlas migrate diff --dev-url "sqlite://dev?mode=memory" --to "file://schema.hcl"`
-- To apply the migration
-`atlas migrate status --env local`
 
 #### Summary Engine
 The summary engine is one of the core functionalities of our system, responsible for generating concise summaries of chat messages. This section explores the API design, data model of a summary, the summarization techniques.
@@ -816,7 +815,7 @@ A core feature of our system is to enable users to receive AI-generated reply su
 ##### 1. System Overview
 **Key Components:**
 - **LLM Service Layer:** Shares infrastructure with the [Summarization Engine](#summary-engine), including embeddings and vectorization logic, to reduce redundancy and improve efficiency.
-- **Task Management Module:** Uses SQLite for persistent tracking of reply tasks (status, context history, retries).
+- **Task Management Module:** Shares the DB-layer of the system for persistent tracking of reply tasks (status, context history, retries).
 - **Background Processing:** FastAPI background tasks handle LLM calls asynchronously without external brokers (e.g., Celery/Redis), leveraging short transactions and file locks for reliability.
 
 ---
@@ -839,9 +838,7 @@ Track asynchronous reply generation tasks, including their lifecycle, context up
 - `error_message` (TEXT): Error details if task failed.
 
 
----
-
-##### 2. Task Lifecycle & Status Transitions
+**Task Lifecycle & Status Transitions**
 | **Status**       | Description                                                                 | Next Steps/Implications                                                                 |
 |------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | `PENDING`        | Task created but not yet processed.                                         | Background worker triggers LLM processing → transitions to `PROCESSING`.               |
@@ -868,8 +865,8 @@ Track asynchronous reply generation tasks, including their lifecycle, context up
 ---
 
 ##### 4. Integration with Existing Components
-- **`process_raw_chats` Workflow:** Triggers reply generation as a subworkflow when users interact via `🤖 emoji`, per [source_id=1].
-- **User Profile Synergy:** Style preferences (e.g., formal/informal tone) stored in the user profile ([source_id=0]), used to fine-tune prompts dynamically.
+- **`process_raw_chats` Workflow:** Triggers reply generation as a subworkflow when users interact via `🤖 emoji`.
+- **User Profile Synergy:** Style preferences  stored in the user profile used to fine-tune prompts dynamically.
 
 ---
 
