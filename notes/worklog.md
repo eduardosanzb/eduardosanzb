@@ -1,4 +1,9 @@
 # Worklog
+
+## 2025-03-13
+- Started bot for the reply feature
+- Took care of lina
+
 ## 2025-03-12
 - Finished very nicely the llm reply deep Dive
 - improved my tdd prompt

@@ -263,7 +263,7 @@ This section is the foundation of the core backend; one of the main decisions we
 We first explore the rationale behind choosing a SQL database engine. SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
 Without any doubt we can recommend to use a SQL database engine.
 
-Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recognized for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as `sqlite-vec`.
+Subsequently to this decision in the exploration; we have to explore the database technology to use; the biggest contenders are PostgreSQL recognized for its enterpise-grade capabilities and the rich ecosystem such as `pgvector` or `supabase`; On the other-hand we have SQLite which stands out as simple, embedded nature and file-base, making it super lightweight and easy to deploy, the ecosystem is not as extensive but we found nice vector plugins such as [`sqlite-vec`](https://alexgarcia.xyz/sqlite-vec/).
 Considering the nature of the project and rapid development, our **recommendation for this section is to start with SQLite, architecture the data layer in a way that we can gradually if required migrate towards PostgreSQL**
 
 #### Migrations
@@ -825,7 +825,7 @@ This feature leverages Retrieval-Augmented Generation (RAG) to enhance the quali
 
 The AI-Powered Reply Suggestions feature is designed as a modular and robust system that reuses components from the [Summarization Engine](#summary-engine) and introduces a Retrieval-Augmented Generation (RAG) pipeline.
 
-The system is built around a monolithic architecture with decoupled modules and utilizes a single SQLite database for both structured data and vector embeddings (via `sqlite-vec`).
+The system is built around a monolithic architecture with decoupled modules and utilizes a single SQLite database for both structured data and vector embeddings (via [`sqlite-vec`](https://alexgarcia.xyz/sqlite-vec/)..
 
 **Key Components:**
 
@@ -869,7 +869,7 @@ graph TB
 - **Prompt Constructor (PC):** Assembles the final prompt for the LLM, incorporating retrieved context, user preferences, and metadata.
 - **LLM Service Interface (LLMSI):**  Handles communication with the Large Language Model (LLM) API.
 - **Reply Processor & Updater (RPU):** Processes the LLM response, updates task status, and stores results.
-- **Vector Database (VDB - sqlite-vec):**  Stores and indexes vector embeddings for efficient similarity search, integrated within SQLite.
+- **Vector Database (VDB - [`sqlite-vec`](https://alexgarcia.xyz/sqlite-vec/)):**  Stores and indexes vector embeddings for efficient similarity search, integrated within SQLite.
 - **Structured Database (SDB - SQLite):** Stores structured data including reply tasks, user profiles, contacts, chats, messages, and summaries, all within a single SQLite database.
 
 ---
@@ -1046,7 +1046,7 @@ Chat Purpose (if known): {chat_purpose}
     - "Prioritize clarity and conciseness."
 
 - **`[CONTEXT]`**: Provides the LLM with the necessary contextual information to generate informed replies. This section is dynamically populated by the `Context Retriever` and includes:
-    - **`Relevant Conversation History`**:  Snippets of the most semantically relevant past messages retrieved from the chat history using vector similarity search (via `sqlite-vec`).
+    - **`Relevant Conversation History`**:  Snippets of the most semantically relevant past messages retrieved from the chat history using vector similarity search (via ).
     - **`Relevant Conversation Summaries`**:  Summaries of past conversations (if available and relevant) retrieved using vector similarity search.
     - **`Current Message`**: The text of the user's latest message that triggered the reply suggestion request.
     - **`User Addendum (if any)`**:  If the user has provided an addendum via the `/tasks/{taskId}/addendum` endpoint, it is included here to guide reply refinement.
@@ -1084,8 +1084,6 @@ The `Prompt Constructor` component is responsible for dynamically assembling the
 - **Metadata Utilization**:  Incorporating `Contact.role` and `Chat.tags` allows for context-aware reply generation that can adapt to different relationship types and conversation purposes.
 - **Addendum Handling**:  The prompt structure explicitly accommodates user addendums, enabling iterative refinement of reply suggestions based on user feedback.
 - **Output Constraints**:  `[OUTPUT_FORMAT_INSTRUCTIONS]` are essential for controlling the LLM's output format, length, and style, ensuring generated replies are suitable for the chat interface and user expectations.
-- **Iterative Refinement**: Prompt engineering is an iterative process. We will continuously monitor the quality of generated replies, analyze user feedback, and refine the prompt template and assembly logic to optimize performance and user satisfaction.
-
 ---
 
 ##### 8. Future Enhancements
@@ -1097,28 +1095,29 @@ The `Prompt Constructor` component is responsible for dynamically assembling the
 
 ---
 
-
-
-### **Reply Reminders**
-- [ ] Implement AI-generated reminders for critical messages.
-- [ ] Allow users to mark messages as critical and set reminder schedules.
-- [ ] Ensure reminders are seamlessly integrated into the existing system.
-
-
-#### AI-Powered Workflows
-- [ ] Embeddings: Research and implemeentd embeddings for LLM summarization
-- [ ] Vectorization: Implement data vectorization for LLM Processing
-- [ ] Summarization Method: Choose a summarization method for LLm
-- [ ] Integration: Integrate the AI engine with the workflows
-- [ ] Optimization: Strategies for improving performance and accuracy
-
 ### Chat Bot Interface
+#### Chat bot interface: Introduction, Purpose, and Platform Selection
 
-##### Embeddings
-- [ ] Vectorization: Research and implement data embeddings for LLM summarization
-  - [ ] Tools:
-##### Local LLM integration
-Integrate a local LLM (e.g., llama.cpp) into the FastAPI backend to generate message summaries and reply suggestions.
+The primary user interface for the system will be a conversational Chat bot. This interface is designed to be the central point of interaction for users, enabling them to leverage the system's capabilities through natural language commands and chat-based interactions.  The core purpose of this Chat bot interface is to provide users with easy and efficient access to key functionalities, including receiving chat message exports, querying information, and obtaining AI-driven message summaries, reminders, and reply suggestions.  This conversational approach aims to simplify user interaction, making the system accessible and intuitive even for users without technical expertise.
+
+To ensure the best possible user experience and development efficiency, we explored several messaging platforms suitable for chatbot integration.  Our evaluation considered factors such as user-friendliness, feature set (support for threads, replies, reactions), development effort, and alignment with the project's goals as a personal software solution.
+
+**Platform Comparison:**
+
+| Criteria                     | Telegram                                  | Slack                                        | WhatsApp                                  |
+| :--------------------------- | :---------------------------------------- | :------------------------------------------- | :---------------------------------------- |
+| **Accessibility & Popularity** | Highly accessible, popular globally, no workspace/org setup needed for personal use. | Popular in professional contexts, requires workspace setup, might be less immediately accessible for personal use. | Extremely popular globally, but bot setup can involve business account requirements. |
+| **Features (Threads, Replies, Reactions)** | Excellent support for threads in groups, replies, and reactions. | Excellent support for threads in channels, replies, and reactions.          | Supports replies and reactions, but threads are less structured.         |
+| **Development Effort**        | Python Telegram Bot Library is user-friendly, straightforward API, simpler architecture. | Slack Bolt and other SDKs are well-documented, but setup might involve workspace/app configuration. | Bot development and API access can be more complex, often requiring business verification and potentially stricter terms of service. |
+
+**Platform Selection: Telegram**
+
+Based on the evaluation, **Telegram** has been selected as the primary platform for the Chat bot interface.  Telegram excels in accessibility and popularity for personal use, offers robust support for essential conversational features, and provides a relatively straightforward development experience, particularly with the Python Telegram Bot Library.  While Slack and WhatsApp are also strong platforms, Telegram's combination of ease of use for personal projects and developer-friendliness makes it the most suitable choice for our initial implementation.
+
+---
+
+
+
 
 ### Deployment
 - AWS deployment: Deploy the FastAPI backend to AWS Elastic Beanstalk or ECS and use Amazon RDS for PostgreSQL.
@@ -1133,6 +1132,8 @@ Integrate a local LLM (e.g., llama.cpp) into the FastAPI backend to generate mes
 
 ### E2E Testing
 Deploy the FastAPI backend to AWS Elastic Beanstalk or ECS and use Amazon RDS for PostgreSQL.
+
+---
 
 ## Proposed Solution
 

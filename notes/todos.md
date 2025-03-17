@@ -1,20 +1,42 @@
 # TODOs
-## 2025-03-13
+
+## 2025-03-17
+- [ ] Joao's activity book
+- [x] wash clothes
+
+## Week 12: 2025-03-24, 2025-03-25, 2025-03-26, 2025-03-27, 2025-03-28
+- [ ] Take bike somewhere to fix
+- [ ] fix sunglasses
+
+- [ ] contact Agenteur
+
+- [ ] Clean the fridge
+- [ ] Fix coffee machine
+
+- [ ] cancel the car
+
+- [ ] pack for prague
+- [ ] water the plants
+
+- [ ] pack for manila
+- [ ] Prepare our keys
+-  Business-freelancer
+    - [] Python POC <I>
 - Gründungszuschuss <I>
+    - [ ] answer
     - [ ] <Blocked>Register freiberufler
     - [ ] <Blocked> Work on business plan
-- [ ] Take bike somewhere to fix
-- Batch admin
-    - [ ] Buy flight tickets
-    - [ ] Joao's activity book
-    - [ ] cancel the car
+----
+
+## 2025-03-14
+- [x] Buy flight tickets
+
+## 2025-03-13
 
 ## 2025-03-12
 - [x] Check bike rack
 
 ### 2025-03-11
-- [ ] <Blocked>Register freiberufler
-- [ ] <Blocked> Work on business plan
 - [x] Help lina with bike
 - [x] Plan Asia
 - [x] Batch admin
@@ -30,10 +52,9 @@
 
 ## Week 11
 -  Personal
-    - [ ] Time with lina
-    - [ ] Fix coffee machine
+    - [x] Time with lina
 -  Business-freelancer
-    - [ ] Python POC <I>
+    - [x] Python POC <I>
 -----
 
 ### 2025-03-07
