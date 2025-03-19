@@ -1,25 +1,111 @@
 # TODOs
 
+## 2025-03-19
+- [ ] contact Agenteur
+    1. Reopen the message
+    2. Think about if you want to start the GSC in april; maybe ask to start in mid April/May
+    3. think of a reason; tell them you want to finish the business plan and that you are working with a coach.
+    4. Ask them if that's okay. That you just need more time to sort things out.
+    5. You are aware of how the GSC works; you just need more time to sort things out.
+- [ ] Clothes
+    1. Go to the kitchen and collect all the clean Clothes
+    2. Go to the bedroom and segregate the clothes per type
+    3. Fold the clothes and put them in the wardrobe
+- [ ] fix sunglasses
+    1. Check in maps places nearby
+    2. Take the glasses
+- [ ] Take bike somewhere to fix
+    1. Check in maps places nearby
+    2. Call them and ask them for canyon
+
+## 2025-03-18
+- [] Joao's activity book
+- [x] Fix coffee machine
+
 ## 2025-03-17
-- [ ] Joao's activity book
 - [x] wash clothes
+- [x] mentally survive
 
 ## Week 12: 2025-03-24, 2025-03-25, 2025-03-26, 2025-03-27, 2025-03-28
-- [ ] Take bike somewhere to fix
-- [ ] fix sunglasses
 
-- [ ] contact Agenteur
-
+- [ ]  Prepare doc structure for "Wolke"
 - [ ] Clean the fridge
-- [ ] Fix coffee machine
+    1. Go to the fridge and open the door
+    2. Take everything out and put it on the kitchen table
+    3. Select things are expired and throw them away
+    3.5 You are traveling for 1 month; so throw away things that will expire
+    4. Clean the fridge
+    5. Put everything back in the fridge. clean
 
 - [ ] cancel the car
+    1. Ask lina if is fine
+    2. Propose her to book the same to her name
 
-- [ ] pack for prague
 - [ ] water the plants
+- [ ] pack for prague - Friday, Saturday, Sunday
+    1. Check the weather (between 17-5 grad; maybe a bit of rain)
+    2. Clothes:
+      - [ ] 2-3 tshirts normal
+      - [ ] 1 tshirt sports
+      - [ ] 1 party shirt
+      - [ ] 3 socks simple
+      - [ ] 1 sock sports
+      - [ ] 4 underwear
+      - [ ] lululemon pants or uniqlo pants
+      - [ ] 1 shorts
+      - [ ] 1 martens
+      - [ ] 1 on cloud
+      - [ ] 1 hoodie
+      - [ ] 1 patagonia micropuff
+      - [ ] 1 rain jacket; maybe ping pong
+      - [ ] jewelry
+      - [ ] Perfume
+      - [ ] toiletries (toothbrush, toothpaste, deodorant, razor, creams)
+    3. Electronics:
+      - [ ] Phone
+      - [ ] Laptop?
+      - [ ] Headphones
+      - [ ] Charger
+      - [ ] Powerbank
+    4. Documents:
+      - [ ] Passport
+      - [ ] ID
+      - [ ] Health insurance
+      - [ ] Travel insurance
+     5. Camera
+       - [ ] body
+       - [ ] batteries
+       - [ ] 12-60mm
+       - [ ] 45mm
+       - [ ] 25mm?
+       - [ ] 17mm?
 
-- [ ] pack for manila
+
 - [ ] Prepare our keys
+- [ ] pack for manila - (10days)
+    1. Check the weather (between 30-25 grad; not much rain. Beach, hike, and city)
+    2. Clothes:
+      - [ ] 5 tshirts normal
+    3. Electronics:
+      - [ ] Phone
+      - [ ] Laptop
+      - [ ] stand/keyboard/mouse
+      - [ ] Headphones / bluettoth adaptor
+      - [ ] Chargers
+      - [ ] Powerbank
+    4. Documents:
+      - [ ] Passport
+      - [ ] ID
+      - [ ] Health insurance
+      - [ ] Travel insurance
+     5. Camera
+       - [ ] body
+       - [ ] batteries
+       - [ ] 12-60mm
+       - [ ] 45mm
+       - [ ] 25mm?
+       - [ ] 17mm?
+
 -  Business-freelancer
     - [] Python POC <I>
 - Gründungszuschuss <I>
