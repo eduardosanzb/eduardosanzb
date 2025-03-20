@@ -6,6 +6,7 @@
 ## 2025-03-20
 - [ ] water the plants
 - [ ] Put bike in keller
+- [ ] Prepare our keys
 - [ ] Clean the fridge
     1. Go to the fridge and open the door
     2. Take everything out and put it on the kitchen table
@@ -38,6 +39,7 @@
     3. Electronics:
       - [ ] Phone
       - [ ] iPad
+      - [ ] Laptop 13inch
       - [ ] Headphones
       - [ ] Charger
       - [ ] Powerbank
@@ -64,22 +66,19 @@
 - [x] mentally survive
 
 ## Week 12: 2025-03-24, 2025-03-25, 2025-03-26, 2025-03-27, 2025-03-28
-- Gründungszuschuss <I>
-    - [ ]  Work on business plan
-    - [ ] Register freiberufler
-    - [ ] We want a blog post about my way of working with LLMs
+
 -  Business-freelancer
     - [] Python POC <I>
-
-
+- Gründungszuschuss <I>
+    - [ ] Work on business plan
+    - [ ] Register freiberufler
+    - [ ] We want a blog post about my way of working with LLMs
 - [ ]  Prepare doc structure for "Wolke"
 
 - [ ] cancel the car
     1. Ask lina if is fine
     2. Propose her to book the same to her name
 
-
-- [ ] Prepare our keys
 - [ ] pack for manila - (10days)
     1. Check the weather (between 30-25 grad; not much rain. Beach, hike, and city)
     2. Clothes:
