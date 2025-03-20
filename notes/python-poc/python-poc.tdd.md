@@ -4,6 +4,8 @@
 
 This project aims to build a personal assistant for managing WhatsApp messages. It will summarize daily messages, track important conversations, provide reply reminders, and offer AI-powered reply suggestions, all while prioritizing user privacy by keeping data and LLM processing local.
 
+This project will be used as a portfolio & personal software.
+
 **Problems to Solve**:
 1. **Message Management**: Efficiently summarize and track relevant WhatsApp messages.
 2. **Reply Reminders**: Implement reminders for important messages or pending responses.
