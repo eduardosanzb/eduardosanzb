@@ -1,23 +1,25 @@
 # TODOs
+## 2025-03-21
+- [ ] Return shoes
+- [ ] fix sunglasses
 
 ## 2025-03-20
-- [ ] contact Agenteur
-    1. Reopen the message
-    2. Think about if you want to start the GSC in april; maybe ask to start in mid April/May
-    3. think of a reason; tell them you want to finish the business plan and that you are working with a coach.
-    4. Ask them if that's okay. That you just need more time to sort things out.
-    5. You are aware of how the GSC works; you just need more time to sort things out.
-- [ ] fix sunglasses
-    1. Check in maps places nearby
-    2. Take the glasses
-    3. ask if they fix it same day if not bye
-- [ ] Take bike somewhere to fix?
-    1. Check in maps places nearby
-    2. Call them and ask them for canyon
+- [ ] water the plants
+- [ ] Put bike in keller
+- [ ] Clean the fridge
+    1. Go to the fridge and open the door
+    2. Take everything out and put it on the kitchen table
+    3. Select things are expired and throw them away
+    3.5 You are traveling for 1 month; so throw away things that will expire
+    4. Clean the fridge
+    5. Put everything back in the fridge. clean
+- [x] contact Agenteur
 - [ ] pack for prague - Friday, Saturday, Sunday
+    0. miscellaneous
+      - [ ] cigars
     1. Check the weather (between 17-5 grad; maybe a bit of rain)
     2. Clothes:
-      - [ ] 2-3 tshirts normal
+      - [ ] 2 tshirts normal
       - [ ] 1 tshirt sports
       - [ ] 1 party shirt
       - [ ] 3 socks simple
@@ -27,15 +29,15 @@
       - [ ] 1 shorts
       - [ ] 1 martens
       - [ ] 1 on cloud
-      - [ ] 1 hoodie
-      - [ ] 1 patagonia micropuff
+      - [ ] 1 hoodie?
+      - [ ] 1 patagonia micropuff?
       - [ ] 1 rain jacket; maybe ping pong
       - [ ] jewelry
       - [ ] Perfume
       - [ ] toiletries (toothbrush, toothpaste, deodorant, razor, creams)
     3. Electronics:
       - [ ] Phone
-      - [ ] Laptop?
+      - [ ] iPad
       - [ ] Headphones
       - [ ] Charger
       - [ ] Powerbank
@@ -43,7 +45,6 @@
       - [ ] Passport
       - [ ] ID
       - [ ] Health insurance
-      - [ ] Travel insurance
      5. Camera
        - [ ] body
        - [ ] batteries
@@ -54,9 +55,6 @@
 
 ## 2025-03-19
 - [x] Clothes
-    1. Go to the kitchen and collect all the clean Clothes
-    2. Go to the bedroom and segregate the clothes per type
-    3. Fold the clothes and put them in the wardrobe
 - [x] buy SIN - MAN
 ## 2025-03-18
 - [x] Joao's activity book
@@ -66,13 +64,13 @@
 - [x] mentally survive
 
 ## Week 12: 2025-03-24, 2025-03-25, 2025-03-26, 2025-03-27, 2025-03-28
-- [ ] Clean the fridge
-    1. Go to the fridge and open the door
-    2. Take everything out and put it on the kitchen table
-    3. Select things are expired and throw them away
-    3.5 You are traveling for 1 month; so throw away things that will expire
-    4. Clean the fridge
-    5. Put everything back in the fridge. clean
+- Gründungszuschuss <I>
+    - [ ]  Work on business plan
+    - [ ] Register freiberufler
+    - [ ] We want a blog post about my way of working with LLMs
+-  Business-freelancer
+    - [] Python POC <I>
+
 
 - [ ]  Prepare doc structure for "Wolke"
 
@@ -80,7 +78,6 @@
     1. Ask lina if is fine
     2. Propose her to book the same to her name
 
-- [ ] water the plants
 
 - [ ] Prepare our keys
 - [ ] pack for manila - (10days)
@@ -88,11 +85,12 @@
     2. Clothes:
       - [ ] 5 tshirts normal
     3. Electronics:
-      - [ ] Phone
-      - [ ] Laptop
+      - [ ] Phone second
+      - [ ] iPad
+      - [ ] Laptop 16inch
       - [ ] stand/keyboard/mouse
       - [ ] Headphones / bluettoth adaptor
-      - [ ] Chargers
+      - [ ] Chargers big one and multiple one
       - [ ] Powerbank
     4. Documents:
       - [ ] Passport
@@ -107,11 +105,6 @@
        - [ ] 25mm?
        - [ ] 17mm?
 
--  Business-freelancer
-    - [] Python POC <I>
-- Gründungszuschuss <I>
-    - [ ] <Blocked>Register freiberufler
-    - [ ] <Blocked> Work on business plan
 ----
 
 ## 2025-03-14
@@ -188,12 +181,12 @@
 -  Personal
     - [ ] Mexican movie night
     - [ ] Setup payment for mystuff
+    - [ ] Take bike somewhere to fix?
     - [ ] Salsa classes
     -  Photography
         - [ ] Website page design
         - [ ] Find meetups
 -  Business-freelancer
-    - [ ] We want a blog post about my way of working with LLMs
     - [ ] Redo website Udo feedback and to think about "real engineering"
     - [ ] Font should come from static!
     - [ ] Meetups?
