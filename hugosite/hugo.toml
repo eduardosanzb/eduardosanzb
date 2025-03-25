@@ -18,7 +18,7 @@ pygmentsUseClasses = true
 [menu]
   [[menu.main]]
     name = "CV"
-    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf"
+    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/eduardo_bautista_cv.pdf"
     weight = 2
     [menu.main.params]
       icon = 'download'
@@ -55,7 +55,7 @@ pygmentsUseClasses = true
       icon = 'github'
   [[menu.mobile]]
     name = "CV"
-    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf"
+    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/eduardo_bautista_cv.pdf"
     weight = 2
     [menu.mobile.params]
       icon = 'download'
