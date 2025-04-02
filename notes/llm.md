@@ -3,7 +3,6 @@
 ## Resources
 - [Deep Dive into LLMs like ChatGPT](https://www.youtube.com/watch?v=7xTGNNLPyMI&list=WL)
 
-
 ## Introduction
 
 ### Pretaining. In: Internet documents Out: Base Model

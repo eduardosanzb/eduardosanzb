@@ -1,33 +1,37 @@
 # TODOs
-
+## 2025-04-02
+- [x] put ikea shoes stuff
+- [x] buy ikea shit
+- [ ] fix sunglasses
+- [ ] research ricardo company
+- [ ] <IMPORTANT> Business plan feedback and final structure
+- [ ] Register freiberufler
+## 2025-03-29
+- [x] finished english version of BP
+## 2025-03-28
+- [x] <IMPORTANT> Work on business plan in english
+## 2025-03-27
+- [x] Clean the fridge
+- admin
+    - [x] talk to vasyl
+    - [x] Check the message from AB
+## 2025-03-26
+- [x] Return shoes
+- [x] talk to vinz
 ## 2025-03-25
-- [ ] talk to vasyl
-- [ ] Return shoes
 - [x] Therapy
 -  text all whatsapps
     - [x] talk to linda
-    - [ ] talk to vinz
-- [ ] cancel the car
+- [x] cancel the car
+## Week 13: 2025-03-31, 2025-04-01, 2025-04-02, 2025-04-03, 2025-04-04
 - [ ] cooling off hallesches
     - [ ] email to shay
-- [ ] Clean the fridge
-    1. Go to the fridge and open the door
-    2. Take everything out and put it on the kitchen table
-    3. Select things are expired and throw them away
-    3.5 You are traveling for 1 month; so throw away things that will expire
-    4. Clean the fridge
-    5. Put everything back in the fridge. clean
-
-## Week 13: 2025-03-31, 2025-04-01, 2025-04-02, 2025-04-03, 2025-04-04
-- [ ] fix sunglasses
-- [ ] Put bike in keller
+- [ ] Fix bike
 -  Business-freelancer
     - [] Python POC <I>
 - Gründungszuschuss <I>
-    - [ ] Work on business plan
-    - [ ] Register freiberufler
     - [ ] We want a blog post about my way of working with LLMs
-- [ ]  Prepare doc structure for "Wolke"
+- [ ] Prepare doc structure for "Wolke"
 
 ---
 ## 2025-03-20
@@ -104,43 +108,3 @@
 -  Business-freelancer
     - [x] Check Discord business <I>
 ---
-
-# ON-going
--  Personal
-    - [ ] Mexican movie night
-    - [ ] Setup payment for mystuff
-    - [ ] Take bike somewhere to fix?
-    - [ ] Salsa classes
-    -  Photography
-        - [ ] Website page design
-        - [ ] Find meetups
--  Business-freelancer
-    - [ ] Redo website Udo feedback and to think about "real engineering"
-    - [ ] Font should come from static!
-    - [ ] Meetups?
-    - [x] Thriving technologist? https://thrivingtechnologist.com/resources/memberships
-    - [x] German classes
-    - [ ] Find jobs
-    - [ ] Setup an email server
-    - [ ] New phone data plan
-    - Marketing
-        - [ ] Come up with new clients funnels
-        - [x] Join Uplink
-        - [ ] Create articles
-    -  Upskilling
-        - [ ] ansible
-        - [ ] OSS slackbot aim manager
-        - [ ] Slackbot incident manager
-        - [ ] Migrate neovim to lazy.nvim
-
-# Business-problems-ideas
-- The shitty hiring market is flooded with AI and shitty candidates
-- Photographers share location tips for locations
-- LLM powered ig blocker
-
-#  Business expenses
-- Couching
-- German classes
-- laptop
-- VPN
-
