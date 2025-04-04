@@ -37,3 +37,5 @@
 - laptop
 - VPN
 
+# ADHD ideas
+- sync my todos with my chatbot

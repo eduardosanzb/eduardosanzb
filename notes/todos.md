@@ -1,11 +1,56 @@
 # TODOs
+## 2025-04-06
+- [ ] store bike
+- [ ] pack valencia
+    - clothes
+        - [ ] 6x undies
+        - [ ] 5x sockies
+        -  tops
+            - [ ] 2x black uniqlo tshrits
+            - [ ] 2x white uniqlo tshirts
+            - [ ] 2x uniqlo sports tshirts
+            - [ ] 1x sleeping tshirt
+            - [ ] 1x shirt green <maybe not if fleece>
+        - bottoms
+            - [ ] 1x lululemon pants
+            - [ ] 1x shorts hybrid
+            - [ ] 1x jeans
+        - outwear
+            - [ ] 1x fleece
+            - [ ] 1x light jacket
+        - shoes
+            - [ ] 1x on shoes
+            - [ ] 1x sandals or hoka
+    - toiletries
+        - [ ] ear cleaner kit
+        - [ ] earplugs
+        - [ ] toothbrush
+        - [ ] toothpaste
+        - [ ] deodorant
+        - [ ] razor machine with new blade
+    - Electronics
+        - [ ] laptop
+        - [ ] charger
+        - [ ] phone
+    - Camera
+        - [ ] camera
+        - [ ] lens
+        - [ ] charger
+        - [ ] sd card
+    - Misc
+        - [ ] MHP 3.5
+        - [ ] ibuprofen
+
+
+## 2025-04-03
+- [x] buy edeka & vasyl money
+- [x] prepare call wiht leo
+- [x] ask rita for my money
 ## 2025-04-02
 - [x] put ikea shoes stuff
-- [x] buy ikea shit
-- [ ] fix sunglasses
-- [ ] research ricardo company
+- [x] fix sunglasses
+- [x] research ricardo company
 - [ ] <IMPORTANT> Business plan feedback and final structure
-- [ ] Register freiberufler
 ## 2025-03-29
 - [x] finished english version of BP
 ## 2025-03-28
@@ -27,10 +72,14 @@
 - [ ] cooling off hallesches
     - [ ] email to shay
 - [ ] Fix bike
+- [ ] buy ikea shit
 -  Business-freelancer
     - [] Python POC <I>
-- Gründungszuschuss <I>
     - [ ] We want a blog post about my way of working with LLMs
+- Gründungszuschuss <I>
+    - [ ] Fix business plan cashflow to get the money
+    - [ ] Register freiberufler. but from when?
+    - [ ] Send the BP to review
 - [ ] Prepare doc structure for "Wolke"
 
 ---

@@ -146,6 +146,12 @@
     4. `Bot` react to the reply with a ✅
 
 # Unexplored Workflows
+## Workflow: Use MCPs to interface with user instead of Chatbot
+* **Purpose**: Allow users to interact with the system using MCPs (model context protocols) instead of a chatbot.
+* **Trigger**: Same as chatbot interactions but through MCPs.
+* **Endpoints**: Same as chatbot endpoints but with MCPs.
+* **Steps**:
+
 ## Workflow: User Configuration Management (User<>CB)
 * **Purpose**: Allow user to configure the profile
 * **Trigger**: User action (to be defined, but managed via DB directly)
