@@ -5,7 +5,10 @@
     - clothes
         - [ ] 6x undies
         - [ ] 5x sockies
-        -  tops
+        - outwear
+            - [ ] 1x fleece
+            - [ ] 1x light jacket
+        -  tops (5-7x)
             - [ ] 2x black uniqlo tshrits
             - [ ] 2x white uniqlo tshirts
             - [ ] 2x uniqlo sports tshirts
@@ -15,9 +18,6 @@
             - [ ] 1x lululemon pants
             - [ ] 1x shorts hybrid
             - [ ] 1x jeans
-        - outwear
-            - [ ] 1x fleece
-            - [ ] 1x light jacket
         - shoes
             - [ ] 1x on shoes
             - [ ] 1x sandals or hoka
@@ -35,12 +35,20 @@
     - Camera
         - [ ] camera
         - [ ] lens
-        - [ ] charger
+        - [ ] batteries
         - [ ] sd card
+        - [ ] strap
+        - [ ] cleaning kit
+        - [ ] backpack hook
     - Misc
         - [ ] MHP 3.5
         - [ ] ibuprofen
-
+    - Documents
+        - [ ] ID
+        - [ ] health insurance card
+        - [ ] credit card
+        - [ ] cash
+        - [ ] Passport
 
 ## 2025-04-03
 - [x] buy edeka & vasyl money
