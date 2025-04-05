@@ -3,52 +3,52 @@
 - [ ] store bike
 - [ ] pack valencia
     - clothes
-        - [ ] 6x undies
-        - [ ] 5x sockies
+        - [x] 6x undies
+        - [x] 5x sockies
         - outwear
             - [ ] 1x fleece
             - [ ] 1x light jacket
         -  tops (5-7x)
-            - [ ] 2x black uniqlo tshrits
-            - [ ] 2x white uniqlo tshirts
-            - [ ] 2x uniqlo sports tshirts
-            - [ ] 1x sleeping tshirt
+            - [x] 2x black uniqlo tshrits
+            - [x] 2x white uniqlo tshirts
+            - [x] 2x uniqlo sports tshirts
+            - [x] 1x sleeping tshirt
             - [ ] 1x shirt green <maybe not if fleece>
         - bottoms
-            - [ ] 1x lululemon pants
-            - [ ] 1x shorts hybrid
-            - [ ] 1x jeans
+            - [x] 1x lululemon pants
+            - [x] 1x shorts hybrid
+            - [x] 1x jeans
         - shoes
-            - [ ] 1x on shoes
-            - [ ] 1x sandals or hoka
+            - [x] 1x on shoes
+            - [ ] ~1x sandals or hoka~
     - toiletries
         - [ ] ear cleaner kit
-        - [ ] earplugs
-        - [ ] toothbrush
-        - [ ] toothpaste
-        - [ ] deodorant
-        - [ ] razor machine with new blade
+        - [x] earplugs
+        - [x] toothbrush~
+        - [x] toothpaste
+        - [x] deodorant
+        - [x] razor machine with new blade
     - Electronics
-        - [ ] laptop
-        - [ ] charger
-        - [ ] phone
+        - [x] laptop
+        - [x] charger
+        - [x] phone
     - Camera
-        - [ ] camera
-        - [ ] lens
-        - [ ] batteries
-        - [ ] sd card
-        - [ ] strap
-        - [ ] cleaning kit
-        - [ ] backpack hook
+        - [x] camera
+        - [x] lens
+        - [x] batteries
+        - [x] sd card
+        - [x] strap
+        - [x] cleaning kit
+        - [x] backpack hook
     - Misc
         - [ ] MHP 3.5
-        - [ ] ibuprofen
+        - [x] ibuprofen
     - Documents
-        - [ ] ID
-        - [ ] health insurance card
-        - [ ] credit card
-        - [ ] cash
-        - [ ] Passport
+        - [x] ID
+        - [x] health insurance card
+        - [x] credit card
+        - [x] cash
+        - [x] Passport
 
 ## 2025-04-03
 - [x] buy edeka & vasyl money
