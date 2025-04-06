@@ -1,8 +1,8 @@
 # ON-going
 -  Personal
+    - [ ] Take bike somewhere to fix?<I>
     - [ ] Mexican movie night
     - [ ] Setup payment for mystuff
-    - [ ] Take bike somewhere to fix?
     - [ ] Salsa classes
     -  Photography
         - [ ] Website page design
@@ -27,15 +27,14 @@
         - [ ] Migrate neovim to lazy.nvim
 
 # Business-problems-ideas
+- sync my todos with my chatbot (ADHD)
 - The shitty hiring market is flooded with AI and shitty candidates
 - Photographers share location tips for locations
 - LLM powered ig blocker
+- color complementary photo app
 
 #  Business expenses
 - Couching
 - German classes
 - laptop
 - VPN
-
-# ADHD ideas
-- sync my todos with my chatbot

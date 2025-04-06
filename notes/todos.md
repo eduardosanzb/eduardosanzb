@@ -1,13 +1,35 @@
 # TODOs
+## 2025-04-07
+- [ ] call with eva
+- BP<I>
+    - [ ] Fix BP cashflow to ensure grant
+    - [ ] format BP to template
+## Week 15: 2025-04-07, 2025-04-08, 2025-04-09, 2025-04-10, 2025-04-11
+- insurances
+    - [ ] Fix insurances
+    - [ ] cooling off hallesches
+        - [ ] email to shay
+- Berlin
+    - [ ] buy ikea shit
+-  Business-freelancer
+    - [] Python POC <I>
+    - [ ] We want a blog post about my way of working with LLMs
+- Freelance
+    - [ ] Setup nodejs debugger
+- Gründungszuschuss <I>
+    - [ ] Register freiberufler. but from when?
+    - [ ] Send the BP to review
+- [ ] Cancel VPN
+- [ ] Prepare doc structure for "Wolke"
+---
 ## 2025-04-06
-- [ ] store bike
-- [ ] pack valencia
+- [x] pack valencia
     - clothes
         - [x] 6x undies
         - [x] 5x sockies
         - outwear
-            - [ ] 1x fleece
-            - [ ] 1x light jacket
+            - [x] 1x fleece
+            - [x] 1x light jacket
         -  tops (5-7x)
             - [x] 2x black uniqlo tshrits
             - [x] 2x white uniqlo tshirts
@@ -77,26 +99,12 @@
     - [x] talk to linda
 - [x] cancel the car
 ## Week 13: 2025-03-31, 2025-04-01, 2025-04-02, 2025-04-03, 2025-04-04
-- [ ] cooling off hallesches
-    - [ ] email to shay
-- [ ] Fix bike
-- [ ] buy ikea shit
--  Business-freelancer
-    - [] Python POC <I>
-    - [ ] We want a blog post about my way of working with LLMs
-- Gründungszuschuss <I>
-    - [ ] Fix business plan cashflow to get the money
-    - [ ] Register freiberufler. but from when?
-    - [ ] Send the BP to review
-- [ ] Prepare doc structure for "Wolke"
-
 ---
 ## 2025-03-20
 - [x] Prepare our keys
 - [x] water the plants
 - [x] contact Agenteur
 - [x] pack for prague - Friday, Saturday, Sunday
-
 ## 2025-03-19
 - [x] Clothes
 - [x] buy SIN - MAN
