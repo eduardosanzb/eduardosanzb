@@ -1,7 +1,7 @@
 # ON-going
 -  Personal
-    - [ ] Take bike somewhere to fix?<I>
-    - [ ] Mexican movie night
+    - [ ] Take bike somewhere to fix?<I><Berlin>
+    - [ ] Mexican movie night<Berlin>
     - [ ] Setup payment for mystuff
     - [ ] Salsa classes
     -  Photography
@@ -11,9 +11,9 @@
     - [ ] Redo website Udo feedback and to think about "real engineering"
     - [ ] Font should come from static!
     - [ ] Meetups?
-    - [x] Thriving technologist? https://thrivingtechnologist.com/resources/memberships
+        - [x] Thriving technologist? https://thrivingtechnologist.com/resources/memberships
     - [x] German classes
-    - [ ] Find jobs
+    - [x] Find jobs
     - [ ] Setup an email server
     - [ ] New phone data plan
     - Marketing
@@ -25,6 +25,7 @@
         - [ ] OSS slackbot aim manager
         - [ ] Slackbot incident manager
         - [ ] Migrate neovim to lazy.nvim
+        - [ ] MCP
 
 # Business-problems-ideas
 - sync my todos with my chatbot (ADHD)
