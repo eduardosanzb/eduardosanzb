@@ -1,43 +1,49 @@
 # TODOs
-## 2025-04-08
-- Freiberufler
-    - [ ] Register freiberufler. but from when?
-- BP<I>
-    - [ ] Send BP to the reviewer
+## 2025-04-10
 
+## 2025-04-09
+- [x] send Contract for trawa
+    - [x] Talk with Max regarding bumping the price after 6 weeks.  **My goal base is 89/h by EOY**
+        ```text
+        Currently 10k@32h/w is **78,125/h** based on the whatsapp conversation.
+        In the proposal I gave him the next:
+        - (A) For 4 weeks @ **85.93**
+        - (B) For 12 weeks @ **83.33**
+        So I think we could come to the B after the 6 weeks, we renegotiate the price to **80/h**.
+        ```
+- BP<I>
+    - [x] Register freiberufler. but from when? `I guess from the beginning of the year`
+    - [x] format BP to template
+
+## 2025-04-08
+- BP<I>
+    - [x] format BP to template
 ## 2025-04-07
 - [x] call with eva
 - [x] replied platinion
 - BP<I>
     - [x] Fix BP cashflow to ensure grant
-    - [ ] format BP to template
-- [ ] Talk with Max regarding bumping the price after 6 weeks.  **My goal base is 89/h by EOY**
-    ```text
-    Currently 10k@32h/w is **78,125/h** based on the whatsapp conversation.
-    In the proposal I gave him the next:
-    - (A) For 4 weeks @ **85.93**
-    - (B) For 12 weeks @ **83.33**
-    So I think we could come to the B after the 6 weeks, we renegotiate the price to **80/h**.
-    ```
+
 ## Week 15: 2025-04-07, 2025-04-08, 2025-04-09, 2025-04-10, 2025-04-11
-- insurances
-    - [ ] Fix insurances
+- BP<I>
+    - [ ] Send BP to the reviewer
+- Gründungszuschuss <I>
+    - [ ] Send the application for the grant
 - Berlin
     - [ ] buy ikea shit
     - [ ] cooling off hallesches <Berlin>
         - [ ] email to shay
+    - Insurances
+        - [ ] Fix insurances
 -  Business-freelancer
-    - [] Python POC <I>
-    - [ ] We want a blog post about my way of working with LLMs
-- Freelance
     - [ ] Setup nodejs debugger
-- Gründungszuschuss <I>
-    - [ ] Send the application for the grant
+    - [] Python POC <I>
+    - [ ] Setup payment for mystuff
+    - [ ] We want a blog post about my way of working with LLMs
 - [ ] Cancel VPN <May_I>
 - [ ] Prepare doc structure for "Wolke"
 
 ---
-
 ## 2025-04-06
 - [x] pack valencia
     - clothes

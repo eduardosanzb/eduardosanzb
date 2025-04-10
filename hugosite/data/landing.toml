@@ -1,5 +1,7 @@
 [availability]
-  label = "Available in Berlin"
+  percent = 0.2 # 1 day a week available
+  label = "Partially Available"
+  # label = "Available"
 [hero]
   title = "Product Engineer\nFrom Concept to Infrastructure."
   subtitle = "HELPING TEAMS CREATE SYSTEMS THAT WORK, GROW AND LAST; \nFrom The First Commit To The Last Deployment."

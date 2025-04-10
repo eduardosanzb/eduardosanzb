@@ -1119,8 +1119,6 @@ Based on the evaluation, **Telegram** has been selected as the primary platform 
 ---
 
 
-
-
 ### Deployment
 - AWS deployment: Deploy the FastAPI backend to AWS Elastic Beanstalk or ECS and use Amazon RDS for PostgreSQL.
 - CI/CD pipeline: Set up a CI/CD pipeline for automated deployment.

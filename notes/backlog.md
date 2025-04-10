@@ -2,7 +2,6 @@
 -  Personal
     - [ ] Take bike somewhere to fix?<I><Berlin>
     - [ ] Mexican movie night<Berlin>
-    - [ ] Setup payment for mystuff
     - [ ] Salsa classes
     -  Photography
         - [ ] Website page design

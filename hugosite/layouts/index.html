@@ -23,8 +23,8 @@
     <div class="flex items-center pb-4 lg:pb-8">
       <span class="relative inline-flex rounded-md shadow-sm">
         <span class="h-4 w-4 lg:h-6 lg:w-6 pointer-events-none">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-4 w-4 lg:h-6 lg:w-6 bg-green-500"></span>
+          <span id="pulse1" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span id="pulse2" class="relative inline-flex rounded-full h-4 w-4 lg:h-6 lg:w-6 bg-green-500"></span>
         </span>
       </span>
       <p class="pl-2 text-white text-md lg:text-xl font-extralight text-wrap max-w-40 lg:max-w-64">
@@ -33,6 +33,17 @@
         </a>
         <script>
           (function setupAvailability() {
+            /* This is a hack to get the availability color */
+            const availabilityPercent = {{ .Site.Data.landing.availability.percent }};
+            const pulseColor = availabilityPercent === 0 ? 'bg-red-500' : availabilityPercent < 50 ? 'bg-yellow-500' : 'bg-green-500';
+            const pulse1 = document.getElementById('pulse1');
+            const pulse2 = document.getElementById('pulse2');
+            pulse1.classList.remove('bg-green-400');
+            pulse1.classList.add(pulseColor);
+            pulse2.classList.remove('bg-green-500');
+            pulse2.classList.add(pulseColor);
+
+            /* This is a hack to get the availability label */
             const availability = document.getElementById('availability');
             const preLabelInner= {{.Site.Data.landing.availability.label}}
             // the label normally is like this = "One Spot Available For March 2025"
