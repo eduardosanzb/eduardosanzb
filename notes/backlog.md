@@ -7,6 +7,7 @@
         - [ ] Website page design
         - [ ] Find meetups
 -  Business-freelancer
+    - [ ] We want a blog post about my way of working with LLMs
     - [ ] Redo website Udo feedback and to think about "real engineering"
     - [ ] Font should come from static!
     - [ ] Meetups?

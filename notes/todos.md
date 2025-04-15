@@ -1,6 +1,36 @@
 # TODOs
-## 2025-04-10
+## 2025-04-15
+- [ ] Email Leo to reject the offer
+- trawa<I>
+    - [ ] Connect db locally
+    - [ ] Setup nodejs debugger
+    - [ ] AWS lamda debugger
+- BP<I>
+    - [ ] ask for a review
 
+## 2025-04-14
+- [x] talk to laura
+
+## Week 16: 2025-04-21, 2025-04-22, 2025-04-23, 2025-04-24, 2025-04-25
+- BP<I>
+    - [ ] Send BP to the reviewer
+- Gründungszuschuss <I>
+    - [ ] Send the application for the grant
+- Berlin
+    - [ ] use hallesches app
+    - [ ] buy ikea shit
+    - [ ] cooling off hallesches <Berlin>
+        - [ ] email to shay
+    - Insurances
+        - [ ] Fix insurances
+-  Business-freelancer
+   - [ ] Setup payment for mystuff
+    - [] Python POC <I>
+- [ ] Cancel VPN <May_I>
+- [ ] Prepare doc structure for "Wolke"
+
+
+---
 ## 2025-04-09
 - [x] send Contract for trawa
     - [x] Talk with Max regarding bumping the price after 6 weeks.  **My goal base is 89/h by EOY**
@@ -14,7 +44,6 @@
 - BP<I>
     - [x] Register freiberufler. but from when? `I guess from the beginning of the year`
     - [x] format BP to template
-
 ## 2025-04-08
 - BP<I>
     - [x] format BP to template
@@ -25,24 +54,6 @@
     - [x] Fix BP cashflow to ensure grant
 
 ## Week 15: 2025-04-07, 2025-04-08, 2025-04-09, 2025-04-10, 2025-04-11
-- BP<I>
-    - [ ] Send BP to the reviewer
-- Gründungszuschuss <I>
-    - [ ] Send the application for the grant
-- Berlin
-    - [ ] buy ikea shit
-    - [ ] cooling off hallesches <Berlin>
-        - [ ] email to shay
-    - Insurances
-        - [ ] Fix insurances
--  Business-freelancer
-    - [ ] Setup nodejs debugger
-    - [] Python POC <I>
-    - [ ] Setup payment for mystuff
-    - [ ] We want a blog post about my way of working with LLMs
-- [ ] Cancel VPN <May_I>
-- [ ] Prepare doc structure for "Wolke"
-
 ---
 ## 2025-04-06
 - [x] pack valencia
