@@ -1,35 +1,53 @@
 # TODOs
-## 2025-04-15
-- [ ] Email Leo to reject the offer
-- trawa<I>
-    - [ ] Connect db locally
-    - [ ] Setup nodejs debugger
-    - [ ] AWS lamda debugger
-- BP<I>
-    - [ ] ask for a review
-
-## 2025-04-14
-- [x] talk to laura
-
-## Week 16: 2025-04-21, 2025-04-22, 2025-04-23, 2025-04-24, 2025-04-25
+## 2025-04-22
+- [ ] DO the vanta onboarding profile
+- [ ] DO the personio onboarding profile
+## Week 17: 2025-04-28, 2025-04-29, 2025-04-30, 2025-05-01, 2025-05-02
+- [ ] Cancel VPN <May_I>
 - BP<I>
     - [ ] Send BP to the reviewer
 - Gründungszuschuss <I>
     - [ ] Send the application for the grant
 - Berlin
-    - [ ] use hallesches app
     - [ ] buy ikea shit
     - [ ] cooling off hallesches <Berlin>
         - [ ] email to shay
     - Insurances
         - [ ] Fix insurances
 -  Business-freelancer
+    - [ ] Email Leo to reject the offer
    - [ ] Setup payment for mystuff
-    - [] Python POC <I>
+    - [ ] Python POC <I>
+-----
+
+## 2025-04-17
+- BP<I>
+    - [ ] ask for a review professionall
+## 2025-04-16
+- [x] ask leo review of bp
+## 2025-04-15
+- trawa<I>
+    - [x] Connect postgres locally
+    - [x] Connect mongo locally
+## 2025-04-14
+- [x] talk to laura
+## Week 16: 2025-04-21, 2025-04-22, 2025-04-23, 2025-04-24, 2025-04-25
+- BP<I>
+    - [ ] Send BP to the reviewer
+- Gründungszuschuss <I>
+    - [ ] Send the application for the grant
+- Berlin
+    - [x] use hallesches app
+    - [ ] buy ikea shit
+    - [ ] cooling off hallesches <Berlin>
+        - [ ] email to shay
+    - Insurances
+        - [ ] Fix insurances
+-  Business-freelancer
+    - [ ] DO the personio onboarding profile
+   - [ ] Setup payment for mystuff
+    - [ ] Python POC <I>
 - [ ] Cancel VPN <May_I>
-- [ ] Prepare doc structure for "Wolke"
-
-
 ---
 ## 2025-04-09
 - [x] send Contract for trawa

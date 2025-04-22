@@ -33,9 +33,11 @@
 - Photographers share location tips for locations
 - LLM powered ig blocker
 - color complementary photo app
+- [ ] Prepare doc structure for "Wolke"
 
 #  Business expenses
 - Couching
 - German classes
 - laptop
 - VPN
+* lunchs?
