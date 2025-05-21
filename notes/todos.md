@@ -1,28 +1,57 @@
 # TODOs
-## 2025-04-23
-- [ ] buy ikea shit
 
+## Wednesday 2025-05-21
+- [ ] Clean guest room
+
+## Thursday 2025-05-22
+- [ ] DU businessplan finals and thankt he person
+
+- [ ] buy bike
+- [ ] buy shoes
+
+- [ ] groceries
+
+## friday 2025-05-23
+- [ ] Psychiatric
+- [ ] Fix the fucking bike!
+
+- [ ] Ironman photos
+-  Business-freelancer
+    - [ ] Python POC
+
+
+## Week 21: 2025-05-26, 2025-05-27, 2025-05-28, 2025-05-29, 2025-05-30
+-  Business-freelancer
+    - [] DO the personio onboarding profile
+
+
+
+----
+
+I was on a big holiday in mallorca
+
+## 2025-04-29
+- [x] creat ticket to cancel calls on page navigation
+- [x] Cancel VPN <May_I>
+- [x] expose tools with funnel
+- [x] PR fixing the 403
+- [x] PR formatting the code
+- [x] Slides for KMS
+
+## 2025-04-28
+- [x] UDO feedback
+## 2025-04-24
+## 2025-04-23
+- [x] buy ikea shit
 ## 2025-04-22
 - [x] DO the vanta onboarding profile
 - [x] watch videos on platform
 - [x] watch videos on flex
-
 ## Week 17: 2025-04-28, 2025-04-29, 2025-04-30, 2025-05-01, 2025-05-02
-- [ ] DO the personio onboarding profile
-- [ ] Cancel VPN <May_I>
 - BP<I>
-    - [ ] Send BP to the reviewer
+    - [x] Send BP to the reviewer
 - Gründungszuschuss <I>
-    - [ ] Send the application for the grant
-- Berlin
-    - [ ] cooling off hallesches <Berlin>
-        - [ ] email to shay
-    - Insurances
-        - [ ] Fix insurances
--  Business-freelancer
-    - [ ] Email Leo to reject the offer
-   - [ ] Setup payment for mystuff
-    - [ ] Python POC <I>
+    - [x] Send the application for the grant
 -----
 ## 2025-04-17
 - [x] work on feedback for BP
