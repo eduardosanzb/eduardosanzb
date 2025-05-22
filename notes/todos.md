@@ -1,19 +1,20 @@
 # TODOs
 
 ## Wednesday 2025-05-21
-- [ ] Clean guest room
+- [x] Clean guest room
 
 ## Thursday 2025-05-22
 - [ ] DU businessplan finals and thankt he person
+- [x] buy bike
 
-- [ ] buy bike
-- [ ] buy shoes
 
 - [ ] groceries
 
 ## friday 2025-05-23
 - [ ] Psychiatric
 - [ ] Fix the fucking bike!
+
+- [ ] buy shoes
 
 - [ ] Ironman photos
 -  Business-freelancer
