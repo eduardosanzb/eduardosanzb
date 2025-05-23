@@ -4,13 +4,37 @@
 - [x] Clean guest room
 
 ## Thursday 2025-05-22
-- [ ] DU businessplan finals and thankt he person
 - [x] buy bike
 
-
-- [ ] groceries
-
 ## friday 2025-05-23
+- [x] Meal plan
+    - groceries
+        - [ ] tofu
+        - [ ] kartoffeln
+        - [ ] veggies
+        - [ ] brokkoli
+        - [ ] gurken
+        - [ ] beans
+        - [ ] basmati
+        - [ ] pasta
+        - [ ] chicken
+        - [ ] frozen lachs
+        - [ ] cottage
+        - [ ] quark
+        - [ ] veggies frozen
+        - [ ] edamama
+        - [ ] cheackpeask
+    - Cleaning
+        - [ ] wc cleaner
+        - [ ] spiritus
+        - [ ] essig reiniger
+        - [ ] wc tabs
+    - Personal
+        - [ ] tooth paste
+        - [ ] deo
+
+- [ ] DU businessplan finals and thankt he person
+
 - [ ] Psychiatric
 - [ ] Fix the fucking bike!
 
@@ -24,7 +48,6 @@
 ## Week 21: 2025-05-26, 2025-05-27, 2025-05-28, 2025-05-29, 2025-05-30
 -  Business-freelancer
     - [] DO the personio onboarding profile
-
 
 
 ----
@@ -243,3 +266,210 @@ I was on a big holiday in mallorca
 -  Business-freelancer
     - [x] Check Discord business <I>
 ---
+
+
+
+
+
+
+
+
+
+
+ * 15.05.24 @ 23:00
+   * Waist (W): 96.45
+   * Hips (H): 99.6
+   * Weight (W): 107
+   * Chest (C): 116
+ * 16.05.24 @ 8:21
+   * Waist (W): 95.05
+   * Hips (H): 99
+   * Weight (W): 106
+   * Chest (C): 117
+ * 27.05 @ 10:
+   * Waist (W): 95.05
+   * Hips (H): 99
+   * Weight (W): 107.5
+   * Chest (C): 119
+ * 28.05
+   * Waist (W): 94.95
+   * Hips (H): 98.9
+   * Weight (W): 107.5
+   * Chest (C): 119.6
+ * 30.05
+   * Waist (W): 95.20
+   * Hips (H): 99.7
+   * Weight (W): 105.9
+   * Chest (C): 117
+ * 21/06
+   * Waist (W): 94.80
+   * Hips (H): 100
+   * Weight (W): 107
+   * Chest (C): 115
+ * 23/07
+   * Waist (W): 92.20
+   * Hips (H): 97
+   * Weight (W): 103.5
+   * Chest (C): 114.7
+ * 24/07
+   * Waist (W): 92.35
+   * Hips (H): 98
+   * Weight (W): 109
+   * Chest (C): 116.8
+ * 30/07
+   * Waist (W): 91.35
+   * Hips (H): 93.9
+   * Weight (W): 104.5
+   * Chest (C): 117
+ * 9/08/24
+   * Waist (W): 91.85
+   * Hips (H): 97
+   * Weight (W): 103.5
+   * Chest (C): 104
+ * 20/08/24
+   * Waist (W): 91.15
+   * Hips (H): 96
+   * Weight (W): 102
+   * Chest (C): 116
+ * 12/08/24
+   * Waist (W): 92.5
+   * Hips (H): 97
+   * Weight (W): 103.1
+   * Chest (C): 114
+ * 24/08/24
+   * Waist (W): 92
+   * Hips (H): 96.6
+   * Weight (W): 102
+   * Chest (C): 115
+ * 13/08/24
+   * Waist (W): 92.70
+   * Hips (H): 96.9
+   * Weight (W): 109
+   * Chest (C): 116
+ * 25/08/24
+   * Waist (W): 91.10
+   * Hips (H): 96
+   * Weight (W): 103.9
+   * Chest (C): 115
+ * 29/08/24
+   * Waist (W): 91.6
+   * Hips (H): (not visible)
+   * Weight (W): (not visible)
+   * Chest (C): (not visible)
+ * 04/09/24
+   * Waist (W): 91.90
+   * Hips (H): 96
+   * Weight (W): 103
+   * Chest (C): 108
+ * 25/10/24
+   * Waist (W): 91.7
+   * Hips (H): 97
+   * Weight (W): 103
+   * Chest (C): 118.5
+ * 8/11/24
+   * Waist (W): (not visible)
+   * Hips (H): 97.5
+   * Weight (W): 109
+   * Chest (C): 117
+ * 15.10/24
+   * Waist (W): 89.90
+   * Hips (H): (not visible)
+   * Weight (W): (not visible)
+   * Chest (C): (not visible)
+ * 27/11/24
+   * Waist (W): 92
+   * Hips (H): 97
+   * Weight (W): 102.5
+   * Chest (C): 117
+ * 20.10/24
+   * Waist (W): 90.00
+   * Hips (H): 96
+   * Weight (W): 103
+   * Chest (C): 115
+ * 16.12.24
+   * Waist (W): 93.6
+   * Hips (H): 98
+   * Weight (W): 103.5
+   * Chest (C): 117
+   * Brazos (B) L | R: 37 | 36
+ * 2.01.25
+   * Waist (W): 94.90
+   * Hips (H): 98
+   * Weight (W): 105
+   * Chest (C): 122
+   * Brazos (B) L | R: 37 | 36
+ * 13.02.25
+   * Waist (W): 95.35
+   * Hips (H): 98
+   * Weight (W): 105
+   * Chest (C): 117.3
+   * Brazos (B) L | R: 36 | 35
+ * 7.1.25
+   * Waist (W): 92.95
+   * Hips (H): 97
+   * Weight (W): 109
+   * Chest (C): 117
+   * Brazos (B) L | R: 37 | 37.5
+ * 10.01.25
+   * Waist (W): 92.70
+   * Hips (H): 98
+   * Weight (W): 109
+   * Chest (C): 118.5
+   * Brazos (B) L | R: 37 | 37.5
+ * 19.07.25
+   * Waist (W): (not visible)
+   * Hips (H): 99
+   * Weight (W): 105.6
+   * Chest (C): (not visible)
+   * Brazos (B) L | R: (not visible)
+ * 11.03.25
+   * Waist (W): 98
+   * Hips (H): 102
+   * Weight (W): 107
+   * Chest (C): (not visible)
+   * Brazos (B) L | R: (not visible)
+ * 12.05.25
+   * Waist (W): 95.15
+   * Hips (H): 97
+   * Weight (W): 109
+   * Chest (C): 119
+   * Brazos (B) L | R: 37 | 36
+ * 23.05.25
+   * Waist (W): 98
+   * Hips (H): 100
+   * Weight (W): 107
+   * Chest (C):
+   * Brazos (B)
+
+   Date,Weight (kg),Hips (cm),Waist (cm),Chest (cm),Brazos L (cm),Brazos R (cm)
+15/05/2024,96.45,99.6,107,116,,
+16/05/2024,95.05,99,106,117,,
+27/05/2024,95.05,99,107.5,119,,
+28/05/2024,94.95,98.9,107.5,119.6,,
+30/05/2024,95.20,99.7,105.9,117,,
+21/06/2024,94.80,100,107,115,,
+23/07/2024,92.20,97,103.5,114.7,,
+24/07/2024,92.35,98,109,116.8,,
+30/07/2024,91.35,93.9,104.5,117,,
+09/08/2024,91.85,97,103.5,104,,
+20/08/2024,91.15,96,102,116,,
+12/08/2024,92.5,97,103.1,114,,
+24/08/2024,92,96.6,102,115,,
+13/08/2024,92.70,96.9,109,116,,
+25/08/2024,91.10,96,103.9,115,,
+29/08/2024,,,,,,
+04/09/2024,91.90,96,103,108,,
+25/10/2024,91.7,97,103,118.5,,
+08/11/2024,,97.5,109,117,,
+15/10/2024,89.90,,,,
+27/11/2024,92,97,102.5,117,,
+20/10/2024,90.00,96,103,115,,
+16/12/2024,93.6,98,103.5,117,37,36
+02/01/2025,94.90,98,105,122,37,36
+13/02/2025,95.35,98,105,117.3,36,35
+07/01/2025,92.95,97,109,117,37,37.5
+10/01/2025,92.70,98,109,118.5,37,37.5
+19/07/2025,,99,105.6,,,
+11/03/2025,98,102,107,,,
+12/05/2025,95.15,97,109,119,37,36
+23/05/2025,98,100,107,,,
