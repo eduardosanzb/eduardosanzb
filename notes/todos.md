@@ -1,54 +1,53 @@
 # TODOs
-
-## Wednesday 2025-05-21
-- [x] Clean guest room
-
-## Thursday 2025-05-22
-- [x] buy bike
-
-## friday 2025-05-23
-- [x] Meal plan
-    - groceries
-        - [ ] tofu
-        - [ ] kartoffeln
-        - [ ] veggies
-        - [ ] brokkoli
-        - [ ] gurken
-        - [ ] beans
-        - [ ] basmati
-        - [ ] pasta
-        - [ ] chicken
-        - [ ] frozen lachs
-        - [ ] cottage
-        - [ ] quark
-        - [ ] veggies frozen
-        - [ ] edamama
-        - [ ] cheackpeask
-    - Cleaning
-        - [ ] wc cleaner
-        - [ ] spiritus
-        - [ ] essig reiniger
-        - [ ] wc tabs
-    - Personal
-        - [ ] tooth paste
-        - [ ] deo
-
-- [ ] DU businessplan finals and thankt he person
-
+## monday 2025-05-26
 - [ ] Psychiatric
-- [ ] Fix the fucking bike!
 
-- [ ] buy shoes
-
-- [ ] Ironman photos
+## sunday 2025-05-25
+- [ ] Lendo@
 -  Business-freelancer
     - [ ] Python POC
 
+## Saturday 2025-05-24
+- [ ] DU businessplan finals and thankt he person
+- [ ] Fix the fucking bike!
+- [x] Thanks to Udo
+
+## friday 2025-05-23
+- [x] Mallorca photos
+- [x] Meal plan
+    - groceries
+        - [x] tofu
+        - [x] kartoffeln
+        - [x] veggies
+        - [x] brokkoli
+        - [x] gurken
+        - [x] beans
+        - [x] basmati
+        - [x] pasta
+        - [x] chicken
+        - [x] frozen lachs
+        - [x] cottage
+        - [x] quark
+        - [x] veggies frozen
+        - [x] edamama
+        - [x] cheackpeask
+    - Cleaning
+        - [x] wc cleaner
+        - [x] spiritus
+        - [x] essig reiniger
+        - [x] wc tabs
+    - Personal
+        - [x] tooth paste
+        - [x] deo
+- [x] buy shoes
+## Thursday 2025-05-22
+- [x] buy bike
+## Wednesday 2025-05-21
+- [x] Clean guest room
 
 ## Week 21: 2025-05-26, 2025-05-27, 2025-05-28, 2025-05-29, 2025-05-30
 -  Business-freelancer
     - [] DO the personio onboarding profile
-
 
 ----
 
