@@ -1,17 +1,28 @@
 # TODOs
-## monday 2025-05-26
-- [ ] Psychiatric
+## friday 2025-05-30
+- [ ] new contract trawa
 
-## sunday 2025-05-25
-- [ ] Lendo@
+## thursday 2025-05-29
+- [ ] Fix the fucking bike!
+- [x] DU businessplan finals and thankt he person
+- [ ] buy koro
+- [ ] plan japan
+## tuesday 2025-05-27
+- [ ] Psychiatric
+## monday 2025-05-26
+- [x] buy coffee
+## Week 22: 2025-05-26, 2025-05-27, 2025-05-28, 2025-05-29, 2025-05-30
 -  Business-freelancer
     - [ ] Python POC
+-  Business-freelancer
+    - [] Invoice trawa <BLOCKED>
 
+---
+## sunday 2025-05-25
+- [x] Lendo@
+- [x] Prepare guest room
 ## Saturday 2025-05-24
-- [ ] DU businessplan finals and thankt he person
-- [ ] Fix the fucking bike!
 - [x] Thanks to Udo
-
 ## friday 2025-05-23
 - [x] Mallorca photos
 - [x] Meal plan
@@ -44,14 +55,12 @@
 - [x] buy bike
 ## Wednesday 2025-05-21
 - [x] Clean guest room
-
 ## Week 21: 2025-05-26, 2025-05-27, 2025-05-28, 2025-05-29, 2025-05-30
--  Business-freelancer
-    - [] DO the personio onboarding profile
-
 ----
 
 I was on a big holiday in mallorca
+
+---
 
 ## 2025-04-29
 - [x] creat ticket to cancel calls on page navigation
@@ -440,7 +449,7 @@ I was on a big holiday in mallorca
    * Chest (C):
    * Brazos (B)
 
-   Date,Weight (kg),Hips (cm),Waist (cm),Chest (cm),Brazos L (cm),Brazos R (cm)
+Date,Weight (kg),Hips (cm),Waist (cm),Chest (cm),Brazos L (cm),Brazos R (cm)
 15/05/2024,96.45,99.6,107,116,,
 16/05/2024,95.05,99,106,117,,
 27/05/2024,95.05,99,107.5,119,,
@@ -472,3 +481,4 @@ I was on a big holiday in mallorca
 11/03/2025,98,102,107,,,
 12/05/2025,95.15,97,109,119,37,36
 23/05/2025,98,100,107,,,
+25-05-24, 95.85, 99, 107, 119.6, 38.5, 36
