@@ -1,14 +1,14 @@
 # TODOs
 ## friday 2025-05-30
 - [ ] new contract trawa
+- [ ] Psychiatric
+- [ ] buy koro
 
 ## thursday 2025-05-29
 - [ ] Fix the fucking bike!
 - [x] DU businessplan finals and thankt he person
-- [ ] buy koro
 - [ ] plan japan
 ## tuesday 2025-05-27
-- [ ] Psychiatric
 ## monday 2025-05-26
 - [x] buy coffee
 ## Week 22: 2025-05-26, 2025-05-27, 2025-05-28, 2025-05-29, 2025-05-30
