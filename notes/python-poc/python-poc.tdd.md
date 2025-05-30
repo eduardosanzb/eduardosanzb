@@ -20,21 +20,13 @@ For further understanding of the explored **Workflows** of the system, pleaser r
 
 **Key Components**
 
-- **Backend**: FastAPI application for handling API requests, querying the database, triggering message summarization, managing conversation importance and reminders, and interacting with a local LLM.
-- **Database**: PostgreSQL for storing chat messages and metadata locally.
+- **Backend**: Service for handling API requests, querying the database, triggering message summarization, managing conversation importance and reminders, and interacting with a local LLM.
+- **Database**: For storing chat messages and metadata locally.
 - **Integration**:
-  - WhatsApp: Use web-whatsapp.js to extract chat logs and send them to the backend.
-  - Telegram: Utilize the Python Telegram Bot library for bot interactions.
-  - Local LLM: Integrate llama.cpp for message summaries and reply suggestions.
+  - WhatsApp: Use web-whatsapp.js to extract chat logs and send them to the backend and to reply to messages.
+  - LLM: Usage of LLMs for generating reply suggestions and summarizing messages.
+    - Local inference or open source LLMs (e.g., llama.cpp) to ensure data privacy.
 
-
-## Resources
-
--   [Transitioning from JavaScript to Python](https://medium.com/@JeffyJeff/transitioning-from-javascript-to-python-bridging-the-scripting-divide-7a78f9e76752)
--   [Python Telegram Bot Library](https://python-telegram-bot.readthedocs.io/en/latest/)
--   [FastAPI Documentation](https://fastapi.tiangolo.com/)
--   [PostgreSQL Documentation](https://www.postgresql.org/docs/)
--   [llama.cpp](https://github.com/ggerganov/llama.cpp) (Example Local LLM)
 
 ## Goals
 
@@ -42,25 +34,12 @@ For further understanding of the explored **Workflows** of the system, pleaser r
 * Reduce the burden of responding to messages.
 * Enhance message context and prioritization.
 * Provide a private and secure solution.
-* Provide a learning platform for Python, AWS, and LLM technologies.
+* Provide a learning platform for new technologies.
 
 
 ## Technology Stack
-* Python
-* FastAPI
-* PostgreSQL
-* Telegram Bot API
+* Python and Typescript for backend and client interface.
 * Local LLM (e.g., llama.cpp)
-* AWS (Elastic Beanstalk/ECS, RDS)
-
-## Deployment
-* The system shall be deployable to AWS using CI/CD pipelines.
-* Deployment scripts shall be provided for local development and production environments.
-
-## Testing
-* Unit tests shall be implemented for core logic.
-* E2E tests shall be implemented to verify end-to-end functionality.
-* API testing shall be implemented to verify API endpoints.
 
 ## Future Considerations
 * Integration with other messaging platforms.
@@ -70,10 +49,8 @@ For further understanding of the explored **Workflows** of the system, pleaser r
 
 ### Out of Scope
 -   Direct WhatsApp integration (due to API limitations). We'll rely on exporting chat history.
--   Building a complex web UI initially.  We'll start with a Telegram interface.
+-   Building a complex web UI initially.
 -   Fine-tuning the LLM on personal writing style (stretch goal).
--   Monorepo (for now, keep it simple).
--   Manage Reminders or User Preferences
 
 ## Exploration
 For further understanding of the explored **Workflows** of the system, pleaser read the [python-poc.spec.md](https://github.com/eduardosanzb/eduardosanzb/blob/master/notes/python-poc.spec.md)
@@ -210,7 +187,8 @@ Regarding the implementation details; we could automate this by using a Selenium
 We have to keep an eye on the processing time and to make sure if we should implement some kind of deferance or queue.
 
 In summary:
-**We are going to create a script that will get the messages from whatsapp using web-whatsapp.js. This script will be running in a cron basis. Firstly the script will check if there's another running script _(asking the backend `/lock`)_ and later on `POST`ing the chats/messages to the backend**
+**We are going to create a script that will get the messages from whatsapp using web-whatsapp.js. This script will be running in a cron basis.
+Firstly the script will check if there's another running script _(asking the backend `/lock`)_ and later on `POST`ing the chats/messages to the backend**
 
 **As initial; we'll run the script on schedule using github actions scheduled jobs**
 
@@ -232,34 +210,11 @@ The requirements for a backend are the next:
   * [x] Ignore
 
 The backend ensures all data processing and AI computations are done locally, prioritizing user privacy.
-
-We can split this exploration in the next parts:
-- [ ] Data Layer
-    - [x] Data ingestion/exposure
-  - [x] Data model
-      - [x] Define interfaces (OAS, Types, etc)
-      - [ ] Ranking rules
-    - [ ] Data Storage
-      - [x] DB setup
-      - [x] Migrations
-      - [x] Client
-      - [ ] Vector data research
-- [ ] Summary engine
-  - [] Data model of a summary
-  - [ ] LLm integration research
-  - [ ] Testing Business Logic
-- [ ] Actions (send/receive)
-  - [ ] Integrations capabilities (which integrations)
-    - [x] interact with whatsapp
-    - [ ] Connect googlecal
-    - [ ] interact with chat bot (telegaram or slack tbd)
-    - [ ] interact with email
-  - [ ] Define CRUD interfaces for actions
-  - [ ] Reminders engine
-The common component between this parts is that we'll be coupling all of this functionality in one monolithic service. As a learning opportunity we'll use python instead of typescript or go.
+The common component between this parts is that we'll be coupling all of this functionality in one monolithic service.
 
 #### Data Layer
-This section is the foundation of the core backend; one of the main decisions we have to make here is to select the database technology; As constraints we have that this is a small project; so we want to prioritize simplicity nevertheless we also want to use the right tool.
+This section is the foundation of the core backend; one of the main decisions we have to make here is to select the database technology;
+As constraints we have that this is a small project; so we want to prioritize simplicity nevertheless we also want to use the right tool.
 
 ##### The Database Technology
 We first explore the rationale behind choosing a SQL database engine. SQL databases are well-established and offer robust features for structured data management, relational integrity, and efficient querying – all critical for our application's data requirements.
@@ -277,7 +232,6 @@ Its workflow promotes standardized, version-controlled database evolution, cruci
 **Our recommendation for this section is to adopt Atlas as our database migration management tool due to its modern declarative approach, language agnosticism, CI-friendly workflow, and potential for Terraform integration.**
 
 We tested atlas by managing a simple schema with changes and applying the migrations, with the next workflow:
-
 
 - Make changes to the `schema.hcl` file
 - Run the command to generate the SQL migration file
@@ -1100,9 +1054,13 @@ The `Prompt Constructor` component is responsible for dynamically assembling the
 ### Chat Bot Interface
 #### Chat bot interface: Introduction, Purpose, and Platform Selection
 
-The primary user interface for the system will be a conversational Chat bot. This interface is designed to be the central point of interaction for users, enabling them to leverage the system's capabilities through natural language commands and chat-based interactions.  The core purpose of this Chat bot interface is to provide users with easy and efficient access to key functionalities, including receiving chat message exports, querying information, and obtaining AI-driven message summaries, reminders, and reply suggestions.  This conversational approach aims to simplify user interaction, making the system accessible and intuitive even for users without technical expertise.
+The primary user interface for the system will be a conversational Chat bot. This interface is designed to be the central point of interaction for users,
+enabling them to leverage the system's capabilities through natural language commands and chat-based interactions.
+The core purpose of this Chat bot interface is to provide users with easy and efficient access to key functionalities, including receiving chat message exports, querying information,
+and obtaining AI-driven message summaries, reminders, and reply suggestions.  This conversational approach aims to simplify user interaction, making the system accessible and intuitive even for users without technical expertise.
 
-To ensure the best possible user experience and development efficiency, we explored several messaging platforms suitable for chatbot integration.  Our evaluation considered factors such as user-friendliness, feature set (support for threads, replies, reactions), development effort, and alignment with the project's goals as a personal software solution.
+To ensure the best possible user experience and development efficiency, we explored several messaging platforms suitable for chatbot integration.
+Our evaluation considered factors such as user-friendliness, feature set (support for threads, replies, reactions), development effort, and alignment with the project's goals as a personal software solution.
 
 **Platform Comparison:**
 
@@ -1112,9 +1070,14 @@ To ensure the best possible user experience and development efficiency, we explo
 | **Features (Threads, Replies, Reactions)** | Excellent support for threads in groups, replies, and reactions. | Excellent support for threads in channels, replies, and reactions.          | Supports replies and reactions, but threads are less structured.         |
 | **Development Effort**        | Python Telegram Bot Library is user-friendly, straightforward API, simpler architecture. | Slack Bolt and other SDKs are well-documented, but setup might involve workspace/app configuration. | Bot development and API access can be more complex, often requiring business verification and potentially stricter terms of service. |
 
-**Platform Selection: Telegram**
+**Platform Selection: WhatsApp**
 
-Based on the evaluation, **Telegram** has been selected as the primary platform for the Chat bot interface.  Telegram excels in accessibility and popularity for personal use, offers robust support for essential conversational features, and provides a relatively straightforward development experience, particularly with the Python Telegram Bot Library.  While Slack and WhatsApp are also strong platforms, Telegram's combination of ease of use for personal projects and developer-friendliness makes it the most suitable choice for our initial implementation.
+Based on the evaluation, and finally in taste of the project's personal software focus, we have selected **WhatsApp** as the primary platform for the Chat bot interface.
+This decision is driven by WhatsApp's widespread popularity, ease of use, and familiarity among users, making it an ideal choice for a personal software solution.
+While WhatsApp's bot development can be more complex than other platforms, we believe that the benefits of reaching a broad user base and providing a familiar interface outweigh the challenges.
+
+#### Chat bot interface: Design and Implementation
+gg
 
 ---
 

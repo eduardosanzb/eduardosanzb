@@ -1,13 +1,16 @@
 # TODOs
+## saturday 2025-05-31
+- [ ] Fix the fucking bike!
+- [ ] plan japan
+- [ ] Psychiatric
+
 ## friday 2025-05-30
 - [ ] new contract trawa
-- [ ] Psychiatric
 - [ ] buy koro
+- [ ] setup new phone for work
 
 ## thursday 2025-05-29
-- [ ] Fix the fucking bike!
 - [x] DU businessplan finals and thankt he person
-- [ ] plan japan
 ## tuesday 2025-05-27
 ## monday 2025-05-26
 - [x] buy coffee
