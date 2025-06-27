@@ -27,7 +27,6 @@ For further understanding of the explored **Workflows** of the system, pleaser r
   - LLM: Usage of LLMs for generating reply suggestions and summarizing messages.
     - Local inference or open source LLMs (e.g., llama.cpp) to ensure data privacy.
 
-
 ## Goals
 
 * Improve efficiency in managing WhatsApp messages.
@@ -38,7 +37,7 @@ For further understanding of the explored **Workflows** of the system, pleaser r
 
 
 ## Technology Stack
-* Python and Typescript for backend and client interface.
+* ~Python~ and Typescript for backend and client interface.
 * Local LLM (e.g., llama.cpp)
 
 ## Future Considerations
@@ -48,7 +47,7 @@ For further understanding of the explored **Workflows** of the system, pleaser r
 * Automated chat export from Whatsapp.
 
 ### Out of Scope
--   Direct WhatsApp integration (due to API limitations). We'll rely on exporting chat history.
+-   Direct WhatsApp enterprise integration (due to API limitations).
 -   Building a complex web UI initially.
 -   Fine-tuning the LLM on personal writing style (stretch goal).
 
@@ -60,6 +59,11 @@ We can divide the exploration in the next blocks
 3.  **Client Interface**
 
 ### Data Acquisition
+> [!IMPORTANT]
+> TLDR; We decided to use  The B
+> **We are going to create a script that will get the messages from whatsapp using web-whatsapp.js. This script will be running in a cron basis.
+> Firstly the script will check if there's another running script _(asking the backend `/lock`)_ and later on `POST`ing the chats/messages to the backend* **As initial; we'll run the script on schedule using github actions scheduled jobs**
+
 We need to implement a mechanism to parse exported WhatsApp chat logs and POST them to the backend for storing and post-processing.
 
 In this block, we have to split in the next challenges:
@@ -73,7 +77,10 @@ B) Have a script that runs as a tick which will process all the messages everyti
 Lets explore PROS/CONS of both of this ones
 
 #### Approach A
+<details>
+    <summary>
 This approach would require an initial data migration to be run. And to keep a server running all the time.
+        </summary>
 
 On the *positive* side, this would be the leanest approach and it could result in a "realtime" experience.
 
@@ -96,9 +103,13 @@ An example of the export file:
 Furthermore we'll need to find a similar project as [Baileys](https://github.com/WhiskeySockets/Baileys) which impelements a websocket listener to whatsapp. _we could use this but then we are not using python_
 
 Another idea is to rely on a stream platform such as apache kafka; but come one. Overkilling it.
+</details>
 
 #### Approach B
+<details>
+    <summary>
 This approach could result in a more deterministic results. Because we'd run a script that fetches all the chats and attempt to discover unread messages.
+</summary>
 
 In the *positive*:
 - A more deterministic approach; given that we'd ensure all the chats have been processed.
@@ -173,24 +184,21 @@ RUN dnsmasq
 ## The script will attempt to curl google and fail
 CMD ["sh", "test_curl.sh"]
 ```
+</details>
 
 
 #### Recomendation
-It seems that the approach B is a more maintanable and straightforward one. The only benefit we have with Approach A is the "realtime" experience which is not that important for us.
+It seems that the **approach B** is a more maintanable and straightforward one. The only benefit we have with Approach A is the "realtime" experience which is not that important for us.
 
 Tho we could leverage having some kind of message queue; this would entail having more moving parts; for now we'll keep the complexity low.
 
 In the negative the approach A open the door for too many edge cases.
 
 Regarding the implementation details; we could automate this by using a Selenium driver and automate it with python. Nevertheless we found a very good [javascript](https://wwebjs.dev/) implementation and it would feel super wrong to not use it. Furthermore we'll have other opportunities to practice python through this project.
+_we are focusing in results; soo we'll skip python_
 
 We have to keep an eye on the processing time and to make sure if we should implement some kind of deferance or queue.
 
-In summary:
-**We are going to create a script that will get the messages from whatsapp using web-whatsapp.js. This script will be running in a cron basis.
-Firstly the script will check if there's another running script _(asking the backend `/lock`)_ and later on `POST`ing the chats/messages to the backend**
-
-**As initial; we'll run the script on schedule using github actions scheduled jobs**
 
 
 ###  Backend

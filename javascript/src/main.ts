@@ -1,9 +1,7 @@
 import WhatsWebJS from 'whatsapp-web.js'
 import qrcode from 'qrcode-terminal';
 const { Client, LocalAuth } = WhatsWebJS
-import { inspect } from 'util'
 import fs from 'node:fs';
-console.log('WhatsApp Web JS Example');
 
 // Create a new client instance
 const client = new Client({
@@ -35,16 +33,19 @@ client.once('ready', async () => {
 client.on('qr', (qr) => {
   console.log('QR RECEIVED', qr);
   qrcode.generate(qr, { small: true });
-
 });
 
 
 client.on('message_create', message => {
-  if (!message.fromMe) {
-    console.log(message.from);
+  if (message.fromMe) {
+    console.log(message);
   }
+});
+client.on('loading_screen', (percent, message) => {
+    console.log('LOADING SCREEN', percent, message);
 });
 
 // Start your client
+console.log('initializing')
 client.initialize();
 
