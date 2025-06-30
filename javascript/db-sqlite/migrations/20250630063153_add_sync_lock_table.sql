@@ -1,0 +1,13 @@
+-- migrate:up
+CREATE TABLE SyncLock (
+    lock_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lock_status BOOLEAN NOT NULL DEFAULT FALSE,
+    latest_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    running_job_id TEXT DEFAULT NULL
+);
+INSERT INTO SyncLock VALUES (1, FALSE, CURRENT_TIMESTAMP, NULL);
+
+-- migrate:down
+
+DROP TABLE IF EXISTS SyncLock;
+

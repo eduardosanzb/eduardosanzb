@@ -29,6 +29,7 @@ client.once('ready', async () => {
 
 
 
+
 // When the client received QR-Code
 client.on('qr', (qr) => {
   console.log('QR RECEIVED', qr);
@@ -48,4 +49,3 @@ client.on('loading_screen', (percent, message) => {
 // Start your client
 console.log('initializing')
 client.initialize();
-

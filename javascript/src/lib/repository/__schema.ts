@@ -87,6 +87,13 @@ export interface SummaryPreferences {
   weekly_summary_day: Generated<string | null>;
 }
 
+export interface SyncLock {
+  latest_update: Generated<string>;
+  lock_id: Generated<number | null>;
+  lock_status: Generated<number>;
+  running_job_id: Generated<string | null>;
+}
+
 export interface UserProfile {
   email: string | null;
   name: string;
@@ -104,5 +111,6 @@ export interface DB {
   schema_migrations: SchemaMigrations;
   Summary: Summary;
   SummaryPreferences: SummaryPreferences;
+  SyncLock: SyncLock;
   UserProfile: UserProfile;
 }

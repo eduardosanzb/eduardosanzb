@@ -25,8 +25,7 @@
     2. `CB Updates & Provides Status`
 
 ## Workflow: Process Raw Chats (Orchestrator)
-* **Purpose**: Orchestrates the complete processing of raw chat data, coordinating extraction, message processing, formatting, and database upsert.
-* **Trigger**: Function call from "Sourcing Data Messages" workflow after fetching raw chat data.
+* **Purpose**: Orchestrates the complete processing of raw chat data, coordinating extraction, message processing, formatting, and database upsert. **Trigger**: Function call from "Sourcing Data Messages" workflow after fetching raw chat data.
 * **Signature**:
     + `process_raw_chats(raw_chat_data: list[RawChatDataType]) -> ProcessingResultSummary`
 * **Steps**:
