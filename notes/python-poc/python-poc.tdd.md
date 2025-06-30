@@ -1,6 +1,6 @@
 # Python POC Technical Design Document TDD
 
-##Problem Statement
+## Problem Statement
 
 This project aims to build a personal assistant for managing WhatsApp messages. It will summarize daily messages, track important conversations, provide reply reminders, and offer AI-powered reply suggestions, all while prioritizing user privacy by keeping data and LLM processing local.
 
@@ -221,6 +221,13 @@ The backend ensures all data processing and AI computations are done locally, pr
 The common component between this parts is that we'll be coupling all of this functionality in one monolithic service.
 
 #### Data Layer
+
+> [!IMPORTANT]
+> TLDR; We decided to use sqlite, and a change from the TDD is that we decided to use [dbmate](https://github.com/amacneil/dbmate) for
+> running migrations and managing the database schema.
+> And given that now we are narrowing down the tech stack to typescript mostly. We will use [kysely](https://kysely.dev/docs/getting-started?dialect=sqlite)
+> as the query builder
+
 This section is the foundation of the core backend; one of the main decisions we have to make here is to select the database technology;
 As constraints we have that this is a small project; so we want to prioritize simplicity nevertheless we also want to use the right tool.
 
