@@ -8,7 +8,7 @@ async function main() {
   logger.info('Starting WhatsApp message fetcher...');
 
 
-  const isLockRunning = await isSyncRunning(context.db);
+  const isLockRunning = await isSyncRunning();
   logger.info(isLockRunning);
   const messages = await fetchWhatsAppMessages();
 

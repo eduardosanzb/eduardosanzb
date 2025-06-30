@@ -3,7 +3,7 @@ import { z } from 'zod';
 const configSchema = z.object({
   isProduction: z.boolean().default(false),
   logLevel: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
-  databaseUrl: z.string().url().default('sqlite://:memory:'),
+  databaseUrl: z.string(),
 });
 
 export type Config = z.infer<typeof configSchema>;
