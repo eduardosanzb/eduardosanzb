@@ -11,7 +11,7 @@ export interface Context {
   jobId: string;
 }
 
-function createContext():Context {
+function createContext(): Context {
   const config = createConfig();
   const jobId = Math.random().toString(36).substring(2, 15);
   const logger = createLogger(config);
@@ -26,20 +26,33 @@ export function getContext(): Context | undefined {
   return asyncLocalStorage.getStore();
 }
 
-export function runWithContext<T>(fn: () => T) {
+export async function runWithContext<T>(
+  fn: () => T,
+  errorHandler?: (error: Error) => Promise<void>,
+  finallyHandler?: () => Promise<void>,
+) {
   const context = createContext();
 
-  asyncLocalStorage.run(context, () => {
-  try {
-    return fn();
-  } catch (error) {
-    context.logger.error('Error in runWithContext:', error);
-    throw error;
-  } finally {
-    context.logger.info(`Job "${context.jobId}" completed.`);
-  }
-
-})
+  await asyncLocalStorage.run(context, async () => {
+    try {
+      await  fn();
+    } catch (error) {
+      context.logger.error('Error in runWithContext:', error);
+      if (errorHandler) {
+        await errorHandler(error as Error);
+      } else {
+        context.logger.error('No error handler provided, rethrowing error.');
+        throw error;
+      }
+    } finally {
+      context.logger.info(`Job "${context.jobId}" completed.`);
+      if (finallyHandler) {
+        await finallyHandler();
+      } else {
+        context.logger.info('No finally handler provided.');
+      }
+    }
+  });
 }
 
 

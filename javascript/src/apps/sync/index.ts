@@ -1,25 +1,26 @@
-import {  getContext, runWithContext } from '../../lib/context/index.ts';
-import { isSyncRunning } from '../../lib/repository/index.ts';
+import { getContext, runWithContext } from '../../lib/context/index.ts';
+import { ensureSyncLock, setSyncLock } from './sync_lock.ts';
 
 
 async function main() {
   const context = getContext();
   const { logger } = context;
   logger.info('Starting WhatsApp message fetcher...');
+  await ensureSyncLock();
 
-
-  const isLockRunning = await isSyncRunning();
-  logger.info(isLockRunning);
   const messages = await fetchWhatsAppMessages();
-
+  logger.debug({ messages });
+  await setSyncLock(false);
 }
 
 
-runWithContext(main);
+// TODO: do i have to wait this?
+runWithContext(main)
 
 
 // * **Purpose**: Fetches WhatsApp messages from an external source and sends them to the Core Backend for processing.
-function fetchWhatsAppMessages() {
-  throw new Error('Function not implemented.');
+async function fetchWhatsAppMessages() {
+  return []
 }
+
 
