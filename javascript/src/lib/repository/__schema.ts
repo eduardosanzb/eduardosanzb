@@ -10,18 +10,26 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   : ColumnType<T, T | undefined, T>;
 
 export interface Chats {
-  chat_id: string | null;
+  chat_id: Generated<string | null>;
   chat_language: Generated<string | null>;
   chat_name: string | null;
   chat_type: Generated<string>;
   creation_date: string | null;
+  external_id: string | null;
   has_unread_messages: Generated<number>;
   last_message_date: string | null;
 }
 
+export interface ContactChats {
+  chat_id: string;
+  contact_id: string;
+  is_admin: Generated<number>;
+  joined_at: string;
+}
+
 export interface Contacts {
   chat_app_username: string | null;
-  contact_id: string | null;
+  contact_id: Generated<string | null>;
   contact_language: string | null;
   email_address: string | null;
   is_critical: Generated<number>;
@@ -36,7 +44,7 @@ export interface Messages {
   is_forwarded: Generated<number>;
   media_url: string | null;
   message_embedding: Buffer | null;
-  message_id: string | null;
+  message_id: string;
   message_type: Generated<string>;
   sender_id: string;
   sender_type: Generated<string>;
@@ -53,7 +61,7 @@ export interface ReplyTask {
   retrieval_sources: string | null;
   retrieved_context: string | null;
   status: string;
-  task_id: string | null;
+  task_id: Generated<string | null>;
   updated_at: Generated<string>;
   user_profile_id: string;
 }
@@ -69,7 +77,7 @@ export interface Summary {
   metadata_section_data: string | null;
   start_time: string;
   status: string;
-  summary_id: string | null;
+  summary_id: Generated<string | null>;
   summary_timestamp: string;
   top_ranked_conversations_data: string | null;
   user_profile_id: string;
@@ -82,7 +90,7 @@ export interface SummaryPreferences {
   scheduled_summary_times: string | null;
   summarize_chat_types: Generated<string>;
   summary_frequency: Generated<string>;
-  summary_preferences_id: string | null;
+  summary_preferences_id: Generated<string | null>;
   user_profile_id: string;
   weekly_summary_day: Generated<string | null>;
 }
@@ -105,6 +113,7 @@ export interface UserProfile {
 
 export interface DB {
   Chats: Chats;
+  ContactChats: ContactChats;
   Contacts: Contacts;
   Messages: Messages;
   ReplyTask: ReplyTask;

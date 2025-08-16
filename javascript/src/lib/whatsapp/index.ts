@@ -1,55 +1,63 @@
-import WhatsWebJS from 'whatsapp-web.js'
-import qrcode from 'qrcode-terminal';
-const { Client, LocalAuth } = WhatsWebJS
+import WW, { Client, type Chat, type Message } from 'whatsapp-web.js';
+const { LocalAuth } = WW;
+
+import * as qrcode from 'qrcode-terminal';
+
+interface WhatsAppClientAbstracted {
+  getAllChats: () => Promise<Chat[]>;
+  getAllMessages: (chatId: string) => Promise<Message[]>;
+}
 
 // TODO: we need to create this client
 export async function initializeWhatsAppClient(
-  readyCallback: () => void = () => {},
-) {
-  const client = new Client({
-    puppeteer: {
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    },
-    authStrategy: new LocalAuth({
-      dataPath: './whatsapp-session',
-    })
-  });
+): Promise<WhatsAppClientAbstracted> {
+  return new Promise((resolve, reject) => {
 
-  client.once('ready', async () => {
-    console.log('Client is ready!');
-    client.setProfilePicture
-    const chats = await client.getChats()
-    const state = await client.getState()
-    console.log(`Client state: ${state}`);
-    console.log(`Total chats: ${chats.length}`);
-    // console.log(inspect(chats[0]))
-    // For each of the chats we want to get all the Messages
-  });
+    const client = new Client({
+      puppeteer: {
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      },
+      authStrategy: new LocalAuth({
+        dataPath: './whatsapp-session', // TODO: we should use an remote Auth Strategy
+      })
+    });
 
+    client.once('ready', async () => {
+      console.log('Client is ready!');
+      resolve({
+        getAllChats,
+        getAllMessages,
+      });
+    });
 
-
-
-  // When the client received QR-Code
-  client.on('qr', (qr) => {
-    console.log('QR RECEIVED', qr);
-    qrcode.generate(qr, { small: true });
-  });
-
-
-  client.on('message_create', message => {
-    if (message.fromMe) {
-      console.log(message);
+    function getAllChats(): Promise<Chat[]> {
+      return client.getChats();
     }
-  });
-  client.on('loading_screen', (percent, message) => {
-    console.log('LOADING SCREEN', percent, message);
-  });
-  console.log('initializing')
-  client.initialize();
-}
 
-// Create a new client instance
+    async function getAllMessages(chatId: string): Promise<Message[]> {
+      const chat = await client.getChatById(chatId);
+      return await chat.fetchMessages({
+        limit: undefined, // Fetch all messages
+        fromMe: false, // Exclude messages sent by the client
+      });
+    }
 
-// When the client is ready, run this code (only once)
+    // When the client received QR-Code
+    client.on('qr', (qr) => {
+      console.log('QR RECEIVED', qr);
+      qrcode.generate(qr, { small: true });
+    });
 
-// Start your client
+    client.on('loading_screen', (percent, message) => {
+      console.log('LOADING SCREEN', percent, message);
+    });
+
+    console.log('initializing')
+    client.initialize();
+
+    return {
+      getAllChats,
+      getAllMessages,
+    }
+  })
+};

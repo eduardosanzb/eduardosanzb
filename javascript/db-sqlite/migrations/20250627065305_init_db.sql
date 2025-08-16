@@ -22,7 +22,7 @@ CREATE TABLE UserProfile (
 );
 
 CREATE TABLE SummaryPreferences (
-    summary_preferences_id TEXT PRIMARY KEY,
+    summary_preferences_id ulid PRIMARY KEY DEFAULT(ulid()),
     user_profile_id TEXT NOT NULL UNIQUE,
     summary_frequency TEXT NOT NULL DEFAULT 'daily',
     daily_summary_time TEXT DEFAULT '09:00',
@@ -35,7 +35,7 @@ CREATE TABLE SummaryPreferences (
 );
 
 CREATE TABLE Contacts (
-    contact_id TEXT PRIMARY KEY,
+    contact_id ulid PRIMARY KEY DEFAULT(ulid()),
     name TEXT NOT NULL,
     phone_number TEXT,
     email_address TEXT,
@@ -45,8 +45,8 @@ CREATE TABLE Contacts (
 );
 
 CREATE TABLE Chats (
-    chat_id TEXT PRIMARY KEY,
-    chat_type TEXT NOT NULL DEFAULT 'one_to_one',
+    chat_id ulid PRIMARY KEY DEFAULT(ulid()),
+    chat_type TEXT NOT NULL DEFAULT 'private', -- 'private', 'group'
     chat_name TEXT,
     chat_language TEXT DEFAULT NULL,
     creation_date TEXT,
@@ -55,8 +55,8 @@ CREATE TABLE Chats (
 );
 
 CREATE TABLE Messages (
-    message_id TEXT PRIMARY KEY,
-    chat_id TEXT NOT NULL,
+    message_id INT NOT NULL PRIMARY KEY,
+    chat_id ulid NOT NULL,
     sender_type TEXT NOT NULL DEFAULT 'contact',
     sender_id TEXT NOT NULL, -- References either UserProfile or Contacts.
     sent_date TEXT NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Messages (
 -- Additional Tables (Evolving Requirements)
 
 CREATE TABLE Summary (
-    summary_id TEXT PRIMARY KEY,
+    summary_id ulid PRIMARY KEY DEFAULT(ulid()),
     user_profile_id TEXT NOT NULL,
     summary_timestamp TIMESTAMP NOT NULL,
     metadata_section_data TEXT, -- JSON object.
@@ -87,7 +87,7 @@ CREATE TABLE Summary (
 );
 
 CREATE TABLE ReplyTask (
-    task_id TEXT PRIMARY KEY,
+    task_id ulid PRIMARY KEY DEFAULT(ulid()),
     user_profile_id TEXT NOT NULL,
     context_data TEXT, -- JSONB/NVARCHAR(MAX)
     status VARCHAR(20) NOT NULL,

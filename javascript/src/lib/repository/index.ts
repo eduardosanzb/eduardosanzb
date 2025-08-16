@@ -1,10 +1,11 @@
 import { CompiledQuery, DummyDriver, Kysely, SqliteAdapter, SqliteDialect, SqliteIntrospector, SqliteQueryCompiler } from "kysely";
 import BetterSqlite3 from "better-sqlite3";
-
+import * as sqliteVec from "sqlite-vec";
+import * as sqlite_ulid from "sqlite-ulid";
 import { type DB } from "./__schema.ts";
 import { getContext } from "../context/index.ts";
 
-export * from "./sync-lock.ts";
+export * from "./entity/sync-lock.ts";
 
 export const queryBuilder = new Kysely<DB>({
   dialect: {
@@ -32,8 +33,10 @@ export function getDbClient() {
     fileMustExist: true,
     timeout: 5000, // 5 seconds timeout
     verbose: config.isProduction ? undefined : ctx.logger.debug.bind(ctx.logger),
-  }
-  );
+  });
+  sqliteVec.load(client)
+  client.loadExtension(sqlite_ulid.getLoadablePath());
+
 
   const dialect = new SqliteDialect({
     database: client,

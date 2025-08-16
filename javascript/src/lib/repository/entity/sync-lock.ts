@@ -1,14 +1,20 @@
-import { getDbClient, queryBuilder } from "./index.ts";
 import { z } from "zod";
+import { getDbClient, queryBuilder } from "../index.ts";
 
+/**
+* DTOs
+**/
 const syncLockSchema = z.object({
-  lock_id: z.number(),
-  lock_status: z.coerce.boolean(),
-  running_job_id: z.string().nullable(),
+  lockId: z.number(),
+  lockStatus: z.coerce.boolean(),
+  runningJobId: z.string().nullable(),
 });
 export type SyncLock = z.infer<typeof syncLockSchema>;
 const THE_SYNC_LOCK_ID = 1;
 
+/**
+* Repository
+**/
 export const syncLockRepository = {
   getTheSyncLock: async (): Promise<SyncLock> => {
     const db = getDbClient();
@@ -22,7 +28,11 @@ export const syncLockRepository = {
       throw new Error(`Sync lock with ID ${THE_SYNC_LOCK_ID} not found.`);
     }
 
-    return syncLockSchema.parse(result.rows[0]);
+    return syncLockSchema.parse({
+      lockId: result.rows[0].lock_id,
+      lockStatus: result.rows[0].lock_status === 1,
+      runningJobId: result.rows[0].running_job_id,
+    });
   },
   updateSyncLock: async (lockStatus: boolean, jobId: string) => {
     const db = getDbClient();

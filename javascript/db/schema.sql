@@ -8,7 +8,7 @@ CREATE TABLE UserProfile (
     timezone TEXT DEFAULT 'UTC'
 );
 CREATE TABLE SummaryPreferences (
-    summary_preferences_id TEXT PRIMARY KEY,
+    summary_preferences_id ulid PRIMARY KEY DEFAULT(ulid()),
     user_profile_id TEXT NOT NULL UNIQUE,
     summary_frequency TEXT NOT NULL DEFAULT 'daily',
     daily_summary_time TEXT DEFAULT '09:00',
@@ -20,7 +20,7 @@ CREATE TABLE SummaryPreferences (
     FOREIGN KEY (user_profile_id) REFERENCES UserProfile(user_profile_id)
 );
 CREATE TABLE Contacts (
-    contact_id TEXT PRIMARY KEY,
+    contact_id ulid PRIMARY KEY DEFAULT(ulid()),
     name TEXT NOT NULL,
     phone_number TEXT,
     email_address TEXT,
@@ -29,17 +29,17 @@ CREATE TABLE Contacts (
     contact_language TEXT
 );
 CREATE TABLE Chats (
-    chat_id TEXT PRIMARY KEY,
-    chat_type TEXT NOT NULL DEFAULT 'one_to_one',
+    chat_id ulid PRIMARY KEY DEFAULT(ulid()),
+    chat_type TEXT NOT NULL DEFAULT 'private', -- 'private', 'group'
     chat_name TEXT,
     chat_language TEXT DEFAULT NULL,
     creation_date TEXT,
     last_message_date TEXT,
     has_unread_messages BOOLEAN NOT NULL DEFAULT FALSE
-);
+, external_id TEXT);
 CREATE TABLE Messages (
-    message_id TEXT PRIMARY KEY,
-    chat_id TEXT NOT NULL,
+    message_id INT NOT NULL PRIMARY KEY,
+    chat_id ulid NOT NULL,
     sender_type TEXT NOT NULL DEFAULT 'contact',
     sender_id TEXT NOT NULL, -- References either UserProfile or Contacts.
     sent_date TEXT NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE Messages (
     FOREIGN KEY (chat_id) REFERENCES Chats(chat_id)
 );
 CREATE TABLE Summary (
-    summary_id TEXT PRIMARY KEY,
+    summary_id ulid PRIMARY KEY DEFAULT(ulid()),
     user_profile_id TEXT NOT NULL,
     summary_timestamp TIMESTAMP NOT NULL,
     metadata_section_data TEXT, -- JSON object.
@@ -66,7 +66,7 @@ CREATE TABLE Summary (
     FOREIGN KEY (user_profile_id) REFERENCES UserProfile(user_profile_id)
 );
 CREATE TABLE ReplyTask (
-    task_id TEXT PRIMARY KEY,
+    task_id ulid PRIMARY KEY DEFAULT(ulid()),
     user_profile_id TEXT NOT NULL,
     context_data TEXT, -- JSONB/NVARCHAR(MAX)
     status VARCHAR(20) NOT NULL,
@@ -92,7 +92,37 @@ CREATE TABLE SyncLock (
     latest_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     running_job_id TEXT DEFAULT NULL
 );
+CREATE INDEX idx_chats_external_id ON Chats(external_id);
+CREATE TABLE ContactChats (
+  contact_id ulid NOT NULL,
+  chat_id ulid NOT NULL,
+
+  is_admin BOOLEAN NOT NULL DEFAULT FALSE,
+
+  joined_at TIMESTAMP NOT NULL,
+
+  -- Foreign keys
+  CONSTRAINT fk_contact FOREIGN KEY (contact_id) REFERENCES Contacts(contact_id),
+  CONSTRAINT fk_chat FOREIGN KEY (chat_id) REFERENCES Chats(chat_id),
+
+  -- Unique constraints
+  CONSTRAINT unique_relationship UNIQUE (contact_id, chat_id)
+);
+CREATE TRIGGER prevent_is_admin_for_private_chats
+BEFORE INSERT ON ContactChats
+FOR EACH ROW
+WHEN (
+    NEW.is_admin = TRUE
+    AND (SELECT chat_type FROM Chats WHERE chat_id = NEW.chat_id) != 'group'
+)
+BEGIN
+    SELECT RAISE(ABORT, 'is_admin can only be set for group chats');
+END;
 -- Dbmate schema migrations
 INSERT INTO "schema_migrations" (version) VALUES
   ('20250627065305'),
-  ('20250630063153');
+  ('20250630063153'),
+  ('20250710043830'),
+  ('20250711085358');
+
+-- hola

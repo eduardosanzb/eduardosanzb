@@ -3,6 +3,8 @@
     "rootDir": ".",
     "outDir": "build",
     "allowImportingTsExtensions": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
   },
   "include": [
     "src/**/*.ts",
