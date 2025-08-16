@@ -21,7 +21,7 @@ interface Contact extends WWSContact {}
 interface WhatsAppClientAbstracted {
   getAllChats: () => Promise<Array<Chat | GroupChat>>;
   getAllMessages: (chatId: string) => Promise<Message[]>;
-  getContactById: (contactId: string) => Promise<Contact>;
+  getContactByExternalId: (contactId: string) => Promise<Contact>;
 }
 
 // TODO: we need to create this client
@@ -42,7 +42,7 @@ export async function initializeWhatsAppClient(): Promise<WhatsAppClientAbstract
       resolve({
         getAllChats,
         getAllMessages,
-        getContactById,
+        getContactByExternalId: getContactById,
       });
     });
 
