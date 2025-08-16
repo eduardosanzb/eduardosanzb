@@ -4,36 +4,31 @@ module.exports = {
     /* Relevant files from blog + theme */
     "./layouts/**/*.html",
     "./content/**/*.{md,html}",
-
   ],
-  safelist: [
-    'force-dark',
-    'force-light',
-  ],
-  darkMode: 'class',
+  safelist: ["force-dark", "force-light"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         green: {
-          ...require('tailwindcss/colors').green,
+          ...require("tailwindcss/colors").green,
         },
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
+          50: "#f0f9ff",
+          100: "#e0f2fe",
+          500: "#0ea5e9",
+          600: "#0284c7",
+          700: "#0369a1",
         },
-        dark: '#080808',
-        light: '#f9f9f9',
-        banner: '#DFFF9D',
-        pulse: '#1DFAA7',
-        logo: '#d9d9d9',
-        card: '#161616',
+        dark: "#080808",
+        light: "#f9f9f9",
+        banner: "#DFFF9D",
+        pulse: "#1DFAA7",
+        logo: "#d9d9d9",
+        card: "#161616",
         gray: {
-          ...require('tailwindcss/colors').gray,
-        }
-
+          ...require("tailwindcss/colors").gray,
+        },
       },
       fontFamily: {
         sans: [
@@ -43,14 +38,14 @@ module.exports = {
             // fontVariationSettings: '"opsz" 32'
           },
         ],
-
       },
       animation: {
-        marquee: 'marquee var(--marquee-speed, 20s) linear infinite var(--marquee-direction, forwards)',
+        marquee:
+          "marquee var(--marquee-speed, 20s) linear infinite var(--marquee-direction, forwards)",
       },
       keyframes: {
         marquee: {
-          'to': { transform: 'translateX(-50%)' },
+          to: { transform: "translateX(-50%)" },
         },
       },
       fontWeight: {
@@ -60,62 +55,59 @@ module.exports = {
         normal: 400,
       },
       letterSpacing: {
-        tighteso: '-.075em',
+        tighteso: "-.075em",
       },
       backgroundImage: {
-        'hero': "url('/images/hero_me_1x.webp')",
-        'hero-portrait': "url('/images/hero_image_1x.webp')",
+        hero: "url('/images/hero_me_1x.webp')",
+        "hero-portrait": "url('/images/hero_image_1x.webp')",
       },
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: 'none',
-            color: '#374151',
+            maxWidth: "none",
+            color: "#374151",
             a: {
-              color: '#0ea5e9',
-              '&:hover': {
-                color: '#0284c7',
+              color: "#0ea5e9",
+              "&:hover": {
+                color: "#0284c7",
               },
             },
           },
         },
         dark: {
           css: {
-            color: '#d1d5db',
+            color: "#d1d5db",
             a: {
-              color: '#0ea5e9',
-              '&:hover': {
-                color: '#38bdf8',
+              color: "#0ea5e9",
+              "&:hover": {
+                color: "#38bdf8",
               },
             },
             h1: {
-              color: '#fff',
+              color: "#fff",
             },
             h2: {
-              color: '#fff',
+              color: "#fff",
             },
             h3: {
-              color: '#fff',
+              color: "#fff",
             },
             h4: {
-              color: '#fff',
+              color: "#fff",
             },
             strong: {
-              color: '#fff',
+              color: "#fff",
             },
             code: {
-              color: '#fff',
+              color: "#fff",
             },
             blockquote: {
-              color: '#d1d5db',
+              color: "#d1d5db",
             },
           },
         },
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwind-hamburgers'),
-  ],
-}
+  plugins: [require("@tailwindcss/typography"), require("tailwind-hamburgers")],
+};

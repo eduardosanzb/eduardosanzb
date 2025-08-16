@@ -1,23 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="">
-{{ partial "head.html" . }}
+  {{ partial "head.html" . }}
 
-<body class="min-h-screen">
-  <!--This header is initially hidden; will be controlled by an IntersectionObserver in main.js-->
-  <div id="secondary-element" class="group sticky top-0 z-50 dhidden">
-    {{ partial "header.html" (dict "context" . "first" "false") }}
-  </div>
+  <body class="min-h-screen">
+    <!--This header is initially hidden; will be controlled by an IntersectionObserver in main.js-->
+    <div id="secondary-element" class="group sticky top-0 z-50 dhidden">
+      {{ partial "header.html" (dict "context" . "first" "false") }}
+    </div>
 
-  <main id="main-content" class="overflow-hidden">
-    {{ block "main" . }}{{ end }}
-  </main>
+    <main id="main-content" class="overflow-hidden">
+      {{ block "main" . }}{{ end }}
+    </main>
 
-  {{ partial "footer.html" . }}
-</body>
-
+    {{ partial "footer.html" . }}
+  </body>
 </html>
 <!-- Scripts -->
-{{- $options := dict "targetPath" "js/bundle.js" -}}
-{{- $js := resources.Get "js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
+{{- $options := dict "targetPath" "js/bundle.js" -}} {{- $js := resources.Get
+"js/main.js" | js.Build $options | resources.Minify | fingerprint -}}
 
-<script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+<script
+  src="{{ $js.Permalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  defer
+></script>

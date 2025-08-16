@@ -10,7 +10,3 @@
 - [ ] POC demonstration is tailored and impactful.
 - [ ] Next Steps suggest actionable follow-up.
 - [ ] Proposal is clean, well-organized, and ready for review.
-
-
-
-

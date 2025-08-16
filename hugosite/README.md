@@ -5,5 +5,3 @@ hugo server --noHTTPCache --disableFastRender
 ```
 
 open your browser and go to http://localhost:1313/
-
-

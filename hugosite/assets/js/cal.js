@@ -4,13 +4,13 @@ let initialSetup = false;
 function setupCalScript(C, A, L) {
   if (initialSetup) return;
 
-  let p = function(a, ar) {
+  let p = function (a, ar) {
     a.q.push(ar);
   };
   let d = C.document;
   C.Cal =
     C.Cal ||
-    function() {
+    function () {
       let cal = C.Cal;
       let ar = arguments;
       if (!cal.loaded) {
@@ -21,7 +21,7 @@ function setupCalScript(C, A, L) {
         cal.loaded = true;
       }
       if (ar[0] === L) {
-        const api = function() {
+        const api = function () {
           p(api, arguments);
         };
         const namespace = ar[1];
@@ -49,7 +49,7 @@ export function initCal() {
   Cal("init", "15min", { origin: "https://cal.com" });
 
   const layout = "month_view";
-  const theme = localStorage.theme ?? 'light';
+  const theme = localStorage.theme ?? "light";
   Cal.ns["15min"]("inline", {
     elementOrSelector: "#my-cal-inline",
     config: { layout, theme },
@@ -89,4 +89,3 @@ export function refreshCal() {
   createCalInlineDiv();
   initCal();
 }
-

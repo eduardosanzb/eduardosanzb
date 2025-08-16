@@ -1,42 +1,42 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const opn = require('opn');
-const figlet = require('figlet');
-const terminalImage = require('terminal-image');
-const { h, Color, Text, Component } = require('ink');
-const SelectInput = require('ink-select-input');
+const path = require("path");
+const opn = require("opn");
+const figlet = require("figlet");
+const terminalImage = require("terminal-image");
+const { h, Color, Text, Component } = require("ink");
+const SelectInput = require("ink-select-input");
 
 const MenuHeader = () => (
   <div>
-    <div>{figlet.textSync('Welcome')}</div>
+    <div>{figlet.textSync("Welcome")}</div>
     You can use vim keybindings
   </div>
 );
 
 const LIST_ITEMS = [
   {
-    label: 'whoami',
-    action: () => opn('http://eduardosanzb.github.io/', { wait: false }),
+    label: "whoami",
+    action: () => opn("http://eduardosanzb.github.io/", { wait: false }),
   },
   {
-    label: 'contact me',
-    action: () => opn('mailto:eduardosanzb@gmail.com?Subject=Hello World 🇲🇽'),
+    label: "contact me",
+    action: () => opn("mailto:eduardosanzb@gmail.com?Subject=Hello World 🇲🇽"),
   },
   {
-    label: 'download cv',
+    label: "download cv",
     action: () =>
       opn(
-        'https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf',
+        "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/cv.pdf",
       ),
   },
   {
-    label: 'Mexico!',
+    label: "Mexico!",
     action: async () => {
-      console.log(await terminalImage.file(path.join(__dirname, 'mexico.jpg')));
+      console.log(await terminalImage.file(path.join(__dirname, "mexico.jpg")));
     },
   },
-  { label: 'close', color: '#FF0000', action: () => process.exit() },
+  { label: "close", color: "#FF0000", action: () => process.exit() },
 ];
 class Menu extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class Menu extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   componentDidMount() {
-    process.stdin.on('keypress', this.handleKeyPress);
+    process.stdin.on("keypress", this.handleKeyPress);
   }
   nexSelected(direction) {
     const { selected } = this.state;
@@ -62,21 +62,21 @@ class Menu extends Component {
   handleKeyPress(ch, key) {
     const { items } = this.props;
     switch (key.name) {
-      case 'k':
-      case 'up': {
+      case "k":
+      case "up": {
         const selected = this.nexSelected(-1);
         this.setState({ selected });
         break;
       }
-      case 'j':
-      case 'down': {
+      case "j":
+      case "down": {
         const selected = this.nexSelected(1);
         this.setState({ selected });
         break;
       }
-      case 'space':
-      case 'o':
-      case 'return': {
+      case "space":
+      case "o":
+      case "return": {
         this.handleSelect();
         break;
       }
@@ -86,10 +86,10 @@ class Menu extends Component {
   }
   renderItem({ label, color, action }, index) {
     const bullet =
-      index === this.state.selected ? <Color yellow>●</Color> : '○';
+      index === this.state.selected ? <Color yellow>●</Color> : "○";
     return (
       <div>
-        {' '}
+        {" "}
         <span />
         {bullet} <Color hex={color}>{label}</Color>
       </div>

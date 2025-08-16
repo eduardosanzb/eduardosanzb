@@ -2,8 +2,8 @@ import { z } from "zod";
 import { getDbClient, queryBuilder } from "../index.ts";
 
 /**
-* DTOs
-**/
+ * DTOs
+ **/
 const syncLockSchema = z.object({
   lockId: z.number(),
   lockStatus: z.coerce.boolean(),
@@ -13,15 +13,15 @@ export type SyncLock = z.infer<typeof syncLockSchema>;
 const THE_SYNC_LOCK_ID = 1;
 
 /**
-* Repository
-**/
+ * Repository
+ **/
 export const syncLockRepository = {
   getTheSyncLock: async (): Promise<SyncLock> => {
     const db = getDbClient();
     const query = queryBuilder
-      .selectFrom('SyncLock')
+      .selectFrom("SyncLock")
       .selectAll()
-      .where('lock_id', '=', THE_SYNC_LOCK_ID)
+      .where("lock_id", "=", THE_SYNC_LOCK_ID)
       .compile();
     const result = await db.executeQuery(query);
     if (result.rows.length === 0) {
@@ -37,12 +37,12 @@ export const syncLockRepository = {
   updateSyncLock: async (lockStatus: boolean, jobId: string) => {
     const db = getDbClient();
     const query = queryBuilder
-      .updateTable('SyncLock')
+      .updateTable("SyncLock")
       .set({
         lock_status: lockStatus ? 1 : 0,
         running_job_id: jobId,
       })
-      .where('lock_id', '=', 1)
+      .where("lock_id", "=", 1)
       .compile();
     return await db.executeQuery(query);
   },

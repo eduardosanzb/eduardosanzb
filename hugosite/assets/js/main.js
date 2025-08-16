@@ -1,7 +1,11 @@
-import {initCal, refreshCal} from './assets/js/cal.js'
-import {toggleHeaderTheme, observeHeader, observeSections} from './assets/js/header.js'
-import {changeTheme} from './assets/js/change-theme.js'
-import{hideMenu} from './assets/js/header.js'
+import { initCal, refreshCal } from "./assets/js/cal.js";
+import {
+  toggleHeaderTheme,
+  observeHeader,
+  observeSections,
+} from "./assets/js/header.js";
+import { changeTheme } from "./assets/js/change-theme.js";
+import { hideMenu } from "./assets/js/header.js";
 
 window.hideMenu = hideMenu;
 
@@ -17,14 +21,14 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
   }
 });
 
-document.getElementById('copy-email').addEventListener('click', (ev) => {
-  const copyLabel = 'Copied!';
+document.getElementById("copy-email").addEventListener("click", (ev) => {
+  const copyLabel = "Copied!";
   if (ev.target.innerText === copyLabel) {
     return;
   }
   const buttonEl = ev.currentTarget;
 
-  buttonEl.setAttribute('disabled', 'true');
+  buttonEl.setAttribute("disabled", "true");
   const originalText = ev.target.innerText;
 
   navigator.clipboard.writeText(window.params.email);
@@ -33,11 +37,10 @@ document.getElementById('copy-email').addEventListener('click', (ev) => {
     ev.target.innerText = copyLabel;
     setTimeout(() => {
       ev.target.innerText = originalText;
-      buttonEl.removeAttribute('disabled');
-    }, 1000)
+      buttonEl.removeAttribute("disabled");
+    }, 1000);
   });
 });
-
 
 // This needs to wait for the main.js to load; so we can use the dark mode toggle
 if (
@@ -57,7 +60,7 @@ if (document.readyState === "loading") {
 } else {
   setTimeout(() => {
     observeSections();
-  }, 1000)
+  }, 1000);
 
   observeHeader();
 }

@@ -3,7 +3,6 @@
 @tailwind utilities;
 @tailwind animate-ping;
 
-
 @layer components {
   .site-container {
     @apply w-full mx-auto px-4 sm:px-6 lg:px-8;

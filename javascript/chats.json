@@ -2870,12 +2870,7 @@
         "width": 1536,
         "height": 2048,
         "staticUrl": "",
-        "scanLengths": [
-          32726,
-          104978,
-          89460,
-          178878
-        ],
+        "scanLengths": [32726, 104978, 89460, 178878],
         "scansSidecar": {},
         "isFromTemplate": false,
         "pollOptions": [],
@@ -10238,12 +10233,7 @@
         "width": 1600,
         "height": 1072,
         "staticUrl": "",
-        "scanLengths": [
-          12394,
-          43418,
-          18685,
-          79039
-        ],
+        "scanLengths": [12394, 43418, 18685, 79039],
         "scansSidecar": {},
         "isFromTemplate": false,
         "pollOptions": [],
@@ -11478,12 +11468,7 @@
         "width": 738,
         "height": 1600,
         "staticUrl": "",
-        "scanLengths": [
-          9850,
-          45369,
-          23858,
-          38466
-        ],
+        "scanLengths": [9850, 45369, 23858, 38466],
         "scansSidecar": {},
         "isFromTemplate": false,
         "pollOptions": [],

@@ -4,7 +4,7 @@ on:
   push:
     branches: [master, hugo]
     paths:
-      - 'hugosite/**'
+      - "hugosite/**"
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: "latest"
           extended: true
 
       - name: Debug check

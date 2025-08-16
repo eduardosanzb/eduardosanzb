@@ -8,10 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-
-    - name: Run Docker container
-      run: |
-        docker run --rm --cap-ad=NET_ADMIN eduardosanzb/test-curl
+      - name: Run Docker container
+        run: |
+          docker run --rm --cap-ad=NET_ADMIN eduardosanzb/test-curl

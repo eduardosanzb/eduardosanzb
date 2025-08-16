@@ -7,9 +7,7 @@
   "name": "email-handler",
   "main": "src/entry.py",
   "compatibility_date": "2025-02-04",
-  "compatibility_flags": [
-    "python_workers"
-  ],
+  "compatibility_flags": ["python_workers"],
   "observability": {
     "enabled": true
   }
