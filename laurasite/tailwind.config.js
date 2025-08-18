@@ -58,7 +58,7 @@ module.exports = {
         tighteso: "-.075em",
       },
       backgroundImage: {
-        hero: "url('/images/hero_me_1x.webp')",
+        hero: "url('/images/hero_me.webp')",
         "hero-portrait": "url('/images/hero_image_1x.webp')",
       },
       typography: {
