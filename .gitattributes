@@ -1,9 +1,9 @@
 .gitattributes !filter !diff
 
 # *.env filter=git-crypt diff=git-crypt 
-# *.sqlite3 filter=git-crypt diff=git-crypt
-# *.sqlite3-shm filter=git-crypt diff=git-crypt
-# *.sqlite3-wal filter=git-crypt diff=git-crypt
+*.sqlite3 filter=git-crypt diff=git-crypt
+*.sqlite3-shm filter=git-crypt diff=git-crypt
+*.sqlite3-wal filter=git-crypt diff=git-crypt
 *.terraform.lock.hcl filter=git-crypt diff=git-crypt
 
 openwebui/infra/hetzner/** filter=git-crypt diff=git-crypt

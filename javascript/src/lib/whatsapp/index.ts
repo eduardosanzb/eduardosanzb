@@ -67,7 +67,7 @@ export async function initializeWhatsAppClient(): Promise<WhatsAppClientAbstract
     }
 
     async function getAllMessages(chatId: string): Promise<Message[]> {
-      const chat = await client.getChatById(chatId);
+
       return await chat.fetchMessages({
         limit: undefined, // Fetch all messages
         fromMe: false, // Exclude messages sent by the client

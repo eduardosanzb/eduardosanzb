@@ -54,9 +54,10 @@ export const chatRepository = {
           last_message_date: chat.lastMessageDate ? chat.lastMessageDate : null,
         })),
       )
+      // we have a unique constraint on external_id only
       .onConflict((oc) =>
-        oc.column("chat_id").doUpdateSet((eb) => ({
-          external_id: eb.ref("excluded.external_id"),
+      // TODO: we have to do the same to the contactsQ
+        oc.columns(["external_id"]).doUpdateSet((eb) => ({
           chat_language: eb.ref("excluded.chat_language"),
           chat_name: eb.ref("excluded.chat_name"),
           chat_type: eb.ref("excluded.chat_type"),

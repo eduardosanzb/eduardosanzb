@@ -1,4 +1,10 @@
 CREATE TABLE IF NOT EXISTS "schema_migrations" (version varchar(128) primary key);
+CREATE TABLE SyncLock (
+    lock_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lock_status BOOLEAN NOT NULL DEFAULT FALSE,
+    latest_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    running_job_id TEXT DEFAULT NULL
+);
 CREATE TABLE UserProfile (
     user_profile_id ulid PRIMARY KEY DEFAULT(ulid()),
     name TEXT NOT NULL,
@@ -86,13 +92,6 @@ BEGIN
 END;
 CREATE INDEX idx_summary_user_profile_id ON Summary(user_profile_id);
 CREATE INDEX idx_messages_chat_id ON Messages(chat_id);
-CREATE TABLE SyncLock (
-    lock_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    lock_status BOOLEAN NOT NULL DEFAULT FALSE,
-    latest_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    running_job_id TEXT DEFAULT NULL
-);
-CREATE INDEX idx_chats_external_id ON Chats(external_id);
 CREATE TABLE ContactChats (
   contact_id ulid NOT NULL,
   chat_id ulid NOT NULL,
@@ -118,11 +117,12 @@ WHEN (
 BEGIN
     SELECT RAISE(ABORT, 'is_admin can only be set for group chats');
 END;
+CREATE UNIQUE INDEX idx_chats_external_id ON Chats(external_id);
 -- Dbmate schema migrations
 INSERT INTO "schema_migrations" (version) VALUES
   ('20250627065305'),
   ('20250630063153'),
   ('20250710043830'),
-  ('20250711085358');
-
--- hola
+  ('20250711085358'),
+  ('20250816214331'),
+  ('20250816214428');
