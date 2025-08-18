@@ -1,4 +1,4 @@
-name: Deploy laurasanzb.dev to Cloudflare
+name: laurasanzb.dev
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: hugosite
+        working-directory: laurasite
 
     steps:
       - name: Checkout repository
