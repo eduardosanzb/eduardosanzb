@@ -1,23 +1,23 @@
 [
   {
     "listNumber": 1,
-    "title": "Strategy Diagnositics",
+    "title": "Diagnositics",
     "content": "Is there clarity with the actions, targets and strategy of the company?.\n\n Is there a visual daily tool that give us the direction and everybody is commit with? Is there clarity of what everybody is doing?."
   },
   {
     "listNumber": 2,
-    "title": "Business Plan",
-    "content": "Let me scan the overall of the priority process and actions (iniciatives) that direct to the strategy. Every initiative should have measurable objectives by the KPI´s. All the objectives, kpi´s and iniciatives build the Business Plan."
+    "title": "Strategic Business Plan",
+    "content": "Let me scan the overall of the priority process and key activities that direct to the strategy. Every key activity should have measurable objectives by KPI´s. Now we have build the Strategic Business Plan."
   },
   {
     "listNumber": 3,
     "title": "Business Inteligence and Analytics Engineering",
-    "content": "Using Analytics Engineering, I bridge the data structure with Data Analysts to transform raw data into analytical models ready for dashboards, reports, and machine learning. All disegned to support the Business Plan and the Data Culture."
+    "content": "Using Analytics Engineering, I bridge the data structure with Data Analysts to transform raw data into analytical models ready for our used to read the SBP. The Analytic Engineering defined what is going to show in the dashboards and reports."
   },
   {
     "listNumber": 4,
     "title": "Visualization Tool and Data Culture",
-    "content": "And now, I create a daily visual tool that keep update and online all the desicion-makers alined to the Business Plan. Lets create the Data Culture."
+    "content": "And now, I create the daily visual tools that keep update and online all the desicion-makers alined to the Business Plan. Creative dashboards that every area can read it and undestand it. It´s time that everyone speak the same Data Culture."
   }
 
 ]
