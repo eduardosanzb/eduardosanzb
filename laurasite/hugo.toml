@@ -41,7 +41,7 @@ pygmentsUseClasses = true
     weight = 5
   [[menu.main]]
     name = "Linkedin"
-    url = "https://linkedin.com/in/eduardosanzb"
+    url = "https://linkedin.com/in/laura-sanchez-bautista-89217a60"
     weight = 6
     [menu.main.params]
       rel = 'external'
@@ -62,7 +62,7 @@ pygmentsUseClasses = true
       download = true
   [[menu.mobile]]
     name = "Linkedin"
-    url = "https://linkedin.com/in/eduardosanzb"
+    url = "https://linkedin.com/in/laura-sanchez-bautista-89217a60"
     weight = 6
     [menu.mobile.params]
       rel = 'external'

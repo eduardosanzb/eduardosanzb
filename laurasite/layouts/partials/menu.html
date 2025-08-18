@@ -45,9 +45,9 @@
         font-light
         text-xl
         xtext-dark
-        dark:text-white
-        group-[.force-light]:text-dark
-        group-[.force-dark]:text-white
+        dark:text-dark
+        group-[.force-light]:text-white
+        group-[.force-dark]:text-dark
         ">
     {{if isset .Params "icon"}}
     {{ partial "svg.html" (dict "name" .Params.icon "class" "max-h-[24px] max-w-[20px]") }}

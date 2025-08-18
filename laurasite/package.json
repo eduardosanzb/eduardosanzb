@@ -8,6 +8,7 @@
     "start": "hugo server"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
