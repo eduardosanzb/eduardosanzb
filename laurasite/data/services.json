@@ -1,8 +1,8 @@
 [
   {
-    "skip": false,
-    "title": "Quick Prototyping",
-    "content": "Rapidly building prototypes to test your product ideas.\n\n Using latest technologies and a pragmatic approach, I help you validate your ideas quickly and cost-effectively.",
+    "skip": true,
+    "title": "Business Performance Tools",
+    "content": "product ideas.\n\n Using latest technologies and a pragmatic approach, I help you validate your ideas quickly and cost-effectively.",
     "srcset": "images/proto500.webp 500w, images/proto1000.webp 900w"
   },
   {
