@@ -8,11 +8,11 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 
 [params]
-  description = "Personal website of Eduardo Sanchez - Software Engineer & Technical Leader"
+  description = "Personal website of Laura Sanchez - Data Business Analyst"
   author = "Laura Sanchez"
   github = "https://github.com/lausanz"
-  linkedin = "https://linkedin.com/in/eduardosanzb"
-  email = "eduardosanzb@gmail.com"
+  linkedin = "https://linkedin.com/in/laura-sanchez-bautista-89217a60"
+  email = "sanzlau@gmail.com"
 
 
 [menu]
