@@ -1,7 +1,7 @@
 {{ $isFirst := eq .first "true" }}
 {{ $context := .context }}
 
-<header class="{{ if not $isFirst }}backdrop-blur-xl{{ end }}">
+<header class="backdrop-blur-xl">
   <nav class="flex justify-between items-center h-16 site-container">
     <a href="/" class="
           tracking-tightest
@@ -10,9 +10,9 @@
           text-2xl
           text-dark
 
-          dark:text-dark
-          group-[.force-light]:text-dark
-          group-[.force-dark]:text-white
+          dark:text-white
+          group-[.force-light]:text-white
+          group-[.force-dark]:text-dark
 
           transition-colors
           ">
