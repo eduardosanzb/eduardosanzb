@@ -1,0 +1,65 @@
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+
+
+{{- with index site.Menus $menuID }}
+{{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+{{- end }}
+
+{{- define "partials/inline/menu/walk.html" }}
+{{- $page := .page }}
+
+{{- range .menuEntries }}
+
+
+{{ if .Params.Skip }}
+{{- continue }}
+{{ end }}
+
+{{- $attrs := dict "href" .URL }}
+{{- if $page.IsMenuCurrent .Menu . }}
+{{- $attrs = merge $attrs (dict "class" "active" "aria-current" "page") }}
+{{- else if $page.HasMenuCurrent .Menu .}}
+{{- $attrs = merge $attrs (dict "class" "ancestor" "aria-current" "true") }}
+{{- end }}
+
+<!--Translation-->
+{{- $name := .Name }}
+{{- with .Identifier }}
+{{- with T . }}
+{{- $name = . }}
+{{- end }}
+{{- end }}
+
+
+<li class="ml-8 space-x-8">
+  <a href="{{ .URL }}"
+    {{ with .Params.rel }} rel="{{ . }}" {{ end }}
+    {{ if .Params.download }}download{{ end }}
+    {{ if isset .Params "id"}}id="{{.Params.id}}"{{ end }}
+    {{ if eq .Params.rel "external" }} target="_blank" rel="noopener" {{ end }}
+
+    class="
+        flex
+        nav-link
+        font-light
+        text-xl
+        xtext-dark
+        dark:text-white
+        group-[.force-light]:text-dark
+        group-[.force-dark]:text-white
+        ">
+    {{if isset .Params "icon"}}
+    {{ partial "svg.html" (dict "name" .Params.icon "class" "max-h-[24px] max-w-[20px]") }}
+    {{ if eq .Params.rel "external"}}
+    {{- $name = "" }}
+    {{ end }}
+    {{ end }}
+
+    <span class="ml-2">
+      {{ $name }}
+    </span>
+  </a>
+</li>
+{{- end }}
+{{- end }}

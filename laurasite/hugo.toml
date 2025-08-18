@@ -1,0 +1,76 @@
+# baseURL = "https://eduardosanzb.dev"
+baseURL = "https://laurasanzb.dev/"
+languageCode = "en-us"
+title = "Laura Sanchez Bautista"
+
+# Enable syntax highlighting
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  description = "Personal website of Eduardo Sanchez - Software Engineer & Technical Leader"
+  author = "Eduardo Sanchez"
+  github = "https://github.com/eduardosanzb"
+  linkedin = "https://linkedin.com/in/eduardosanzb"
+  email = "eduardosanzb@gmail.com"
+
+
+[menu]
+  [[menu.main]]
+    name = "CV"
+    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/eduardo_bautista_cv.pdf"
+    weight = 2
+    [menu.main.params]
+      icon = 'download'
+      download = true
+  [[menu.main]]
+    name = "Case-Studies"
+    pageRef = "/case-studies/"
+    weight = 3
+    [menu.main.params]
+      skip = true
+  [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 4
+    [menu.main.params]
+      skip = true
+  [[menu.main]]
+    name = "Contact"
+    url = "/#contact"
+    weight = 5
+  [[menu.main]]
+    name = "Linkedin"
+    url = "https://linkedin.com/in/eduardosanzb"
+    weight = 6
+    [menu.main.params]
+      rel = 'external'
+      icon = 'linkedin'
+  [[menu.main]]
+    name = "github"
+    url = "https://github.com/eduardosanzb/"
+    weight = 7
+    [menu.main.params]
+      rel = 'external'
+      icon = 'github'
+  [[menu.mobile]]
+    name = "CV"
+    url = "https://raw.githubusercontent.com/eduardosanzb/eduardosanzb/master/eduardo_bautista_cv.pdf"
+    weight = 2
+    [menu.mobile.params]
+      icon = 'download'
+      download = true
+  [[menu.mobile]]
+    name = "Linkedin"
+    url = "https://linkedin.com/in/eduardosanzb"
+    weight = 6
+    [menu.mobile.params]
+      rel = 'external'
+      icon = 'linkedin'
+  [[menu.mobile]]
+    name = "github"
+    url = "https://github.com/eduardosanzb/"
+    weight = 7
+    [menu.mobile.params]
+      rel = 'external'
+      icon = 'github'

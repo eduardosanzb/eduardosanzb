@@ -1,0 +1,14 @@
+[availability]
+  percent = 0.2 # 1 day a week available
+  label = "Partially Available"
+  # label = "Available"
+[hero]
+  title = "Product Engineer\nFrom Concept to Infrastructure."
+  subtitle = "HELPING TEAMS CREATE SYSTEMS THAT WORK, GROW AND LAST; \nFrom The First Commit To The Last Deployment."
+[experience]
+  title = "Who Works With Me?"
+[services]
+  title = "Services"
+[contact]
+  title = "Do You Want To Work or Chat With Me?"
+  email = "info@eduardosanzb.dev"

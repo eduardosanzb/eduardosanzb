@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="py-16">
+  <div class="site-container">
+    <h1 class="heading-1 mb-4">{{ .Title }}</h1>
+    <p class="text-xl text-gray-600 mb-16">All content tagged with "{{ .Title }}"</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+      {{ range .Pages }}
+      <article>
+        <h2 class="text-2xl font-bold">
+          <a href="{{ .Permalink }}" class="hover:text-primary-600 transition-colors">
+            {{ .Title }}
+          </a>
+        </h2>
+        {{ with .Date }}
+        <time datetime="{{ .Format "2006-01-02" }}" class="block mt-2 text-gray-500">
+          {{ .Format "January 2, 2006" }}
+        </time>
+        {{ end }}
+        {{ with .Description }}
+        <p class="mt-3 text-gray-600">{{ . }}</p>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

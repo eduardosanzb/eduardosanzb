@@ -1,0 +1,8 @@
+{{ $svg := .name }} {{ $class := .class }} {{ $match := "<svg (.*)?>(.*)</svg>"
+}} {{ $oldsvg := "<svg (.*)?>((.|\n)*)</svg>" }} {{ $newsvg := printf `<svg
+  class="%s"
+  ${1}
+>
+  ${2}</svg
+>` $class }} {{ return (replaceRE $oldsvg $newsvg (printf "/assets/svg/%s.svg"
+$svg | readFile) | safeHTML) }}

@@ -1,0 +1,17 @@
+[
+  {
+    "listNumber": 1,
+    "title": "Startups & Scale-ups",
+    "content": "I help early-stage and growing companies build/scale a solid technical foundation without the need for a full-time hire.\n\nFrom releasing your MVP to setting up scalable and robust infrastructure, I ensure your platform and team are ready to grow. As your needs evolve, I'm here to provide dedicated support and collaboration."
+  },
+  {
+    "listNumber": 2,
+    "title": "Digital Agencies",
+    "content": "I partner with digital agencies to streamline their technical delivery.\n\nFrom building reusable platforms to improving deployment pipelines and ensuring robust incident management, I help you deliver high-quality solutions to your clients—meeting deadlines and budget requirements."
+  },
+  {
+    "listNumber": 3,
+    "title": "Enterprises",
+    "content": "I help established companies modernize their legacy systems and adopt cloud-native practices.\n\nFrom architecture reviews to DevOps transformation, I ensure your systems are not only scalable and secure but also optimized to drive your key business objectives."
+  }
+]

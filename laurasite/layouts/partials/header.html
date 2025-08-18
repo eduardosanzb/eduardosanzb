@@ -1,0 +1,113 @@
+{{ $isFirst := eq .first "true" }}
+{{ $context := .context }}
+
+<header class="{{ if not $isFirst }}backdrop-blur-xl{{ end }}">
+  <nav class="flex justify-between items-center h-16 site-container">
+    <a href="/" class="
+          tracking-tightest
+          font-extralight
+
+          text-2xl
+          text-dark
+
+          dark:text-white
+          group-[.force-light]:text-dark
+          group-[.force-dark]:text-white
+
+          transition-colors
+          ">
+      {{ .context.Site.Title }}
+    </a>
+
+
+    <!-- Menu  -->
+    <div class="hidden md:flex justify-content items-center ">
+      {{ with .context }}
+      <ul class="flex items-center space-x-4">
+        {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+      </ul>
+      {{ end }}
+
+
+      <!-- Dark Mode Toggle -->
+      {{ if not $isFirst }}
+      <div class="hidden items-center ml-2">
+        <button id="theme-toggle" class="rounded-full p-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-icon" class="w-6 h-6 block dark:hidden text-dark dark:text-white
+            group-[.force-light]:text-dark
+            group-[.force-dark]:text-white
+              " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Mobile menu button - we'll add functionality later -->
+    {{ if not $isFirst }}
+    <button style="z-index:100" class='md:hidden z-100 p-2 tham-e-squeeze tham-w-6 tham' aria-label="Menu">
+      <div class="tham-box">
+        <div class="tham-inner bg-light dark:bg-dark
+          group-[.force-light]:bg-dark
+          group-[.force-dark]:bg-light
+          "></div>
+      </div>
+    </button>
+    <div id="mobile-menu" class="
+    md:hidden
+    bg-gray-200
+    fixed inset-0
+    h-screen
+    w-screen
+    z-50
+    transform translate-y-full transition-transform duration-300">
+      <ul class="flex
+        flex-col items-center space-x-4 gap-8 pt-4 pb-4">
+
+        {{ $menuEntries := index site.Menus "mobile" }}
+        {{ range $menuEntries }}
+        <!--Translation-->
+        {{- $name := .Name }}
+        {{- with .Identifier }}
+        {{- with T . }}
+        {{- $name = . }}
+        {{- end }}
+        {{- end }}
+        <li class="space-x-8">
+          <a href="{{ .URL }}" {{ with .Params.rel }} rel="{{ . }}" {{ end }} {{ if .Params.download }}download{{ end }}
+            {{ if isset .Params "id" }}id="{{.Params.id}}" {{ end }} {{ if eq .Params.rel "external" }} target="_blank"
+            rel="noopener" {{ end }} class="
+            items-center
+            justify-start
+        flex
+        nav-link
+        font-light
+        text-xl
+        text-dark
+        ">
+            {{if isset .Params "icon"}}
+            {{ partial "svg.html" (dict "name" .Params.icon "class" "max-h-[24px] max-w-[20px]") }}
+            {{ end }}
+
+            <span class="ml-2">
+              {{ $name }}
+            </span>
+          </a>
+        </li>
+        {{- end }}
+
+
+      </ul>
+
+    </div>
+
+    {{ end }}
+  </nav>
+</header>
