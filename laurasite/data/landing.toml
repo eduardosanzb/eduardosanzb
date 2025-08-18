@@ -1,7 +1,6 @@
 [availability]
   percent = 0.2 # 1 day a week available
-  label = "Partially Available"
-  # label = "Available"
+  label = "Available"
 [hero]
   title = "Data Business Analyst"
   subtitle = "HELPING TEAMS CREATE SYSTEMS THAT WORK, GROW AND LAST; \nFrom The First Commit To The Last Deployment."
