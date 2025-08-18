@@ -3,10 +3,10 @@
   label = "Available"
 [hero]
   title = "Data Business Analyst"
-  subtitle = "HELPING TEAMS CREATE SYSTEMS THAT WORK, GROW AND LAST; \nFrom The First Commit To The Last Deployment."
+  subtitle = "Developing tools to transform data-driven into Business decision-make; \nSQL, Power BI, and Python."
 [experience]
-  title = "Who Works With Me?"
-[services]
+  title = "Experience"
+[portafolio]
   title = "Portfolio"
 [contact]
   title = "Do You Want To Work or Chat With Me?"

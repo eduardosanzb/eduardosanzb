@@ -1,6 +1,6 @@
 ---
 title: "Impressum"
-date: 2025-01-27
+date: 2025-08-01
 draft: false
 description: "Legal Notice - Information according to § 5 TMG"
 layout: "single"
@@ -10,14 +10,14 @@ layout: "single"
 
 ## Angaben gemäß § 5 TMG
 
-Eduardo Sánchez Bautista
-Lübecker Strasse 15
-10559 Berlin
+Laura Sánchez Bautista
+Muschelkalweg 13
+12349 Berlin
 Germany
 
 ## Kontakt
 
-E-Mail: eduardosanzb@gmail.com
+E-Mail: sanzlau@gmail.com
 
 ## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
 
