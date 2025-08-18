@@ -1,5 +1,5 @@
 [availability]
-  percent = 0.2 # 1 day a week available
+  percent = 100
   label = "Available"
 [hero]
   title = "Data Business Analyst"
