@@ -17,7 +17,7 @@ Germany
 
 ## Kontakt
 
-E-Mail: eduardosanzb@gmail.com
+E-Mail: legal@eduardosanzb.dev
 
 ## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
 
