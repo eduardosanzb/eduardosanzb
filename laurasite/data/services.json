@@ -1,42 +1,42 @@
 [
   {
-    "skip": true,
+    "skip": false,
     "title": "Master Scorecard Tool",
     "content": "Visualization on one page the Sales-Profit and Logistic KPI´s. The perfecto tool for every monday meeting.",
     "srcset": "images/proto500.webp 500w, images/proto1000.webp 900w"
   },
   {
-    "skip": true,
+    "skip": false,
     "title": "Business Plan Review",
     "content": "At the end of each quarter, let's review the Business Plan. Different areas, different action plans, but all with the same analytical spirit..",
     "srcset": "images/ass300.webp 300w, images/ass500.webp 500w, images/ass600.webp 600w, images/ass900.webp 900w"
   },
   {
-    "skip": true,
+    "skip": false,
     "title": "Analyzer",
     "content": "A dinamic dashboard that guide us from the general to the specific comercial opportunity.",
     "srcset": "images/mont300.webp 300w, images/mont500.webp 500w, images/mont600.webp 600w, images/mont900.webp 900w"
   },
   {
-    "skip": false,
+    "skip": true,
     "title": "Scalable Architecture",
     "content": "I design systems that can grow with your business.",
     "srcset": "images/arch250.webp 200w, images/arch500.webp 500w, images/arch700.webp 700w, images/arch900.webp 900w"
   },
   {
-    "skip": false,
+    "skip": true,
     "title": "Security Review",
     "content": "I find and fix security weaknesses in your systems.",
     "srcset": "images/sec300.webp 300w, images/sec500.webp 500w, images/sec600.webp 600w, images/sec900.webp 900w"
   },
   {
-    "skip": false,
+    "skip": true,
     "title": "System Integrations",
     "content": "I connect different systems to work together smoothly.",
     "srcset": "images/int300.webp 300w, images/int500.webp 500w, images/int600.webp 600w, images/int900.webp 900w"
   },
   {
-    "skip": false,
+    "skip": true,
     "title": "Cloud Migration",
     "content": "I move your systems to the cloud efficiently.",
     "srcset": "images/cloud300.webp 300w, images/cloud600.webp 600w, images/cloud900.webp 900w"
