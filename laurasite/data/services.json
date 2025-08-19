@@ -13,7 +13,7 @@
   },
   {
     "skip": false,
-    "title": "Tool Analyzer, every monday",
+    "title": "Tool Analyzer",
     "content": "A dinamic dashboard that guide us from the general to the specific comercial opportunity.",
     "srcset": "images/mont300.webp 300w, images/mont500.webp 500w, images/mont600.webp 600w, images/mont900.webp 900w"
   },
@@ -24,8 +24,8 @@
     "srcset": "images/arch250.webp 200w, images/arch500.webp 500w, images/arch700.webp 700w, images/arch900.webp 900w"
   },
   {
-    "skip": true,
-    "title": "Security Review",
+    "skip": false,
+    "title": "SQL Queries",
     "content": "I find and fix security weaknesses in your systems.",
     "srcset": "images/sec300.webp 300w, images/sec500.webp 500w, images/sec600.webp 600w, images/sec900.webp 900w"
   },

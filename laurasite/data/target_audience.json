@@ -1,23 +1,23 @@
 [
   {
     "listNumber": 1,
-    "title": "Diagnositics",
-    "content": "Is there clarity with the actions, targets and strategy of the company?.\n\n Is there a visual daily tool that give us the direction and everybody is commit with? Is there clarity of what everybody is doing?."
+    "title": "Diagnostic",
+    "content": "Is there clarity in the area with the actions, targets and strategy?.\n\n Is everyone commit with the objective of the ares? Which data are creating, needing and using the area?."
   },
   {
     "listNumber": 2,
-    "title": "Strategic Business Plan",
-    "content": "Let me scan the overall of the priority process and key activities that direct to the strategy. Every key activity should have measurable objectives by KPI´s. Now we have build the Strategic Business Plan."
+    "title": "Analytics Engineering and Commercial Business Plan",
+    "content": "With analytics engineering, I ensure that data is useful for analysis: Designing dimensional models (star schema) for dashboards, complex SQL queries for business metrics, and standardized documentation of KPI definitions.."
   },
   {
     "listNumber": 3,
-    "title": "Business Inteligence and Analytics Engineering",
-    "content": "Using Analytics Engineering, I bridge the data structure with Data Analysts to transform raw data into analytical models ready for our used to read the SBP. The Analytic Engineering defined what is going to show in the dashboards and reports."
+    "title": "Business Intelligence and Visualization",
+    "content": "With Business Intelligence I create the daily visual tools that keep update our KPI´s and reports that are used for all the desicion-makers. Creative dashboards that every area can read it and undestand it."
   },
   {
     "listNumber": 4,
-    "title": "Visualization Tool and Data Culture",
-    "content": "And now, I create the daily visual tools that keep update and online all the desicion-makers alined to the Business Plan. Creative dashboards that every area can read it and undestand it. also integrated with forecast models. It´s time that everyone speak the same Data Culture."
+    "title": "Forecast models and Data Culture",
+    "content": "And now, I can integrated forecast models. Lets keep couching on the Data Culture."
   }
 
 ]
