@@ -2,22 +2,22 @@
   {
     "listNumber": 1,
     "title": "Diagnostic",
-    "content": "Is there clarity in the area with the actions, targets and strategy?.\n\n Is everyone commit with the objective of the ares? Which data are creating, needing and using the area?."
+    "content": "Is there clarity in the department regarding actions, objectives, and strategy. Is everyone committed to the department's objective? What data is created, needed, and used?"
   },
   {
     "listNumber": 2,
     "title": "Analytics Engineering and Commercial Business Plan",
-    "content": "With analytics engineering, I ensure that data is useful for analysis: Designing dimensional models (star schema) for dashboards, complex SQL queries for business metrics, and standardized documentation of KPI definitions.."
+    "content": "With analytics engineering, I ensure that the data is useful for analysis: I design dimensional models (star schema) for dashboards, complex SQL queries for business metrics, and document standardized KPI definitions."
   },
   {
     "listNumber": 3,
     "title": "Business Intelligence and Visualization",
-    "content": "With Business Intelligence I create the daily visual tools that keep update our KPI´s and reports that are used for all the desicion-makers. Creative dashboards that every area can read it and undestand it."
+    "content": "With business intelligence, I create daily visual tools that keep our KPIs and reports up-to-date, used by all decision-makers. Creative dashboards that all departments can read and understand."
   },
   {
     "listNumber": 4,
-    "title": "Forecast models and Data Culture",
-    "content": "And now, I can integrated forecast models. Lets keep couching on the Data Culture."
+    "title": "Forecasting Models and Data Culture",
+    "content": "And now, I can integrate forecasting models. Let's continue digging deeper into data culture."
   }
 
 ]
