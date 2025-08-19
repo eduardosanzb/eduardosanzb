@@ -7,19 +7,19 @@
   },
   {
     "skip": false,
-    "title": "Business Plan Review",
+    "title": "Commercial Business Plan Review",
     "content": "At the end of each quarter, let's review the Business Plan. Different areas, different action plans, but all with the same analytical spirit..",
     "srcset": "images/ass300.webp 300w, images/ass500.webp 500w, images/ass600.webp 600w, images/ass900.webp 900w"
   },
   {
     "skip": false,
-    "title": "Analyzer",
+    "title": "Tool Analyzer, every monday",
     "content": "A dinamic dashboard that guide us from the general to the specific comercial opportunity.",
     "srcset": "images/mont300.webp 300w, images/mont500.webp 500w, images/mont600.webp 600w, images/mont900.webp 900w"
   },
   {
-    "skip": true,
-    "title": "Scalable Architecture",
+    "skip": false,
+    "title": "Scorecard by Area or Category or product",
     "content": "I design systems that can grow with your business.",
     "srcset": "images/arch250.webp 200w, images/arch500.webp 500w, images/arch700.webp 700w, images/arch900.webp 900w"
   },
