@@ -92,7 +92,7 @@
       text-white
       dark:text-dark
 
-      text-5xl
+      text-4xl
       lg:text-7xl
 
       capitalize
@@ -212,7 +212,7 @@
   <!-- Small screen -->
   <span class="md:hidden flex flex-col gap-4">
     <span class="flex gap-4 items-center">
-      <h1 class="text-6xl">
+      <h1 class="text-4xl">
         {{ .listNumber }}.
       </h1>
       <h1 class="text-4xl">
@@ -220,22 +220,22 @@
       </h1>
     </span>
     <div class="flex-grow border-t border-white dark:border-dark pt-30"></div>
-    <p class="text-2xl lg:text-4xl font-light whitespace-pre-line">
+    <p class="text-xl lg:text-3xl font-light whitespace-pre-line">
       {{ .content }}
     </p>
   </span>
 
   <!--From LG-->
   <span class="hidden md:flex gap-4">
-    <h1 class="text-9xl">
+    <h1 class="text-7xl">
       {{ .listNumber }}.
     </h1>
     <span class="flex flex-col gap-4">
-      <h1 class="text-6xl">
+      <h1 class="text-4xl">
         {{ .title }}
       </h1>
       <div class="flex-grow border-t border-white dark:border-dark pt-30"></div>
-      <p class="text-4xl font-light whitespace-pre-line">
+      <p class="text-3xl font-light whitespace-pre-line">
         {{ .content }}
       </p>
     </span>
@@ -248,7 +248,7 @@
 {{ define "partials/inline/logos.html" }}
 <div class="flex bg-logo min-h-40 flex flex-col">
   <h2 class="text-dark text-3xl font-extralight pt-6 capitalize site-container">Past Experiences</h2>
-  <div class="h-full overflow-clip items-center min-h-32 flex-grow flex">
+  <div class="h-full overflow-clip items-center min-h-16 flex-grow flex">
     <div class="
         flex
         flex-col
@@ -258,7 +258,6 @@
         items-center
         gap-12
         lg:gap-16
-        min-h-full
         pt-4
         lg:pt-0
         pb-4
@@ -269,7 +268,7 @@
 
       {{ $logos := .Site.Data.experiences }}
       {{ range $logos }}
-      {{ partial "svg.html" (dict "name" . "class" "max-h-12 bg-logo") }}
+      {{ partial "svg.html" (dict "name" . "class" "p-50 bg-logo") }}
       {{ end }}
     </div>
   </div>

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Personal website of Eduardo Sanchez",
   "scripts": {
-    "dev": "hugo server -D",
+    "dev": "hugo server -D --disableFastRender",
     "build": "hugo --minify",
     "start": "hugo server"
   },

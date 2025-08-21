@@ -113,3 +113,15 @@ javascript/.wwebjs_cache
 python/__pycache__
 javascript/whatsapp-session/session
 openwebui/infra/hetzner/.terraform/providers/registry.terraform.io
+laurasite/public/index.html
+laurasite/public/about/index.html
+laurasite/public/categories/index.html
+laurasite/public/css/main.min.css
+laurasite/public/images/proto500.webp
+laurasite/public/images/proto1000.webp
+laurasite/public/impressum/index.html
+laurasite/public/pages/index.html
+laurasite/public/tags/index.html
+laurasite/public/work/index.html
+laurasite/public/work/unity-technologies/index.html
+laurasite/resources/_gen/assets/css/main.css_7d3d4a76d7535680a8c833d536463552.content
