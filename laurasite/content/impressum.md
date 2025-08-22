@@ -12,8 +12,6 @@ layout: "single"
 
 Laura Sánchez Bautista
 
-Muschelkalweg 13
-
 12349 Berlin
 
 Germany
