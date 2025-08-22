@@ -32,3 +32,6 @@ Permission: If you are a company whose logo appears here and would like to reque
 
 This portfolio is created for educational, professional, and creative purposes only. Any use of logos here does not imply commercial endorsement or partnership with the referenced companies.
 
+
+.
+
