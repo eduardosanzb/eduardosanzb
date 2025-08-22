@@ -13,20 +13,20 @@
   },
   {
     "skip": false,
-    "title": "Tool Analyzer",
+    "title": "Analyzer Tool",
     "content": "A dinamic dashboard that guide us from the general to the specific comercial opportunity.",
     "srcset": "images/mont300.webp 300w, images/mont500.webp 500w, images/mont600.webp 600w, images/mont900.webp 900w"
   },
   {
     "skip": false,
     "title": "Scorecard by Area or Category or product",
-    "content": "I design systems that can grow with your business.",
+    "content": "From general to particular we can analize the performance of each area, category or product.",
     "srcset": "images/arch250.webp 200w, images/arch500.webp 500w, images/arch700.webp 700w, images/arch900.webp 900w"
   },
   {
     "skip": false,
     "title": "SQL Queries",
-    "content": "I find and fix security weaknesses in your systems.",
+    "content": "To ensure that the data is useful for analysis, I use Analytics Engineering.",
     "srcset": "images/sec300.webp 300w, images/sec500.webp 500w, images/sec600.webp 600w, images/sec900.webp 900w"
   },
   {
