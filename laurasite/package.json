@@ -1,7 +1,7 @@
 {
   "name": "personal-site",
   "version": "1.0.0",
-  "description": "Personal website of Eduardo Sanchez",
+  "description": "Personal website of Laura Sanchez",
   "scripts": {
     "dev": "hugo server -D --disableFastRender",
     "build": "hugo --minify",

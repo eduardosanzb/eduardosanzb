@@ -1,8 +1,7 @@
 ---
-title: "Eduardo Sanchez - Software Engineer & Technical Leader"
-description: "Personal website of Eduardo Sanchez, Software Engineer specializing in API Gateways, DevOps, and technical leadership"
+title: "Laura Sanchez - Data Commercial Analyst"
+description: "Personal website of Laura Sanchez"
 ---
 
-Hello!!! With over 8 years of experience building high-quality cloud solutions.
-Specializing in API Gateways, DevOps practices, and technical
-leadership.
+Hello!!! With over 5 years of experience building high-quality data tools solutions.
+Specializing in Visualization, Analytic Engineering and Forecast Models.

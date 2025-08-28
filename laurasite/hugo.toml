@@ -48,7 +48,7 @@ pygmentsUseClasses = true
       icon = 'linkedin'
   [[menu.main]]
     name = "github"
-    url = "https://github.com/eduardosanzb/"
+    url = "https://github.com/lausanz/businessdataanalyst/"
     weight = 7
     [menu.main.params]
       rel = 'external'
