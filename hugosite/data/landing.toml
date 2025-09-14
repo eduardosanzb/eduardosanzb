@@ -1,6 +1,6 @@
 [availability]
   percent = 0 # 1 day a week available
-  label = "Partially Available"
+  label = "Only available for consulting hours"
   # label = "Available"
 [hero]
   title = "Product Engineer\nFrom Concept to Infrastructure."
