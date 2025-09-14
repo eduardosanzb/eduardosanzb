@@ -1,5 +1,5 @@
 [availability]
-  percent = 0.2 # 1 day a week available
+  percent = 0 # 1 day a week available
   label = "Partially Available"
   # label = "Available"
 [hero]
